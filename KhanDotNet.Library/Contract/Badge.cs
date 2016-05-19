@@ -1,5 +1,4 @@
-﻿using KhanDotNet.Library.Utilities;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 
 namespace KhanDotNet.Library.Contract
@@ -53,53 +52,6 @@ namespace KhanDotNet.Library.Contract
 
         [JsonProperty("name")]
         public string Name { get; set; }
-
-        public override int GetHashCode()
-        {
-            return IconSource.SafeGetHashCode() ^
-                HideContext.SafeGetHashCode() ^
-                Description.SafeGetHashCode() ^
-                RelativeUrl.SafeGetHashCode() ^
-                Icons.SafeGetHashCode() ^
-                AbsoluteUrl.SafeGetHashCode() ^
-                UserBadges.SafeGetHashCode() ^
-                DescriptionExtendedTranslatedSafe.SafeGetHashCode() ^
-                DescriptionTranslated.SafeGetHashCode() ^
-                IsOwned.SafeGetHashCode() ^
-                Category.SafeGetHashCode() ^
-                Points.SafeGetHashCode() ^
-                IsRetired.SafeGetHashCode() ^
-                DescriptionExtendedSafe.SafeGetHashCode() ^
-                Slug.SafeGetHashCode() ^
-                Name.SafeGetHashCode();
-        }
-
-        public override bool Equals(object obj)
-        {
-            var other = obj as Badge;
-
-            if (other == null)
-            {
-                return false;
-            }
-
-            return IconSource.SafeEquals(other.IconSource) &&
-                HideContext.SafeEquals(other.HideContext) &&
-                Description.SafeEquals(other.Description) &&
-                RelativeUrl.SafeEquals(other.RelativeUrl) &&
-                Icons.SafeEquals(other.Icons) &&
-                AbsoluteUrl.SafeEquals(other.AbsoluteUrl) &&
-                UserBadges.SafeEquals(other.UserBadges) &&
-                DescriptionExtendedTranslatedSafe.SafeEquals(other.DescriptionExtendedTranslatedSafe) &&
-                DescriptionTranslated.SafeEquals(other.DescriptionTranslated) &&
-                IsOwned.SafeEquals(other.IsOwned) &&
-                Category.SafeEquals(other.Category) &&
-                Points.SafeEquals(other.Points) &&
-                IsRetired.SafeEquals(other.IsRetired) &&
-                DescriptionExtendedSafe.SafeEquals(other.DescriptionExtendedSafe) &&
-                Slug.SafeEquals(other.Slug) &&
-                Name.SafeEquals(other.Name);
-        }
 
         public override string ToString()
         {

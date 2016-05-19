@@ -54,7 +54,6 @@
     <Compile Include="Utilities\DisposableUtilities.cs" />
     <Compile Include="IKhanClient.cs" />
     <Compile Include="KhanClient.cs" />
-    <Compile Include="Utilities\ObjectExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\StringExtensions.cs" />
     <Compile Include="Utilities\HttpClientWrapper.cs" />

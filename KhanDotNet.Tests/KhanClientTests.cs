@@ -1,5 +1,4 @@
 ﻿using KhanDotNet.Library;
-using KhanDotNet.Library.Contract;
 using KhanDotNet.Library.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -69,7 +68,7 @@ namespace KhanDotNet.Tests
             var expected = KhanTestData.Badges.SampleBadges;
             var actual = await _client.GetBadges();
 
-            CollectionAssertExtra.AreEqual(expected, actual);
+            expected.AssertDeepEqual(actual);
         }
 
         [TestMethod]
