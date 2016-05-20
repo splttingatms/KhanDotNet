@@ -5,23 +5,28 @@ namespace KhanDotNet.Library
 {
     public class KhanClient : IKhanClient
     {
-        // TODO: reuse the same HTTP client
         public KhanClient()
-            : this(
-                  new BadgeClient(DisposableUtilities.SafeCreate<HttpClientWrapper>()),
-                  new ExerciseClient(DisposableUtilities.SafeCreate<HttpClientWrapper>()))
         {
+            var innerClient = DisposableUtilities.SafeCreate<HttpClientWrapper>();
+            Initialize(
+                new BadgeClient(innerClient),
+                new ExerciseClient(innerClient));
         }
 
         public KhanClient(IBadgeClient badgeClient, IExerciseClient exerciseClient)
         {
-            Badges = badgeClient;
-            Exercises = exerciseClient;
+            Initialize(badgeClient, exerciseClient);
         }
 
         public IBadgeClient Badges { get; private set; }
 
         public IExerciseClient Exercises { get; private set; }
+
+        private void Initialize(IBadgeClient badgeClient, IExerciseClient exerciseClient)
+        {
+            Badges = badgeClient;
+            Exercises = exerciseClient;
+        }
 
         public void Dispose()
         {
