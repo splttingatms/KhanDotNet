@@ -63,7 +63,7 @@ namespace KhanDotNet.Tests
         [TestMethod]
         public async Task GetBadgesShouldReturnDeserializedBadges()
         {
-            _khanResponse.Content = new JsonContent(BadgeTestData.SampleJson);
+            _khanResponse.Content = new JsonContent(BadgeTestData.SampleBadgesJson);
 
             var expected = BadgeTestData.SampleBadges;
             var actual = await _client.GetBadgesAsync();
@@ -71,6 +71,7 @@ namespace KhanDotNet.Tests
             expected.AssertDeepEqual(actual);
         }
 
+        // TODO: either change exception thrown or remove test
         [TestMethod]
         [ExpectedException(typeof(NullReferenceException))]
         public async Task GetBadgesShouldThrowIfNullResponseReturned()
@@ -101,6 +102,29 @@ namespace KhanDotNet.Tests
         {
             _khanResponse.Content = new JsonContent("invalid_json");
             await _client.GetBadgesAsync();
+        }
+
+        #endregion
+
+        #region GetBadgeCategories
+
+        [TestMethod]
+        public async Task GetBadgeCategoriesShouldReturnDeserializedCategories()
+        {
+            _khanResponse.Content = new JsonContent(BadgeTestData.SampleBadgeCategoriesJson);
+
+            var expected = BadgeTestData.SampleBadgeCategories;
+            var actual = await _client.GetBadgeCategoriesAsync();
+
+            expected.AssertDeepEqual(actual);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(HttpRequestException))]
+        public async Task GetBadgeCategoriesShouldThrowIfNonSuccessStatusCode()
+        {
+            _khanResponse.StatusCode = HttpStatusCode.BadRequest;
+            await _client.GetBadgeCategoriesAsync();
         }
 
         #endregion
