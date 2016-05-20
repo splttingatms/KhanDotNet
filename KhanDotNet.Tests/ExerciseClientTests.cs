@@ -56,9 +56,9 @@ namespace KhanDotNet.Tests
         [TestMethod]
         public async Task GetExerciseShouldReturnDeserializedExercise()
         {
-            _khanResponse.Content = new JsonContent(KhanTestData.Exercises.CountingExerciseJson);
+            _khanResponse.Content = new JsonContent(ExerciseTestData.CountingExerciseJson);
 
-            var expected = KhanTestData.Exercises.CountingExercise;
+            var expected = ExerciseTestData.CountingExercise;
             var actual = await _client.GetExerciseAsync("counting-out-1-20-objects");
 
             expected.AssertDeepEqual(actual);

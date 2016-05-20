@@ -68,9 +68,10 @@
   </Choose>
   <ItemGroup>
     <Compile Include="BadgeClientTests.cs" />
+    <Compile Include="BadgeTestData.cs" />
+    <Compile Include="ExerciseTestData.cs" />
     <Compile Include="JsonContent.cs" />
     <Compile Include="ExerciseClientTests.cs" />
-    <Compile Include="KhanTestData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestExtensions.cs" />
   </ItemGroup>

@@ -63,9 +63,9 @@ namespace KhanDotNet.Tests
         [TestMethod]
         public async Task GetBadgesShouldReturnDeserializedBadges()
         {
-            _khanResponse.Content = new JsonContent(KhanTestData.Badges.SampleJson);
+            _khanResponse.Content = new JsonContent(BadgeTestData.SampleJson);
 
-            var expected = KhanTestData.Badges.SampleBadges;
+            var expected = BadgeTestData.SampleBadges;
             var actual = await _client.GetBadgesAsync();
 
             expected.AssertDeepEqual(actual);
