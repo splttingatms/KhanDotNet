@@ -1,34 +1,16 @@
 ﻿using KhanDotNet.Library.Contract;
 using KhanDotNet.Library.Utilities;
-using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace KhanDotNet.Library
 {
-    public class BadgeClient : IBadgeClient
+    public class BadgeClient : BaseClient, IBadgeClient
     {
-        private IHttpClient _httpClient;
-
         public BadgeClient(IHttpClient httpClient)
+            : base(httpClient)
         {
-            _httpClient = httpClient;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                _httpClient?.Dispose();
-                _httpClient = null;
-            }
         }
 
         public async Task<List<Badge>> GetBadgesAsync()

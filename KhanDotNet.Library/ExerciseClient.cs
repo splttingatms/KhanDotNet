@@ -1,35 +1,17 @@
 ﻿using EnsureThat;
 using KhanDotNet.Library.Contract;
 using KhanDotNet.Library.Utilities;
-using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 
 namespace KhanDotNet.Library
 {
-    public class ExerciseClient : IExerciseClient
+    public class ExerciseClient : BaseClient, IExerciseClient
     {
-        private IHttpClient _httpClient;
-
         public ExerciseClient(IHttpClient httpClient)
+            : base(httpClient)
         {
-            _httpClient = httpClient;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                _httpClient?.Dispose();
-                _httpClient = null;
-            }
         }
 
         public async Task<Exercise> GetExerciseAsync(string name)
