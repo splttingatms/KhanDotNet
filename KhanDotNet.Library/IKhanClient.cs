@@ -8,5 +8,7 @@ namespace KhanDotNet.Library
     public interface IKhanClient : IDisposable
     {
         Task<List<Badge>> GetBadges();
+
+        Task<Exercise> GetExercise(string name);
     }
 }
