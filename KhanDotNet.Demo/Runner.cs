@@ -12,7 +12,7 @@ namespace KhanDotNet
             {
                 using (var client = new KhanClient())
                 {
-                    var badges = client.GetBadges().Result;
+                    var badges = client.Badges.GetBadges().Result;
                     Console.WriteLine(JsonConvert.SerializeObject(badges, Formatting.Indented));
                 }
             }

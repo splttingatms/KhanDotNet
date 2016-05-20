@@ -99,7 +99,17 @@ namespace KhanDotNet.Library.Utilities
 
         public void Dispose()
         {
-            _client.Dispose();
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _client?.Dispose();
+                _client = null;
+            }
         }
 
         public async Task<HttpResponseMessage> GetAsync(Uri requestUri)

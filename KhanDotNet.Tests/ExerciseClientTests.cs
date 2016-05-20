@@ -11,13 +11,13 @@ using System.Threading.Tasks;
 namespace KhanDotNet.Tests
 {
     [TestClass]
-    public class KhanClientTests
+    public class ExerciseClientTests
     {
         private HttpResponseMessage _khanResponse;
 
         private Mock<IHttpClient> _httpClientMock;
 
-        private IKhanClient _client;
+        private IExerciseClient _client;
 
         [TestInitialize]
         public void Initialize()
@@ -34,7 +34,7 @@ namespace KhanDotNet.Tests
                 .Setup(c => c.GetAsync(It.IsAny<string>()))
                 .ReturnsAsync(_khanResponse);
 
-            _client = new KhanClient(_httpClientMock.Object);
+            _client = new ExerciseClient(_httpClientMock.Object);
         }
 
         [TestCleanup]
@@ -43,67 +43,6 @@ namespace KhanDotNet.Tests
             _khanResponse?.Dispose();
             _client?.Dispose();
         }
-
-        #region GetBadges
-
-        [TestMethod]
-        public async Task GetBadgesShouldMakeAGetRequest()
-        {
-            await _client.GetBadges();
-            _httpClientMock.Verify(c => c.GetAsync(It.IsAny<string>()), Times.Once);
-        }
-
-        [TestMethod]
-        public async Task GetBadgesShouldTargetCorrectPath()
-        {
-            await _client.GetBadges();
-            _httpClientMock.Verify(c => c.GetAsync(It.Is<string>(url => url == "http://www.khanacademy.org/api/v1/badges")));
-        }
-
-        [TestMethod]
-        public async Task GetBadgesShouldReturnDeserializedBadges()
-        {
-            _khanResponse.Content = new JsonContent(KhanTestData.Badges.SampleJson);
-
-            var expected = KhanTestData.Badges.SampleBadges;
-            var actual = await _client.GetBadges();
-
-            expected.AssertDeepEqual(actual);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(NullReferenceException))]
-        public async Task GetBadgesShouldThrowIfNullResponseReturned()
-        {
-            _httpClientMock.Setup(c => c.GetAsync(It.IsAny<string>())).ReturnsAsync(null);
-            await _client.GetBadges();
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public async Task GetBadgesShouldThrowIfNullContentReturned()
-        {
-            _khanResponse.Content = null;
-            await _client.GetBadges();
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(HttpRequestException))]
-        public async Task GetBadgesShouldThrowIfNonSuccessStatusCodeReturned()
-        {
-            _khanResponse.StatusCode = HttpStatusCode.BadRequest;
-            await _client.GetBadges();
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(JsonReaderException))]
-        public async Task GetBadgesShouldThrowIfInvalidJsonReturned()
-        {
-            _khanResponse.Content = new JsonContent("invalid_json");
-            await _client.GetBadges();
-        }
-
-        #endregion
 
         #region GetExercise
 

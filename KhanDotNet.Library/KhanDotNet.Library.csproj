@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BadgesClient.cs" />
     <Compile Include="Contract\AssessmentItem.cs" />
     <Compile Include="Contract\Badge.cs" />
     <Compile Include="Contract\ConceptTagInfo.cs" />
@@ -63,6 +64,9 @@
     <Compile Include="Contract\ProblemType.cs" />
     <Compile Include="Contract\ThumbnailData.cs" />
     <Compile Include="Contract\TranslatedProblemType.cs" />
+    <Compile Include="ExerciseClient.cs" />
+    <Compile Include="IBadgeClient.cs" />
+    <Compile Include="IExerciseClient.cs" />
     <Compile Include="Utilities\DisposableUtilities.cs" />
     <Compile Include="IKhanClient.cs" />
     <Compile Include="KhanClient.cs" />

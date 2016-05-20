@@ -1,14 +1,11 @@
-﻿using KhanDotNet.Library.Contract;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace KhanDotNet.Library
 {
     public interface IKhanClient : IDisposable
     {
-        Task<List<Badge>> GetBadges();
+        IBadgeClient Badges { get; }
 
-        Task<Exercise> GetExercise(string name);
+        IExerciseClient Exercises { get; }
     }
 }
