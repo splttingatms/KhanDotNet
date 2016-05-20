@@ -6,6 +6,6 @@ namespace KhanDotNet.Library
 {
     public interface IExerciseClient : IDisposable
     {
-        Task<Exercise> GetExercise(string name);
+        Task<Exercise> GetExerciseAsync(string name);
     }
 }

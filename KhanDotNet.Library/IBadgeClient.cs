@@ -7,6 +7,6 @@ namespace KhanDotNet.Library
 {
     public interface IBadgeClient : IDisposable
     {
-        Task<List<Badge>> GetBadges();
+        Task<List<Badge>> GetBadgesAsync();
     }
 }

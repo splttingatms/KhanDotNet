@@ -31,7 +31,7 @@ namespace KhanDotNet.Library
             }
         }
 
-        public async Task<List<Badge>> GetBadges()
+        public async Task<List<Badge>> GetBadgesAsync()
         {
             using (var response = await _httpClient.GetAsync("http://www.khanacademy.org/api/v1/badges"))
             {

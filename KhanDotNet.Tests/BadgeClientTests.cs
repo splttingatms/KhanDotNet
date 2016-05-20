@@ -49,14 +49,14 @@ namespace KhanDotNet.Tests
         [TestMethod]
         public async Task GetBadgesShouldMakeAGetRequest()
         {
-            await _client.GetBadges();
+            await _client.GetBadgesAsync();
             _httpClientMock.Verify(c => c.GetAsync(It.IsAny<string>()), Times.Once);
         }
 
         [TestMethod]
         public async Task GetBadgesShouldTargetCorrectPath()
         {
-            await _client.GetBadges();
+            await _client.GetBadgesAsync();
             _httpClientMock.Verify(c => c.GetAsync(It.Is<string>(url => url == "http://www.khanacademy.org/api/v1/badges")));
         }
 
@@ -66,7 +66,7 @@ namespace KhanDotNet.Tests
             _khanResponse.Content = new JsonContent(KhanTestData.Badges.SampleJson);
 
             var expected = KhanTestData.Badges.SampleBadges;
-            var actual = await _client.GetBadges();
+            var actual = await _client.GetBadgesAsync();
 
             expected.AssertDeepEqual(actual);
         }
@@ -76,7 +76,7 @@ namespace KhanDotNet.Tests
         public async Task GetBadgesShouldThrowIfNullResponseReturned()
         {
             _httpClientMock.Setup(c => c.GetAsync(It.IsAny<string>())).ReturnsAsync(null);
-            await _client.GetBadges();
+            await _client.GetBadgesAsync();
         }
 
         [TestMethod]
@@ -84,7 +84,7 @@ namespace KhanDotNet.Tests
         public async Task GetBadgesShouldThrowIfNullContentReturned()
         {
             _khanResponse.Content = null;
-            await _client.GetBadges();
+            await _client.GetBadgesAsync();
         }
 
         [TestMethod]
@@ -92,7 +92,7 @@ namespace KhanDotNet.Tests
         public async Task GetBadgesShouldThrowIfNonSuccessStatusCodeReturned()
         {
             _khanResponse.StatusCode = HttpStatusCode.BadRequest;
-            await _client.GetBadges();
+            await _client.GetBadgesAsync();
         }
 
         [TestMethod]
@@ -100,7 +100,7 @@ namespace KhanDotNet.Tests
         public async Task GetBadgesShouldThrowIfInvalidJsonReturned()
         {
             _khanResponse.Content = new JsonContent("invalid_json");
-            await _client.GetBadges();
+            await _client.GetBadgesAsync();
         }
 
         #endregion

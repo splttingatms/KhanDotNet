@@ -49,7 +49,7 @@ namespace KhanDotNet.Tests
         [TestMethod]
         public async Task GetExerciseShouldMakeGetRequest()
         {
-            await _client.GetExercise("foo");
+            await _client.GetExerciseAsync("foo");
             _httpClientMock.Verify(c => c.GetAsync(It.IsAny<string>()), Times.Once);
         }
 
@@ -59,7 +59,7 @@ namespace KhanDotNet.Tests
             _khanResponse.Content = new JsonContent(KhanTestData.Exercises.CountingExerciseJson);
 
             var expected = KhanTestData.Exercises.CountingExercise;
-            var actual = await _client.GetExercise("counting-out-1-20-objects");
+            var actual = await _client.GetExerciseAsync("counting-out-1-20-objects");
 
             expected.AssertDeepEqual(actual);
         }
@@ -70,7 +70,7 @@ namespace KhanDotNet.Tests
             var input = "^foo&bar$";
             var encodedInput = "%5Efoo%26bar%24";
 
-            await _client.GetExercise(input);
+            await _client.GetExerciseAsync(input);
             _httpClientMock.Verify(c => c.GetAsync(It.Is<string>(url => url.ContainsIgnoreCase(encodedInput))));
         }
 
@@ -78,21 +78,21 @@ namespace KhanDotNet.Tests
         [ExpectedException(typeof(ArgumentException))]
         public async Task GetExerciseShouldThrowIfNullInput()
         {
-            await _client.GetExercise(null);
+            await _client.GetExerciseAsync(null);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public async Task GetExerciseShouldThrowIfEmptyInput()
         {
-            await _client.GetExercise(string.Empty);
+            await _client.GetExerciseAsync(string.Empty);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public async Task GetExerciseShouldThrowIfWhitespaceInput()
         {
-            await _client.GetExercise("   ");
+            await _client.GetExerciseAsync("   ");
         }
 
         [TestMethod]
@@ -100,7 +100,7 @@ namespace KhanDotNet.Tests
         public async Task GetExerciseShouldThrowIfNullResponseReturned()
         {
             _httpClientMock.Setup(c => c.GetAsync(It.IsAny<string>())).ReturnsAsync(null);
-            await _client.GetExercise("foo");
+            await _client.GetExerciseAsync("foo");
         }
 
         [TestMethod]
@@ -108,7 +108,7 @@ namespace KhanDotNet.Tests
         public async Task GetExerciseShouldThrowIfNullContentReturned()
         {
             _khanResponse.Content = null;
-            await _client.GetExercise("foo");
+            await _client.GetExerciseAsync("foo");
         }
 
         [TestMethod]
@@ -116,7 +116,7 @@ namespace KhanDotNet.Tests
         public async Task GetExerciseShouldThrowIfNonSuccessStatusCodeReturned()
         {
             _khanResponse.StatusCode = HttpStatusCode.BadRequest;
-            await _client.GetExercise("foo");
+            await _client.GetExerciseAsync("foo");
         }
 
         [TestMethod]
@@ -124,7 +124,7 @@ namespace KhanDotNet.Tests
         public async Task GetExerciseShouldThrowIfInvalidJsonReturned()
         {
             _khanResponse.Content = new JsonContent("invalid_json");
-            await _client.GetExercise("foo");
+            await _client.GetExerciseAsync("foo");
         }
 
         #endregion

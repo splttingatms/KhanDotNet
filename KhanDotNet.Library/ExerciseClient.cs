@@ -32,7 +32,7 @@ namespace KhanDotNet.Library
             }
         }
 
-        public async Task<Exercise> GetExercise(string name)
+        public async Task<Exercise> GetExerciseAsync(string name)
         {
             Ensure.That(name, nameof(name)).IsNotNullOrWhiteSpace();
 
