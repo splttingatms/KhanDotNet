@@ -54,9 +54,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contract\AssessmentItem.cs" />
     <Compile Include="Contract\Badge.cs" />
+    <Compile Include="Contract\ConceptTagInfo.cs" />
     <Compile Include="Contract\Exercise.cs" />
     <Compile Include="Contract\Icons.cs" />
+    <Compile Include="Contract\Item.cs" />
+    <Compile Include="Contract\ProblemType.cs" />
+    <Compile Include="Contract\ThumbnailData.cs" />
+    <Compile Include="Contract\TranslatedProblemType.cs" />
     <Compile Include="Utilities\DisposableUtilities.cs" />
     <Compile Include="IKhanClient.cs" />
     <Compile Include="KhanClient.cs" />

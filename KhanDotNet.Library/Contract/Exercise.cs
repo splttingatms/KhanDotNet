@@ -4,57 +4,6 @@ using System.Collections.Generic;
 
 namespace KhanDotNet.Library.Contract
 {
-
-    public class Item
-    {
-        public string sha { get; set; }
-        public bool live { get; set; }
-        public string id { get; set; }
-    }
-
-    public class TranslatedProblemType
-    {
-        public List<Item> items { get; set; }
-        public List<object> related_videos { get; set; }
-        public string name { get; set; }
-    }
-
-    public class ThumbnailData
-    {
-        public string url { get; set; }
-        public bool skip_filter { get; set; }
-        public string title_text { get; set; }
-        public string gcs_name { get; set; }
-    }
-
-    public class AllAssessmentItem
-    {
-        public string sha { get; set; }
-        public bool live { get; set; }
-        public string id { get; set; }
-    }
-
-    public class ConceptTagsInfo
-    {
-        public string display_name { get; set; }
-        public string id { get; set; }
-        public string slug { get; set; }
-    }
-
-    public class Item2
-    {
-        public string sha { get; set; }
-        public bool live { get; set; }
-        public string id { get; set; }
-    }
-
-    public class ProblemType
-    {
-        public List<Item2> items { get; set; }
-        public List<object> related_videos { get; set; }
-        public string name { get; set; }
-    }
-
     public class Exercise
     {
         [JsonProperty("is_skill_check")]
@@ -83,59 +32,165 @@ namespace KhanDotNet.Library.Contract
 
         [JsonProperty("creation_date")]
         public DateTime CreationDate { get; set; }
-        public string translated_short_display_name { get; set; }
-        public bool uses_assessment_items { get; set; }
-        public string ka_url { get; set; }
-        public string short_display_name { get; set; }
-        public string translated_title { get; set; }
-        public string author_key { get; set; }
-        public string translated_description_html { get; set; }
-        public string id { get; set; }
-        public List<string> concept_tags { get; set; }
-        public bool is_quiz { get; set; }
-        public string display_name { get; set; }
-        public object tracking_document_url { get; set; }
-        public string description_html { get; set; }
-        public bool do_not_publish { get; set; }
-        public List<object> tags { get; set; }
-        public List<TranslatedProblemType> translated_problem_types { get; set; }
-        public string progress_key { get; set; }
-        public string suggested_completion_criteria { get; set; }
-        public string edit_slug { get; set; }
-        public bool summative { get; set; }
-        public bool live { get; set; }
-        public string translated_description { get; set; }
-        public string pretty_display_name { get; set; }
-        public object deleted_mod_time { get; set; }
-        public ThumbnailData thumbnail_data { get; set; }
-        public List<AllAssessmentItem> all_assessment_items { get; set; }
-        public string description { get; set; }
-        public string translated_pretty_display_name { get; set; }
-        public string node_slug { get; set; }
-        public bool deleted { get; set; }
-        public object backup_timestamp { get; set; }
-        public List<ConceptTagsInfo> concept_tags_info { get; set; }
-        public List<ProblemType> problem_types { get; set; }
-        public List<string> curated_related_videos { get; set; }
-        public List<object> covers { get; set; }
-        public int h_position { get; set; }
-        public string translated_display_name { get; set; }
-        public string kind { get; set; }
-        public string sha1 { get; set; }
-        public string name { get; set; }
-        public string date_modified { get; set; }
-        public List<object> prerequisites { get; set; }
-        public List<string> assessment_item_tags { get; set; }
-        public string title { get; set; }
-        public string global_id { get; set; }
-        public double seconds_per_fast_problem { get; set; }
-        public string sha { get; set; }
-        public string image_url { get; set; }
-        public bool tutorial_only { get; set; }
-        public string current_revision_key { get; set; }
-        public string image_url_256 { get; set; }
-        public string content_id { get; set; }
-        public string content_kind { get; set; }
+
+        [JsonProperty("translated_short_display_name")]
+        public string TranslatedShortDisplayName { get; set; }
+
+        [JsonProperty("uses_assessment_items")]
+        public bool UsesAssessmentItems { get; set; }
+
+        [JsonProperty("ka_url")]
+        public Uri KaUrl { get; set; }
+
+        [JsonProperty("short_display_name")]
+        public string ShortDisplayName { get; set; }
+
+        [JsonProperty("translated_title")]
+        public string TranslatedTitle { get; set; }
+
+        [JsonProperty("author_key")]
+        public string AuthorKey { get; set; }
+
+        [JsonProperty("translated_description_html")]
+        public string TranslatedDescriptionHtml { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("concept_tags")]
+        public List<string> ConceptTags { get; set; }
+
+        [JsonProperty("is_quiz")]
+        public bool IsQuiz { get; set; }
+
+        [JsonProperty("display_name")]
+        public string DisplayName { get; set; }
+
+        [JsonProperty("tracking_document_url")]
+        public Uri TrackingDocumentUrl { get; set; }
+
+        [JsonProperty("description_html")]
+        public string DescriptionHtml { get; set; }
+
+        [JsonProperty("do_not_publish")]
+        public bool DoNotPublish { get; set; }
+
+        [JsonProperty("tags")]
+        public List<string> Tags { get; set; }
+
+        [JsonProperty("translated_problem_types")]
+        public List<TranslatedProblemType> TranslatedProblemTypes { get; set; }
+
+        [JsonProperty("progress_key")]
+        public string ProgressKey { get; set; }
+
+        [JsonProperty("suggested_completion_criteria")]
+        public string SuggestedCompletionCriteria { get; set; }
+
+        [JsonProperty("edit_slug")]
+        public string EditSlug { get; set; }
+
+        [JsonProperty("summative")]
+        public bool Summative { get; set; }
+
+        [JsonProperty("live")]
+        public bool IsLive { get; set; }
+
+        [JsonProperty("translated_description")]
+        public string TranslatedDescription { get; set; }
+
+        [JsonProperty("pretty_display_name")]
+        public string PrettyDisplayName { get; set; }
+
+        [JsonProperty("deleted_mod_time")]
+        public string DeletedModTime { get; set; }
+
+        [JsonProperty("thumbnail_data")]
+        public ThumbnailData ThumbnailData { get; set; }
+
+        [JsonProperty("all_assessment_items")]
+        public List<AssessmentItem> AllAssessmentItems { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("translated_pretty_display_name")]
+        public string TranslatedPrettyDisplayName { get; set; }
+
+        [JsonProperty("node_slug")]
+        public string NodeSlug { get; set; }
+
+        [JsonProperty("deleted")]
+        public bool Deleted { get; set; }
+
+        [JsonProperty("backup_timestamp")]
+        public string BackupTimestamp { get; set; }
+
+        [JsonProperty("concept_tags_info")]
+        public List<ConceptTagInfo> ConceptTagsInfo { get; set; }
+
+        [JsonProperty("problem_types")]
+        public List<ProblemType> ProblemTypes { get; set; }
+
+        [JsonProperty("curated_related_videos")]
+        public List<string> CuratedRelatedVideos { get; set; }
+
+        [JsonProperty("covers")]
+        public List<string> Covers { get; set; }
+
+        [JsonProperty("h_position")]
+        public int HPosition { get; set; }
+
+        [JsonProperty("translated_display_name")]
+        public string TranslatedDisplayName { get; set; }
+
+        [JsonProperty("kind")]
+        public string Kind { get; set; }
+
+        [JsonProperty("sha1")]
+        public string Sha1 { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("date_modified")]
+        public DateTime DateModified { get; set; }
+
+        [JsonProperty("prerequisites")]
+        public List<string> Prerequisites { get; set; }
+
+        [JsonProperty("assessment_item_tags")]
+        public List<string> AssessmentItemTags { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("global_id")]
+        public string GlobalId { get; set; }
+
+        [JsonProperty("seconds_per_fast_problem")]
+        public double SecondsPerFastProblem { get; set; }
+
+        [JsonProperty("sha")]
+        public string Sha { get; set; }
+
+        [JsonProperty("image_url")]
+        public Uri ImageUrl { get; set; }
+
+        [JsonProperty("tutorial_only")]
+        public bool TutorialOnly { get; set; }
+
+        [JsonProperty("current_revision_key")]
+        public string CurrentRevisionKey { get; set; }
+
+        [JsonProperty("image_url_256")]
+        public Uri ImageUrl256 { get; set; }
+
+        [JsonProperty("content_id")]
+        public string ContentId { get; set; }
+
+        [JsonProperty("content_kind")]
+        public string ContentKind { get; set; }
 
         public override string ToString()
         {
