@@ -1,6 +1,4 @@
-﻿using KhanDotNet.Library;
-using Newtonsoft.Json;
-using System;
+﻿using KhanDotNet.Demo;
 
 namespace KhanDotNet
 {
@@ -8,20 +6,10 @@ namespace KhanDotNet
     {
         static void Main(string[] args)
         {
-            try
+            using (var demo = new KhanDotNetDemo())
             {
-                using (var client = new KhanClient())
-                {
-                    var badges = client.Badges.GetBadgesAsync().Result;
-                    Console.WriteLine(JsonConvert.SerializeObject(badges, Formatting.Indented));
-                }
+                demo.Run();
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-
-            Console.ReadLine();
         }
     }
 }
