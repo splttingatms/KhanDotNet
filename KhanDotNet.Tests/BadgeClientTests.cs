@@ -26,7 +26,7 @@ namespace KhanDotNet.Tests
             _khanResponse = new HttpResponseMessage()
             {
                 StatusCode = HttpStatusCode.OK,
-                Content = new JsonContent("")
+                Content = new JsonContent(BadgeTestData.SampleBadgeCategoryJson)
             };
 
             _httpClientMock = new Mock<IHttpClient>();
@@ -146,7 +146,7 @@ namespace KhanDotNet.Tests
         public async Task GetBadgeCategoryShouldReturnDeserializedCategory()
         {
             var expected = BadgeTestData.MeteoriteBadgeCategory;
-            _khanResponse.Content = new JsonContent(expected);
+            _khanResponse.Content = new JsonContent(BadgeTestData.SampleBadgeCategoryJson);
 
             var actual = await _client.GetBadgeCategoryAsync(Category.Meteorite);
 

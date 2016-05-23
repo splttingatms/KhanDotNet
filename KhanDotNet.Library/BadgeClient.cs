@@ -3,6 +3,7 @@ using KhanDotNet.Library.Utilities;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace KhanDotNet.Library
 {
@@ -39,7 +40,10 @@ namespace KhanDotNet.Library
             using (var response = await _httpClient.GetAsync(path))
             {
                 response.EnsureSuccessStatusCode();
-                return await response.Content.ReadAsAsync<BadgeCategory>();
+
+                // API returns a list even though it contains only one element
+                var categories = await response.Content.ReadAsAsync<List<BadgeCategory>>();
+                return categories.First();
             }
         }
     }
