@@ -10,5 +10,7 @@ namespace KhanDotNet.Library
         Task<List<Badge>> GetBadgesAsync();
 
         Task<List<BadgeCategory>> GetBadgeCategoriesAsync();
+
+        Task<BadgeCategory> GetBadgeCategoryAsync(Category meteorite);
     }
 }

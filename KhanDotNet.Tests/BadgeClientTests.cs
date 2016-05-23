@@ -1,5 +1,6 @@
 ﻿using KhanDotNet.Library;
 using KhanDotNet.Library.Utilities;
+using KhanDotNet.Library.Contract;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Newtonsoft.Json;
@@ -125,6 +126,39 @@ namespace KhanDotNet.Tests
         {
             _khanResponse.StatusCode = HttpStatusCode.BadRequest;
             await _client.GetBadgeCategoriesAsync();
+        }
+
+        #endregion
+
+        #region GetBadgeCategory
+
+        [TestMethod]
+        public async Task GetBadgeCategoryShouldTargetCorrectPath()
+        {
+            var expectedPath = "api/v1/badges/categories/0"; // API takes category as int
+
+            await _client.GetBadgeCategoryAsync(Category.Meteorite);
+
+            _httpClientMock.Verify(c => c.GetAsync(It.Is<string>(url => url.ContainsIgnoreCase(expectedPath))));
+        }
+
+        [TestMethod]
+        public async Task GetBadgeCategoryShouldReturnDeserializedCategory()
+        {
+            var expected = BadgeTestData.MeteoriteBadgeCategory;
+            _khanResponse.Content = new JsonContent(expected);
+
+            var actual = await _client.GetBadgeCategoryAsync(Category.Meteorite);
+
+            expected.AssertDeepEqual(actual);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(HttpRequestException))]
+        public async Task GetBadgeCategoryShouldThrowIfNonSuccessStatusCode()
+        {
+            _khanResponse.StatusCode = HttpStatusCode.BadRequest;
+            await _client.GetBadgeCategoryAsync(Category.Meteorite);
         }
 
         #endregion

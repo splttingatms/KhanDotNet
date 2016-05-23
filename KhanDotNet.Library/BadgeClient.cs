@@ -31,5 +31,16 @@ namespace KhanDotNet.Library
                 return await response.Content.ReadAsAsync<List<Badge>>();
             }
         }
+
+        public async Task<BadgeCategory> GetBadgeCategoryAsync(Category category)
+        {
+            var path = "http://www.khanacademy.org/api/v1/badges/categories/{0}".F((int)category);
+
+            using (var response = await _httpClient.GetAsync(path))
+            {
+                response.EnsureSuccessStatusCode();
+                return await response.Content.ReadAsAsync<BadgeCategory>();
+            }
+        }
     }
 }

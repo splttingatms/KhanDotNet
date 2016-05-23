@@ -12,7 +12,7 @@ namespace KhanDotNet.Tests
 
         public static readonly BadgeCategory MeteoriteBadgeCategory = new BadgeCategory()
         {
-            Category = 0,
+            Category = Category.Meteorite,
             IconSrc = "https://fastly.kastatic.org/images/badges/meteorite-small.png",
             TypeLabel = "Meteorite Badges",
             EmailIconSrc = "https://fastly.kastatic.org/images/badges/meteorite-70x70.png",
@@ -21,13 +21,13 @@ namespace KhanDotNet.Tests
             TranslatedDescription = "Meteorite badges are common and easy to earn when just getting started.",
             ChartIconSrc = "https://fastly.kastatic.org/images/badges/meteorite-small-chart.png",
             MediumIconSrc = "https://fastly.kastatic.org/images/badges/meteorite-medium.png",
-            Categories = new List<int>() { 0, 1, 2, 3, 4, 5 },
+            Categories = new List<Category>() { Category.Meteorite, Category.Moon, Category.Earth, Category.Sun, Category.BlackHole, Category.ChallengePatch },
             Description = "Meteorite badges are common and easy to earn when just getting started."
         };
 
         public static readonly BadgeCategory MoonBadgeCategory = new BadgeCategory()
         {
-            Category = 1,
+            Category = Category.Moon,
             IconSrc = "https://fastly.kastatic.org/images/badges/moon-small.png",
             TypeLabel = "Moon Badges",
             EmailIconSrc = "https://fastly.kastatic.org/images/badges/moon-70x70.png",
@@ -36,7 +36,7 @@ namespace KhanDotNet.Tests
             TranslatedDescription = "Moon badges are uncommon and represent an investment in learning.",
             ChartIconSrc = "https://fastly.kastatic.org/images/badges/moon-small-chart.png",
             MediumIconSrc = "https://fastly.kastatic.org/images/badges/moon-medium.png",
-            Categories = new List<int>() { 0, 1, 2, 3, 4, 5 },
+            Categories = new List<Category>() { Category.Meteorite, Category.Moon, Category.Earth, Category.Sun, Category.BlackHole, Category.ChallengePatch },
             Description = "Moon badges are uncommon and represent an investment in learning."
         };
 

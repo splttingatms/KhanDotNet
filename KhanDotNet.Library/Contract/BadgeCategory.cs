@@ -6,7 +6,7 @@ namespace KhanDotNet.Library.Contract
     public class BadgeCategory
     {
         [JsonProperty("category")]
-        public int Category { get; set; }
+        public Category Category { get; set; }
 
         [JsonProperty("icon_src")]
         public string IconSrc { get; set; }
@@ -33,7 +33,7 @@ namespace KhanDotNet.Library.Contract
         public string MediumIconSrc { get; set; }
 
         [JsonProperty("CATEGORIES")]
-        public List<int> Categories { get; set; }
+        public List<Category> Categories { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
