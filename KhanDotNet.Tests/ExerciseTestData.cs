@@ -123,7 +123,6 @@ namespace KhanDotNet.Tests
             TranslatedPrettyDisplayName = "Name shapes 1",
             NodeSlug = "e/naming-shapes",
             Deleted = false,
-            // TODO: make nullable datetime
             BackupTimestamp = null,
             ConceptTagsInfo = new List<ConceptTagInfo>()
             {

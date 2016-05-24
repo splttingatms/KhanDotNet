@@ -103,7 +103,7 @@ namespace KhanDotNet.Library.Contract
         public string PrettyDisplayName { get; set; }
 
         [JsonProperty("deleted_mod_time")]
-        public string DeletedModTime { get; set; }
+        public DateTime? DeletedModTime { get; set; }
 
         [JsonProperty("thumbnail_data")]
         public ThumbnailData ThumbnailData { get; set; }
@@ -124,7 +124,7 @@ namespace KhanDotNet.Library.Contract
         public bool Deleted { get; set; }
 
         [JsonProperty("backup_timestamp")]
-        public string BackupTimestamp { get; set; }
+        public DateTime? BackupTimestamp { get; set; }
 
         [JsonProperty("concept_tags_info")]
         public List<ConceptTagInfo> ConceptTagsInfo { get; set; }
