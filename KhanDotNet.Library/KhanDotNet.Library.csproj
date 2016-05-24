@@ -56,7 +56,6 @@
   <ItemGroup>
     <Compile Include="BadgeClient.cs" />
     <Compile Include="BaseClient.cs" />
-    <Compile Include="Contract\AssessmentItem.cs" />
     <Compile Include="Contract\Badge.cs" />
     <Compile Include="Contract\BadgeCategory.cs" />
     <Compile Include="Contract\Category.cs" />

@@ -109,7 +109,7 @@ namespace KhanDotNet.Library.Contract
         public ThumbnailData ThumbnailData { get; set; }
 
         [JsonProperty("all_assessment_items")]
-        public List<AssessmentItem> AllAssessmentItems { get; set; }
+        public List<Item> AllAssessmentItems { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }

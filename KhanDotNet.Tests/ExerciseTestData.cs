@@ -103,21 +103,20 @@ namespace KhanDotNet.Tests
                 TitleText = "",
                 GcsName = "/ka_thumbnails/naming-shapes.png"
             },
-            AllAssessmentItems = new List<AssessmentItem>()
+            AllAssessmentItems = new List<Item>()
             {
-                // TODO: reuse Item class
-                new AssessmentItem()
+                new Item()
                 {
                     Sha = "6682da25922895bf85be5d15b0734058299f58d9",
-                    Live = true,
+                    IsLive = true,
                     Id = "x9608ffa71bf8a98d",
                     PerseusApiMajorVersion = null,
                     RequiresScreenOrMouse = false
                 },
-                new AssessmentItem()
+                new Item()
                 {
                     Sha = "09735ba7c74deda5d1865ab3f884a6b8f3943694",
-                    Live = true,
+                    IsLive = true,
                     Id = "x7272ddbe09296de6",
                     PerseusApiMajorVersion = null,
                     RequiresScreenOrMouse = false
@@ -384,126 +383,126 @@ namespace KhanDotNet.Tests
                 TitleText = "",
                 GcsName = "/ka_thumbnails/counting-out-1-20-objects.png"
             },
-            AllAssessmentItems = new List<AssessmentItem>()
+            AllAssessmentItems = new List<Item>()
                     {
-                        new AssessmentItem()
+                        new Item()
                         {
                             Sha = "c2074685910760669c855d628b7a44ef8d828be9",
-                            Live = true,
+                            IsLive = true,
                             Id = "xde8147b8edb82294"
                         },
-                        new AssessmentItem()
+                        new Item()
                         {
                             Sha = "76c7fd55c20dfe0f4f938745b73e1e7d0c4757ac",
-                            Live = true,
+                            IsLive = true,
                             Id = "xa5c8d62485b6bf16"
                         },
-                        new AssessmentItem()
+                        new Item()
                         {
                             Sha = "a4318a5630a8766f55dc6830527dbaffc7fb917b",
-                            Live = true,
+                            IsLive = true,
                             Id = "x2313c50d4dfd4a0a"
                         },
-                        new AssessmentItem()
+                        new Item()
                         {
                             Sha = "b350b21cf286a64c0e7869a6429fc6c5fd139c1f",
-                            Live = true,
+                            IsLive = true,
                             Id = "xcd7ba1c0c381fadb"
                         },
-                        new AssessmentItem()
+                        new Item()
                         {
                             Sha = "e8ba59f1f99433fbd0360332f999cde76ab8976b",
-                            Live = true,
+                            IsLive = true,
                             Id = "x4cb56360820eece5"
                         },
-                        new AssessmentItem()
+                        new Item()
                         {
                             Sha = "954fcd5885c36b841a22bc5bf89207bced27b8be",
-                            Live = true,
+                            IsLive = true,
                             Id = "xcc39b61282c884be"
                         },
-                        new AssessmentItem()
+                        new Item()
                         {
                             Sha = "15070fc64826e1cd00665c38e2e42e5834ed359a",
-                            Live = true,
+                            IsLive = true,
                             Id = "x9c6c9733676e5240"
                         },
-                        new AssessmentItem()
+                        new Item()
                         {
                             Sha = "89d992ba940c4ecaa7687d7a84ce632ead085882",
-                            Live = true,
+                            IsLive = true,
                             Id = "x8ae458b86dfe440b"
                         },
-                        new AssessmentItem()
+                        new Item()
                         {
                             Sha = "54f92d19cabbd7647cd5d21d4678e8711431e9fb",
-                            Live = true,
+                            IsLive = true,
                             Id = "x8e7fd4a4b5b002c1"
                         },
-                        new AssessmentItem()
+                        new Item()
                         {
                             Sha = "8d00285eae0fab5210dcfb325be7741e48c75681",
-                            Live = true,
+                            IsLive = true,
                             Id = "xeee62e178c0cfe6f"
                         },
-                        new AssessmentItem()
+                        new Item()
                         {
                             Sha = "4453b349bad32a1e416e7e74af64e09e2c5810f8",
-                            Live = true,
+                            IsLive = true,
                             Id = "xdee0840c85c0add5"
                         },
-                        new AssessmentItem()
+                        new Item()
                         {
                             Sha = "bb340ca13b104a9b9d1065b74a2fdfa423f817d1",
-                            Live = true,
+                            IsLive = true,
                             Id = "xa756d02df7435e1a"
                         },
-                        new AssessmentItem()
+                        new Item()
                         {
                             Sha = "f65a9c4a6a8df260021fe424d562e8ff6d1741bd",
-                            Live = true,
+                            IsLive = true,
                             Id = "x6b9db70231ff254d"
                         },
-                        new AssessmentItem()
+                        new Item()
                         {
                             Sha = "00808cbc066910be1220235faa7d93a9126f6a57",
-                            Live = true,
+                            IsLive = true,
                             Id = "x1855395b96b1e34f"
                         },
-                        new AssessmentItem()
+                        new Item()
                         {
                             Sha = "90db973ee0fd319c596410e215a76a651601901d",
-                            Live = true,
+                            IsLive = true,
                             Id = "x477b6212a24d08da"
                         },
-                        new AssessmentItem()
+                        new Item()
                         {
                             Sha = "f6cf4d0675de30afee8cab929b97000e2c41fbc8",
-                            Live = true,
+                            IsLive = true,
                             Id = "xfc8946e7c80f2800"
                         },
-                        new AssessmentItem()
+                        new Item()
                         {
                             Sha = "4f522fb965ab3805f56250db187fefadb281edd2",
-                            Live = true,
+                            IsLive = true,
                             Id = "x14784d8f428fa949"
                         },
-                        new AssessmentItem()
+                        new Item()
                         {
                             Sha = "849c88aa2122ea5a40bb39540acf551d3ac67728",
-                            Live = true,
+                            IsLive = true,
                             Id = "x3f2d3b6cb53f67a4"
                         },
-                        new AssessmentItem()
+                        new Item()
                         {
                             Sha = "a9197ffb73ad014d477c7eb1eed41f9ea025774b",
-                            Live = true,
+                            IsLive = true,
                             Id = "xb6e923d2f396f5ab"
                         },
-                        new AssessmentItem()
+                        new Item()
                         {
                             Sha = "446eef76c02fc29049012312c704c12b4b54ba8d",
-                            Live = true,
+                            IsLive = true,
                             Id = "x9ef4ca7e914c87ec"
                         }
                     },
