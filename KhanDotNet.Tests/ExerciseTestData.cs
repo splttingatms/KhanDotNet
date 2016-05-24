@@ -47,7 +47,7 @@ namespace KhanDotNet.Tests
                         new Item()
                         {
                             Sha = "6682da25922895bf85be5d15b0734058299f58d9",
-                            IsLive = true,
+                            Live = true,
                             Id = "x9608ffa71bf8a98d",
                             PerseusApiMajorVersion = null,
                             RequiresScreenOrMouse = false
@@ -55,7 +55,7 @@ namespace KhanDotNet.Tests
                         new Item()
                         {
                             Sha = "09735ba7c74deda5d1865ab3f884a6b8f3943694",
-                            IsLive = true,
+                            Live = true,
                             Id = "x7272ddbe09296de6",
                             PerseusApiMajorVersion = null,
                             RequiresScreenOrMouse = false
@@ -71,8 +71,7 @@ namespace KhanDotNet.Tests
                         new Item()
                         {
                             Sha = "a3e3967980c09d17143dab4a3f5e71baf630004f",
-                            // TODO: rename Live to match contract
-                            IsLive = true,
+                            Live = true,
                             Id = "xde72bf7bc52681e7",
                             PerseusApiMajorVersion = null,
                             RequiresScreenOrMouse = false
@@ -80,7 +79,7 @@ namespace KhanDotNet.Tests
                         new Item()
                         {
                             Sha = "091e1a4bb97a83ae84879df28d4189b84027e2eb",
-                            IsLive = true,
+                            Live = true,
                             Id = "xc3367d351887574b",
                             PerseusApiMajorVersion = null,
                             RequiresScreenOrMouse = false
@@ -108,7 +107,7 @@ namespace KhanDotNet.Tests
                 new Item()
                 {
                     Sha = "6682da25922895bf85be5d15b0734058299f58d9",
-                    IsLive = true,
+                    Live = true,
                     Id = "x9608ffa71bf8a98d",
                     PerseusApiMajorVersion = null,
                     RequiresScreenOrMouse = false
@@ -116,7 +115,7 @@ namespace KhanDotNet.Tests
                 new Item()
                 {
                     Sha = "09735ba7c74deda5d1865ab3f884a6b8f3943694",
-                    IsLive = true,
+                    Live = true,
                     Id = "x7272ddbe09296de6",
                     PerseusApiMajorVersion = null,
                     RequiresScreenOrMouse = false
@@ -149,7 +148,7 @@ namespace KhanDotNet.Tests
                         new Item()
                         {
                             Sha = "6682da25922895bf85be5d15b0734058299f58d9",
-                            IsLive = true,
+                            Live = true,
                             Id = "x9608ffa71bf8a98d",
                             PerseusApiMajorVersion = null,
                             RequiresScreenOrMouse = false
@@ -157,7 +156,7 @@ namespace KhanDotNet.Tests
                         new Item()
                         {
                             Sha = "09735ba7c74deda5d1865ab3f884a6b8f3943694",
-                            IsLive = true,
+                            Live = true,
                             Id = "x7272ddbe09296de6",
                             PerseusApiMajorVersion = null,
                             RequiresScreenOrMouse = false
@@ -173,7 +172,7 @@ namespace KhanDotNet.Tests
                         new Item()
                         {
                             Sha = "a3e3967980c09d17143dab4a3f5e71baf630004f",
-                            IsLive = true,
+                            Live = true,
                             Id = "xde72bf7bc52681e7",
                             PerseusApiMajorVersion = null,
                             RequiresScreenOrMouse = false
@@ -181,7 +180,7 @@ namespace KhanDotNet.Tests
                         new Item()
                         {
                             Sha = "091e1a4bb97a83ae84879df28d4189b84027e2eb",
-                            IsLive = true,
+                            Live = true,
                             Id = "xc3367d351887574b",
                             PerseusApiMajorVersion = null,
                             RequiresScreenOrMouse = false
@@ -246,121 +245,121 @@ namespace KhanDotNet.Tests
                                 new Item()
                                 {
                                     Sha = "c2074685910760669c855d628b7a44ef8d828be9",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "xde8147b8edb82294"
                                 },
                                 new Item()
                                 {
                                     Sha = "76c7fd55c20dfe0f4f938745b73e1e7d0c4757ac",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "xa5c8d62485b6bf16"
                                 },
                                 new Item()
                                 {
                                     Sha = "a4318a5630a8766f55dc6830527dbaffc7fb917b",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "x2313c50d4dfd4a0a"
                                 },
                                 new Item()
                                 {
                                     Sha = "b350b21cf286a64c0e7869a6429fc6c5fd139c1f",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "xcd7ba1c0c381fadb"
                                 },
                                 new Item()
                                 {
                                     Sha = "e8ba59f1f99433fbd0360332f999cde76ab8976b",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "x4cb56360820eece5"
                                 },
                                 new Item()
                                 {
                                     Sha = "954fcd5885c36b841a22bc5bf89207bced27b8be",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "xcc39b61282c884be"
                                 },
                                 new Item()
                                 {
                                     Sha = "15070fc64826e1cd00665c38e2e42e5834ed359a",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "x9c6c9733676e5240"
                                 },
                                 new Item()
                                 {
                                     Sha = "89d992ba940c4ecaa7687d7a84ce632ead085882",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "x8ae458b86dfe440b"
                                 },
                                 new Item()
                                 {
                                     Sha = "54f92d19cabbd7647cd5d21d4678e8711431e9fb",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "x8e7fd4a4b5b002c1"
                                 },
                                 new Item()
                                 {
                                     Sha = "8d00285eae0fab5210dcfb325be7741e48c75681",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "xeee62e178c0cfe6f"
                                 },
                                 new Item()
                                 {
                                     Sha = "4453b349bad32a1e416e7e74af64e09e2c5810f8",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "xdee0840c85c0add5"
                                 },
                                 new Item()
                                 {
                                     Sha = "bb340ca13b104a9b9d1065b74a2fdfa423f817d1",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "xa756d02df7435e1a"
                                 },
                                 new Item()
                                 {
                                     Sha = "f65a9c4a6a8df260021fe424d562e8ff6d1741bd",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "x6b9db70231ff254d"
                                 },
                                 new Item()
                                 {
                                     Sha = "00808cbc066910be1220235faa7d93a9126f6a57",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "x1855395b96b1e34f"
                                 },
                                 new Item()
                                 {
                                     Sha = "90db973ee0fd319c596410e215a76a651601901d",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "x477b6212a24d08da"
                                 },
                                 new Item()
                                 {
                                     Sha = "f6cf4d0675de30afee8cab929b97000e2c41fbc8",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "xfc8946e7c80f2800"
                                 },
                                 new Item()
                                 {
                                     Sha = "4f522fb965ab3805f56250db187fefadb281edd2",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "x14784d8f428fa949"
                                 },
                                 new Item()
                                 {
                                     Sha = "849c88aa2122ea5a40bb39540acf551d3ac67728",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "x3f2d3b6cb53f67a4"
                                 },
                                 new Item()
                                 {
                                     Sha = "a9197ffb73ad014d477c7eb1eed41f9ea025774b",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "xb6e923d2f396f5ab"
                                 },
                                 new Item()
                                 {
                                     Sha = "446eef76c02fc29049012312c704c12b4b54ba8d",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "x9ef4ca7e914c87ec"
                                 }
                             },
@@ -372,7 +371,7 @@ namespace KhanDotNet.Tests
             SuggestedCompletionCriteria = "num_correct_in_a_row_5",
             EditSlug = "edit/e/x4debd8a3",
             Summative = false,
-            IsLive = true,
+            Live = true,
             TranslatedDescription = "Practice counting up to 10 objects.",
             PrettyDisplayName = "Count with small numbers",
             DeletedModTime = null,
@@ -388,121 +387,121 @@ namespace KhanDotNet.Tests
                         new Item()
                         {
                             Sha = "c2074685910760669c855d628b7a44ef8d828be9",
-                            IsLive = true,
+                            Live = true,
                             Id = "xde8147b8edb82294"
                         },
                         new Item()
                         {
                             Sha = "76c7fd55c20dfe0f4f938745b73e1e7d0c4757ac",
-                            IsLive = true,
+                            Live = true,
                             Id = "xa5c8d62485b6bf16"
                         },
                         new Item()
                         {
                             Sha = "a4318a5630a8766f55dc6830527dbaffc7fb917b",
-                            IsLive = true,
+                            Live = true,
                             Id = "x2313c50d4dfd4a0a"
                         },
                         new Item()
                         {
                             Sha = "b350b21cf286a64c0e7869a6429fc6c5fd139c1f",
-                            IsLive = true,
+                            Live = true,
                             Id = "xcd7ba1c0c381fadb"
                         },
                         new Item()
                         {
                             Sha = "e8ba59f1f99433fbd0360332f999cde76ab8976b",
-                            IsLive = true,
+                            Live = true,
                             Id = "x4cb56360820eece5"
                         },
                         new Item()
                         {
                             Sha = "954fcd5885c36b841a22bc5bf89207bced27b8be",
-                            IsLive = true,
+                            Live = true,
                             Id = "xcc39b61282c884be"
                         },
                         new Item()
                         {
                             Sha = "15070fc64826e1cd00665c38e2e42e5834ed359a",
-                            IsLive = true,
+                            Live = true,
                             Id = "x9c6c9733676e5240"
                         },
                         new Item()
                         {
                             Sha = "89d992ba940c4ecaa7687d7a84ce632ead085882",
-                            IsLive = true,
+                            Live = true,
                             Id = "x8ae458b86dfe440b"
                         },
                         new Item()
                         {
                             Sha = "54f92d19cabbd7647cd5d21d4678e8711431e9fb",
-                            IsLive = true,
+                            Live = true,
                             Id = "x8e7fd4a4b5b002c1"
                         },
                         new Item()
                         {
                             Sha = "8d00285eae0fab5210dcfb325be7741e48c75681",
-                            IsLive = true,
+                            Live = true,
                             Id = "xeee62e178c0cfe6f"
                         },
                         new Item()
                         {
                             Sha = "4453b349bad32a1e416e7e74af64e09e2c5810f8",
-                            IsLive = true,
+                            Live = true,
                             Id = "xdee0840c85c0add5"
                         },
                         new Item()
                         {
                             Sha = "bb340ca13b104a9b9d1065b74a2fdfa423f817d1",
-                            IsLive = true,
+                            Live = true,
                             Id = "xa756d02df7435e1a"
                         },
                         new Item()
                         {
                             Sha = "f65a9c4a6a8df260021fe424d562e8ff6d1741bd",
-                            IsLive = true,
+                            Live = true,
                             Id = "x6b9db70231ff254d"
                         },
                         new Item()
                         {
                             Sha = "00808cbc066910be1220235faa7d93a9126f6a57",
-                            IsLive = true,
+                            Live = true,
                             Id = "x1855395b96b1e34f"
                         },
                         new Item()
                         {
                             Sha = "90db973ee0fd319c596410e215a76a651601901d",
-                            IsLive = true,
+                            Live = true,
                             Id = "x477b6212a24d08da"
                         },
                         new Item()
                         {
                             Sha = "f6cf4d0675de30afee8cab929b97000e2c41fbc8",
-                            IsLive = true,
+                            Live = true,
                             Id = "xfc8946e7c80f2800"
                         },
                         new Item()
                         {
                             Sha = "4f522fb965ab3805f56250db187fefadb281edd2",
-                            IsLive = true,
+                            Live = true,
                             Id = "x14784d8f428fa949"
                         },
                         new Item()
                         {
                             Sha = "849c88aa2122ea5a40bb39540acf551d3ac67728",
-                            IsLive = true,
+                            Live = true,
                             Id = "x3f2d3b6cb53f67a4"
                         },
                         new Item()
                         {
                             Sha = "a9197ffb73ad014d477c7eb1eed41f9ea025774b",
-                            IsLive = true,
+                            Live = true,
                             Id = "xb6e923d2f396f5ab"
                         },
                         new Item()
                         {
                             Sha = "446eef76c02fc29049012312c704c12b4b54ba8d",
-                            IsLive = true,
+                            Live = true,
                             Id = "x9ef4ca7e914c87ec"
                         }
                     },
@@ -535,121 +534,121 @@ namespace KhanDotNet.Tests
                                 new Item()
                                 {
                                     Sha = "c2074685910760669c855d628b7a44ef8d828be9",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "xde8147b8edb82294"
                                 },
                                 new Item()
                                 {
                                     Sha = "76c7fd55c20dfe0f4f938745b73e1e7d0c4757ac",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "xa5c8d62485b6bf16"
                                 },
                                 new Item()
                                 {
                                     Sha = "a4318a5630a8766f55dc6830527dbaffc7fb917b",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "x2313c50d4dfd4a0a"
                                 },
                                 new Item()
                                 {
                                     Sha = "b350b21cf286a64c0e7869a6429fc6c5fd139c1f",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "xcd7ba1c0c381fadb"
                                 },
                                 new Item()
                                 {
                                     Sha = "e8ba59f1f99433fbd0360332f999cde76ab8976b",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "x4cb56360820eece5"
                                 },
                                 new Item()
                                 {
                                     Sha = "954fcd5885c36b841a22bc5bf89207bced27b8be",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "xcc39b61282c884be"
                                 },
                                 new Item()
                                 {
                                     Sha = "15070fc64826e1cd00665c38e2e42e5834ed359a",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "x9c6c9733676e5240"
                                 },
                                 new Item()
                                 {
                                     Sha = "89d992ba940c4ecaa7687d7a84ce632ead085882",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "x8ae458b86dfe440b"
                                 },
                                 new Item()
                                 {
                                     Sha = "54f92d19cabbd7647cd5d21d4678e8711431e9fb",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "x8e7fd4a4b5b002c1"
                                 },
                                 new Item()
                                 {
                                     Sha = "8d00285eae0fab5210dcfb325be7741e48c75681",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "xeee62e178c0cfe6f"
                                 },
                                 new Item()
                                 {
                                     Sha = "4453b349bad32a1e416e7e74af64e09e2c5810f8",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "xdee0840c85c0add5"
                                 },
                                 new Item()
                                 {
                                     Sha = "bb340ca13b104a9b9d1065b74a2fdfa423f817d1",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "xa756d02df7435e1a"
                                 },
                                 new Item()
                                 {
                                     Sha = "f65a9c4a6a8df260021fe424d562e8ff6d1741bd",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "x6b9db70231ff254d"
                                 },
                                 new Item()
                                 {
                                     Sha = "00808cbc066910be1220235faa7d93a9126f6a57",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "x1855395b96b1e34f"
                                 },
                                 new Item()
                                 {
                                     Sha = "90db973ee0fd319c596410e215a76a651601901d",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "x477b6212a24d08da"
                                 },
                                 new Item()
                                 {
                                     Sha = "f6cf4d0675de30afee8cab929b97000e2c41fbc8",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "xfc8946e7c80f2800"
                                 },
                                 new Item()
                                 {
                                     Sha = "4f522fb965ab3805f56250db187fefadb281edd2",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "x14784d8f428fa949"
                                 },
                                 new Item()
                                 {
                                     Sha = "849c88aa2122ea5a40bb39540acf551d3ac67728",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "x3f2d3b6cb53f67a4"
                                 },
                                 new Item()
                                 {
                                     Sha = "a9197ffb73ad014d477c7eb1eed41f9ea025774b",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "xb6e923d2f396f5ab"
                                 },
                                 new Item()
                                 {
                                     Sha = "446eef76c02fc29049012312c704c12b4b54ba8d",
-                                    IsLive = true,
+                                    Live = true,
                                     Id = "x9ef4ca7e914c87ec"
                                 }
                             },

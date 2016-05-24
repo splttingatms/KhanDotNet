@@ -94,7 +94,7 @@ namespace KhanDotNet.Library.Contract
         public bool Summative { get; set; }
 
         [JsonProperty("live")]
-        public bool IsLive { get; set; }
+        public bool Live { get; set; }
 
         [JsonProperty("translated_description")]
         public string TranslatedDescription { get; set; }

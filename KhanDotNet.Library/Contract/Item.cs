@@ -8,7 +8,7 @@ namespace KhanDotNet.Library.Contract
         public string Sha { get; set; }
 
         [JsonProperty("live")]
-        public bool IsLive { get; set; }
+        public bool Live { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
