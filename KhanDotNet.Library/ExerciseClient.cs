@@ -4,6 +4,8 @@ using KhanDotNet.Library.Utilities;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
+using System;
+using System.Collections.Generic;
 
 namespace KhanDotNet.Library
 {
@@ -25,6 +27,14 @@ namespace KhanDotNet.Library
             {
                 response.EnsureSuccessStatusCode();
                 return await response.Content.ReadAsAsync<Exercise>();
+            }
+        }
+
+        public async Task<List<Exercise>> GetExercisesAsync()
+        {
+            using (var response = await _httpClient.GetAsync("http://www.khanacademy.org/api/v1/exercises"))
+            {
+                return await response.Content.ReadAsAsync<List<Exercise>>();
             }
         }
     }

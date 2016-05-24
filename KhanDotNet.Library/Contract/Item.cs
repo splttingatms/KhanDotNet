@@ -13,6 +13,12 @@ namespace KhanDotNet.Library.Contract
         [JsonProperty("id")]
         public string Id { get; set; }
 
+        [JsonProperty("perseus_api_major_version")]
+        public string PerseusApiMajorVersion { get; set; }
+
+        [JsonProperty("requires_screen_or_mouse")]
+        public bool RequiresScreenOrMouse { get; set; }
+
         public override string ToString()
         {
             return JsonConvert.SerializeObject(this);

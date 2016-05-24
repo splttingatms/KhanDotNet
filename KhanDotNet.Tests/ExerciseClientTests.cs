@@ -128,5 +128,30 @@ namespace KhanDotNet.Tests
         }
 
         #endregion
+
+        #region GetExercises
+
+        [TestMethod]
+        public async Task GetExercisesShouldTargetCorrectApiPath()
+        {
+            var expectedPath = "api/v1/exercises";
+
+            await _client.GetExercisesAsync();
+
+            _httpClientMock.Verify(c => c.GetAsync(It.Is<string>(url => url.ContainsIgnoreCase(expectedPath))));
+        }
+
+        [TestMethod]
+        public async Task GetExercisesShouldReturnDeserializedExercises()
+        {
+            _khanResponse.Content = new JsonContent(ExerciseTestData.SampleExercisesJson);
+
+            var expected = ExerciseTestData.SampleExercises;
+            var actual = await _client.GetExercisesAsync();
+
+            expected.AssertDeepEqual(actual);
+        }
+
+        #endregion
     }
 }
