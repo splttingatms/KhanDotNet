@@ -31,7 +31,6 @@ namespace KhanDotNet.Tests
             ConceptTags = new List<string>() { "Tag:xde14a173b65ddce1" },
             IsQuiz = false,
             DisplayName = "Name shapes 1",
-            // TODO: make nullable URI
             TrackingDocumentUrl = null,
             DescriptionHtml = "Practice identifying circles, triangles, squares, and rectangles.",
             DoNotPublish = false,
@@ -96,8 +95,7 @@ namespace KhanDotNet.Tests
             DeletedModTime = null,
             ThumbnailData = new ThumbnailData()
             {
-                // TODO: make nullable URI
-                Url = "",
+                Url = null,
                 SkipFilter = false,
                 TitleText = "",
                 GcsName = "/ka_thumbnails/naming-shapes.png"
@@ -377,7 +375,7 @@ namespace KhanDotNet.Tests
             DeletedModTime = null,
             ThumbnailData = new ThumbnailData()
             {
-                Url = "",
+                Url = null,
                 SkipFilter = false,
                 TitleText = "",
                 GcsName = "/ka_thumbnails/counting-out-1-20-objects.png"

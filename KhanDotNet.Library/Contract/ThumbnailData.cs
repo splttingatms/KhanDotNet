@@ -1,11 +1,12 @@
 ﻿using Newtonsoft.Json;
+using System;
 
 namespace KhanDotNet.Library.Contract
 {
     public class ThumbnailData
     {
         [JsonProperty("url")]
-        public string Url { get; set; }
+        public Uri Url { get; set; }
 
         [JsonProperty("skip_filter")]
         public bool SkipFilter { get; set; }
