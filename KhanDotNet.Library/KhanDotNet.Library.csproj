@@ -73,6 +73,8 @@
     <Compile Include="IKhanClient.cs" />
     <Compile Include="KhanClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\EnsureSuccessHandler.cs" />
+    <Compile Include="Utilities\HttpClientWithValidator.cs" />
     <Compile Include="Utilities\StringExtensions.cs" />
     <Compile Include="Utilities\HttpClientWrapper.cs" />
     <Compile Include="Utilities\IHttpClient.cs" />

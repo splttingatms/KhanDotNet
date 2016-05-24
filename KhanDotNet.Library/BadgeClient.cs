@@ -18,8 +18,6 @@ namespace KhanDotNet.Library
         {
             using (var response = await _httpClient.GetAsync("http://khanacademy.org/api/v1/badges/categories"))
             {
-                // TODO: make _httpClient throw on on-success status code
-                response.EnsureSuccessStatusCode();
                 return await response.Content.ReadAsAsync<List<BadgeCategory>>();
             }
         }
@@ -28,7 +26,6 @@ namespace KhanDotNet.Library
         {
             using (var response = await _httpClient.GetAsync("http://www.khanacademy.org/api/v1/badges"))
             {
-                response.EnsureSuccessStatusCode();
                 return await response.Content.ReadAsAsync<List<Badge>>();
             }
         }
@@ -39,8 +36,6 @@ namespace KhanDotNet.Library
 
             using (var response = await _httpClient.GetAsync(path))
             {
-                response.EnsureSuccessStatusCode();
-
                 // API returns a list even though it contains only one element
                 var categories = await response.Content.ReadAsAsync<List<BadgeCategory>>();
                 return categories.First();

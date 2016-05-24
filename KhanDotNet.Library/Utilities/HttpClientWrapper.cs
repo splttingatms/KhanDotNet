@@ -9,7 +9,7 @@ namespace KhanDotNet.Library.Utilities
 {
     public class HttpClientWrapper : IHttpClient
     {
-        private HttpClient _client;
+        internal HttpClient _client;
 
         public HttpClientWrapper()
         {

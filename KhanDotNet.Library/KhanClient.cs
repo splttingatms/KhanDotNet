@@ -7,7 +7,7 @@ namespace KhanDotNet.Library
     {
         public KhanClient()
         {
-            var innerClient = DisposableUtilities.SafeCreate<HttpClientWrapper>();
+            var innerClient = DisposableUtilities.SafeCreate<HttpClientWithValidator>();
             Initialize(
                 new BadgeClient(innerClient),
                 new ExerciseClient(innerClient));

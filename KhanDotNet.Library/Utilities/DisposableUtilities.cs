@@ -15,11 +15,8 @@ namespace KhanDotNet.Library.Utilities
             }
             catch (Exception)
             {
-                if (result != null)
-                {
-                    result.Dispose();
-                    result = null;
-                }
+                result?.Dispose();
+                result = null;
 
                 throw;
             }

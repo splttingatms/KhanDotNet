@@ -112,14 +112,6 @@ namespace KhanDotNet.Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(HttpRequestException))]
-        public async Task GetExerciseShouldThrowIfNonSuccessStatusCodeReturned()
-        {
-            _khanResponse.StatusCode = HttpStatusCode.BadRequest;
-            await _client.GetExerciseAsync("foo");
-        }
-
-        [TestMethod]
         [ExpectedException(typeof(JsonReaderException))]
         public async Task GetExerciseShouldThrowIfInvalidJsonReturned()
         {

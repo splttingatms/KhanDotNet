@@ -1,6 +1,6 @@
 ﻿using KhanDotNet.Library;
-using KhanDotNet.Library.Utilities;
 using KhanDotNet.Library.Contract;
+using KhanDotNet.Library.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Newtonsoft.Json;
@@ -90,14 +90,6 @@ namespace KhanDotNet.Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(HttpRequestException))]
-        public async Task GetBadgesShouldThrowIfNonSuccessStatusCodeReturned()
-        {
-            _khanResponse.StatusCode = HttpStatusCode.BadRequest;
-            await _client.GetBadgesAsync();
-        }
-
-        [TestMethod]
         [ExpectedException(typeof(JsonReaderException))]
         public async Task GetBadgesShouldThrowIfInvalidJsonReturned()
         {
@@ -118,14 +110,6 @@ namespace KhanDotNet.Tests
             var actual = await _client.GetBadgeCategoriesAsync();
 
             expected.AssertDeepEqual(actual);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(HttpRequestException))]
-        public async Task GetBadgeCategoriesShouldThrowIfNonSuccessStatusCode()
-        {
-            _khanResponse.StatusCode = HttpStatusCode.BadRequest;
-            await _client.GetBadgeCategoriesAsync();
         }
 
         #endregion
@@ -151,14 +135,6 @@ namespace KhanDotNet.Tests
             var actual = await _client.GetBadgeCategoryAsync(Category.Meteorite);
 
             expected.AssertDeepEqual(actual);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(HttpRequestException))]
-        public async Task GetBadgeCategoryShouldThrowIfNonSuccessStatusCode()
-        {
-            _khanResponse.StatusCode = HttpStatusCode.BadRequest;
-            await _client.GetBadgeCategoryAsync(Category.Meteorite);
         }
 
         #endregion
