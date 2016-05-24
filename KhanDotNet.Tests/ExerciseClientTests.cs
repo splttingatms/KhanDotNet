@@ -44,6 +44,31 @@ namespace KhanDotNet.Tests
             _client?.Dispose();
         }
 
+        #region GetExercises
+
+        [TestMethod]
+        public async Task GetExercisesShouldTargetCorrectApiPath()
+        {
+            var expectedPath = "api/v1/exercises";
+
+            await _client.GetExercisesAsync();
+
+            _httpClientMock.Verify(c => c.GetAsync(It.Is<string>(url => url.ContainsIgnoreCase(expectedPath))));
+        }
+
+        [TestMethod]
+        public async Task GetExercisesShouldReturnDeserializedExercises()
+        {
+            _khanResponse.Content = new JsonContent(ExerciseTestData.SampleExercisesJson);
+
+            var expected = ExerciseTestData.SampleExercises;
+            var actual = await _client.GetExercisesAsync();
+
+            expected.AssertDeepEqual(actual);
+        }
+
+        #endregion
+
         #region GetExercise
 
         [TestMethod]
@@ -95,6 +120,7 @@ namespace KhanDotNet.Tests
             await _client.GetExerciseAsync("   ");
         }
 
+        // TODO: clean-up as validator will catch this
         [TestMethod]
         [ExpectedException(typeof(NullReferenceException))]
         public async Task GetExerciseShouldThrowIfNullResponseReturned()
@@ -103,6 +129,7 @@ namespace KhanDotNet.Tests
             await _client.GetExerciseAsync("foo");
         }
 
+        // TODO: add check to validator
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public async Task GetExerciseShouldThrowIfNullContentReturned()
@@ -121,25 +148,52 @@ namespace KhanDotNet.Tests
 
         #endregion
 
-        #region GetExercises
+        #region GetFollowUpExercises
 
         [TestMethod]
-        public async Task GetExercisesShouldTargetCorrectApiPath()
+        [ExpectedException(typeof(ArgumentException))]
+        public async Task GetFollowUpExercisesShouldThrowIfNullInput()
         {
-            var expectedPath = "api/v1/exercises";
-
-            await _client.GetExercisesAsync();
-
-            _httpClientMock.Verify(c => c.GetAsync(It.Is<string>(url => url.ContainsIgnoreCase(expectedPath))));
+            await _client.GetFollowUpExercisesAsync(null);
         }
 
         [TestMethod]
-        public async Task GetExercisesShouldReturnDeserializedExercises()
+        [ExpectedException(typeof(ArgumentException))]
+        public async Task GetFollowUpExercisesShouldThrowIfEmptyInput()
         {
+            await _client.GetFollowUpExercisesAsync(string.Empty);
+        }
+
+        [TestMethod]
+        public async Task GetFollowUpExercisesShouldTargetCorrectPath()
+        {
+            var expectedPath = "api/v1/exercises/foo/followup_exercises";
+
+            await _client.GetFollowUpExercisesAsync("foo");
+
+            _httpClientMock.Verify(c =>
+                c.GetAsync(It.Is<string>(url => url.ContainsIgnoreCase(expectedPath))));
+        }
+
+        [TestMethod]
+        public async Task GetFollowUpExercisesShouldEncodeInput()
+        {
+            var input = "^foo&bar$";
+            var encodedInput = "%5Efoo%26bar%24";
+
+            await _client.GetFollowUpExercisesAsync(input);
+
+            _httpClientMock.Verify(c =>
+                c.GetAsync(It.Is<string>(url => url.ContainsIgnoreCase(encodedInput))));
+        }
+
+        [TestMethod]
+        public async Task GetFollowUpExercisesShouldDeserializeResponse()
+        {
+            var expected = ExerciseTestData.SampleExercises;
             _khanResponse.Content = new JsonContent(ExerciseTestData.SampleExercisesJson);
 
-            var expected = ExerciseTestData.SampleExercises;
-            var actual = await _client.GetExercisesAsync();
+            var actual = await _client.GetFollowUpExercisesAsync("logarithms_1");
 
             expected.AssertDeepEqual(actual);
         }

@@ -7,8 +7,10 @@ namespace KhanDotNet.Library
 {
     public interface IExerciseClient : IDisposable
     {
+        Task<List<Exercise>> GetExercisesAsync();
+
         Task<Exercise> GetExerciseAsync(string name);
 
-        Task<List<Exercise>> GetExercisesAsync();
+        Task<List<Exercise>> GetFollowUpExercisesAsync(string name);
     }
 }

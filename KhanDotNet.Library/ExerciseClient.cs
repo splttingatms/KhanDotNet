@@ -15,6 +15,14 @@ namespace KhanDotNet.Library
         {
         }
 
+        public async Task<List<Exercise>> GetExercisesAsync()
+        {
+            using (var response = await _httpClient.GetAsync("http://www.khanacademy.org/api/v1/exercises"))
+            {
+                return await response.Content.ReadAsAsync<List<Exercise>>();
+            }
+        }
+
         public async Task<Exercise> GetExerciseAsync(string name)
         {
             Ensure.That(name, nameof(name)).IsNotNullOrWhiteSpace();
@@ -28,9 +36,14 @@ namespace KhanDotNet.Library
             }
         }
 
-        public async Task<List<Exercise>> GetExercisesAsync()
+        public async Task<List<Exercise>> GetFollowUpExercisesAsync(string name)
         {
-            using (var response = await _httpClient.GetAsync("http://www.khanacademy.org/api/v1/exercises"))
+            Ensure.That(name, nameof(name)).IsNotNullOrWhiteSpace();
+
+            name = HttpUtility.UrlEncode(name);
+            var path = "http://www.khanacademy.org/api/v1/exercises/{0}/followup_exercises".F(name);
+
+            using (var response = await _httpClient.GetAsync(path))
             {
                 return await response.Content.ReadAsAsync<List<Exercise>>();
             }
