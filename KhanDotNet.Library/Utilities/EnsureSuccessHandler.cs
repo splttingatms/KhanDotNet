@@ -20,7 +20,15 @@ namespace KhanDotNet.Library.Utilities
                 throw new HttpRequestException("response was null");
             }
 
-            response.EnsureSuccessStatusCode();
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new NonSuccessStatusCodeException(response);
+            }
+
+            if (response.Content == null)
+            {
+                throw new HttpRequestException("response content was null");
+            }
         }
     }
 }

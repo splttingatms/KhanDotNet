@@ -120,32 +120,6 @@ namespace KhanDotNet.Tests
             await _client.GetExerciseAsync("   ");
         }
 
-        // TODO: clean-up as validator will catch this
-        [TestMethod]
-        [ExpectedException(typeof(NullReferenceException))]
-        public async Task GetExerciseShouldThrowIfNullResponseReturned()
-        {
-            _httpClientMock.Setup(c => c.GetAsync(It.IsAny<string>())).ReturnsAsync(null);
-            await _client.GetExerciseAsync("foo");
-        }
-
-        // TODO: add check to validator
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public async Task GetExerciseShouldThrowIfNullContentReturned()
-        {
-            _khanResponse.Content = null;
-            await _client.GetExerciseAsync("foo");
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(JsonReaderException))]
-        public async Task GetExerciseShouldThrowIfInvalidJsonReturned()
-        {
-            _khanResponse.Content = new JsonContent("invalid_json");
-            await _client.GetExerciseAsync("foo");
-        }
-
         #endregion
 
         #region GetFollowUpExercises

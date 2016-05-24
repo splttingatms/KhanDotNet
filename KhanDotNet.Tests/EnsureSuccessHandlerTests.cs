@@ -19,7 +19,8 @@ namespace KhanDotNet.Tests
         [TestInitialize]
         public void Initialize()
         {
-            _fakeResponse = new HttpResponseMessage(HttpStatusCode.OK);
+            // must specify content for validation to pass
+            _fakeResponse = new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(string.Empty) };
 
             var mockHandler = new Mock<HttpMessageHandler>();
             mockHandler.Protected()
@@ -68,10 +69,20 @@ namespace KhanDotNet.Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(HttpRequestException))]
+        [ExpectedException(typeof(NonSuccessStatusCodeException))]
         public async Task EnsureSuccessHandlerShouldThrowIfNonSuccessResponseReceived()
         {
             _fakeResponse.StatusCode = HttpStatusCode.BadRequest;
+            var request = new HttpRequestMessage();
+
+            await _invoker.SendAsync(request, CancellationToken.None);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(HttpRequestException))]
+        public async Task EnsureSuccessHandlerShouldThrowIfNullContent()
+        {
+            _fakeResponse.Content = null;
             var request = new HttpRequestMessage();
 
             await _invoker.SendAsync(request, CancellationToken.None);

@@ -72,23 +72,6 @@ namespace KhanDotNet.Tests
             expected.AssertDeepEqual(actual);
         }
 
-        // TODO: either change exception thrown or remove test
-        [TestMethod]
-        [ExpectedException(typeof(NullReferenceException))]
-        public async Task GetBadgesShouldThrowIfNullResponseReturned()
-        {
-            _httpClientMock.Setup(c => c.GetAsync(It.IsAny<string>())).ReturnsAsync(null);
-            await _client.GetBadgesAsync();
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public async Task GetBadgesShouldThrowIfNullContentReturned()
-        {
-            _khanResponse.Content = null;
-            await _client.GetBadgesAsync();
-        }
-
         [TestMethod]
         [ExpectedException(typeof(JsonReaderException))]
         public async Task GetBadgesShouldThrowIfInvalidJsonReturned()
