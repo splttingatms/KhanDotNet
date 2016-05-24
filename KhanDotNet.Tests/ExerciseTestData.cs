@@ -124,10 +124,9 @@ namespace KhanDotNet.Tests
             NodeSlug = "e/naming-shapes",
             Deleted = false,
             BackupTimestamp = null,
-            ConceptTagsInfo = new List<ConceptTagInfo>()
+            ConceptTagsInfo = new List<ConceptTag>()
             {
-                // TODO: rename class to ConceptTag
-                new ConceptTagInfo()
+                new ConceptTag()
                 {
                     DisplayName = "Naming 2D shapes",
                     Id = "Tag:xde14a173b65ddce1",
@@ -507,15 +506,15 @@ namespace KhanDotNet.Tests
             NodeSlug = "e/counting-out-1-20-objects",
             Deleted = false,
             BackupTimestamp = null,
-            ConceptTagsInfo = new List<ConceptTagInfo>()
+            ConceptTagsInfo = new List<ConceptTag>()
                     {
-                        new ConceptTagInfo()
+                        new ConceptTag()
                         {
                             DisplayName = "Counting",
                             Id = "Tag:x731f236a6d33f0ff",
                             Slug = "counting"
                         },
-                        new ConceptTagInfo()
+                        new ConceptTag()
                         {
                             DisplayName = "Counting objects",
                             Id = "Tag:xf444fba1e72e5158",

@@ -127,7 +127,7 @@ namespace KhanDotNet.Library.Contract
         public DateTime? BackupTimestamp { get; set; }
 
         [JsonProperty("concept_tags_info")]
-        public List<ConceptTagInfo> ConceptTagsInfo { get; set; }
+        public List<ConceptTag> ConceptTagsInfo { get; set; }
 
         [JsonProperty("problem_types")]
         public List<ProblemType> ProblemTypes { get; set; }

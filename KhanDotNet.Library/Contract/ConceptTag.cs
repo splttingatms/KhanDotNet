@@ -2,7 +2,7 @@
 
 namespace KhanDotNet.Library.Contract
 {
-    public class ConceptTagInfo
+    public class ConceptTag
     {
         [JsonProperty("display_name")]
         public string DisplayName { get; set; }
