@@ -12,6 +12,7 @@ namespace KhanDotNet.Demo.Pages
             : base("Topics", program)
         {
             Menu.Add("Get topic", GetTopicCallback);
+            Menu.Add("Get topic exercises", GetTopicExercisesCallback);
 
             _client = client;
         }
@@ -21,6 +22,13 @@ namespace KhanDotNet.Demo.Pages
             var input = Input.ReadString("Enter topic slug:");
             var topic = _client.Topics.GetTopicAsync(input).Result;
             OutputHelper.Success(topic);
+        }
+
+        private void GetTopicExercisesCallback()
+        {
+            var input = Input.ReadString("Enter topic slug:");
+            var exercises = _client.Topics.GetTopicExercisesAsync(input).Result;
+            OutputHelper.Success(exercises);
         }
     }
 }

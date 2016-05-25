@@ -85,5 +85,48 @@ namespace KhanDotNet.Tests
         }
 
         #endregion
+
+        #region GetTopicExercises
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public async Task GetTopicExercisesShouldThrowIfNullInput()
+        {
+            await _client.GetTopicExercisesAsync(null);
+        }
+
+        [TestMethod]
+        public async Task GetTopicExercisesShouldTargetCorrectPath()
+        {
+
+            await _client.GetTopicExercisesAsync("foo");
+
+            _httpClientMock.Verify(c =>
+                c.GetAsync(It.Is<string>(url => url.ContainsIgnoreCase("/api/v1/topic/foo/exercises"))));
+        }
+
+        [TestMethod]
+        public async Task GetTopicExercisesShouldUrlEncodeInput()
+        {
+            var input = "^foo&bar$";
+            var encodedInput = "%5Efoo%26bar%24";
+
+            await _client.GetTopicExercisesAsync(input);
+            _httpClientMock.Verify(c => c.GetAsync(It.Is<string>(url => url.ContainsIgnoreCase(encodedInput))));
+        }
+
+        [TestMethod]
+        public async Task GetTopicExercisesShouldReturnDeserializedResponse()
+        {
+            var expected = TopicTestData.SampleTopicExercises;
+            _khanResponse.Content = new JsonContent(TopicTestData.SampleTopicExercisesJson);
+
+            var actual = await _client.GetTopicExercisesAsync("talks-and-interviews");
+
+            expected.AssertDeepEqual(actual);
+        }
+
+
+        #endregion
     }
 }
