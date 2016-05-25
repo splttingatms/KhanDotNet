@@ -1,8 +1,8 @@
 ﻿using KhanDotNet.Library;
 using KhanDotNet.Library.Utilities;
+using KhanDotNet.Tests.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Newtonsoft.Json;
 using System;
 using System.Net;
 using System.Net.Http;

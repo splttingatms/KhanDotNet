@@ -68,9 +68,9 @@
   </Choose>
   <ItemGroup>
     <Compile Include="BadgeClientTests.cs" />
-    <Compile Include="BadgeTestData.cs" />
+    <Compile Include="Data\BadgeTestData.cs" />
     <Compile Include="EnsureSuccessHandlerTests.cs" />
-    <Compile Include="ExerciseTestData.cs" />
+    <Compile Include="Data\ExerciseTestData.cs" />
     <Compile Include="JsonContent.cs" />
     <Compile Include="ExerciseClientTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

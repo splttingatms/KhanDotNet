@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace KhanDotNet.Tests
+namespace KhanDotNet.Tests.Data
 {
     public static class ExerciseTestData
     {
