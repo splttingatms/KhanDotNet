@@ -14,6 +14,8 @@ namespace KhanDotNet.Tests.Data
 
         public const string SampleVideosJson = "[{\"translated_youtube_id\": \"Z5myJ8dg_rM\", \"relative_url\": \"/video/logarithms\", \"has_custom_thumbnail\": true, \"has_questions\": false, \"creation_date\": \"2016-03-02T15:41:15Z\", \"download_urls\": {\"mp4\": \"http://fastly.kastatic.org/KA-youtube-converted/Z5myJ8dg_rM.mp4/Z5myJ8dg_rM.mp4\", \"m3u8\": \"http://fastly.kastatic.org/KA-youtube-converted/Z5myJ8dg_rM.m3u8/Z5myJ8dg_rM.m3u8\", \"png\": \"http://fastly.kastatic.org/KA-youtube-converted/Z5myJ8dg_rM.mp4/Z5myJ8dg_rM.png\", \"mp4-low\": \"http://fastly.kastatic.org/KA-youtube-converted/Z5myJ8dg_rM.mp4-low/Z5myJ8dg_rM-low.mp4\"}, \"ka_url\": \"http://www.khanacademy.org/video/logarithms\", \"duration\": 422, \"translated_title\": \"Intro to logarithms\", \"author_key\": \"ag5zfmtoYW4tYWNhZGVteXIXCxIIVXNlckRhdGEiCVRvbWVyIEdhbAw\", \"translated_description_html\": \"Sal explains what logarithms are and gives a few examples of finding logarithms.\", \"id\": \"1242982964\", \"concept_tags\": [\"Tag:x9b9694b373905953\"], \"download_size\": 4670219.0, \"description_html\": \"Sal explains what logarithms are and gives a few examples of finding logarithms.\", \"do_not_publish\": false, \"license_logo_url\": \"/images/license-logos/by-nc-sa.png\", \"progress_key\": \"v1242982964\", \"edit_slug\": \"edit/v/1242982964\", \"author_names\": [\"Sal Khan\"], \"license_full_name\": \"Creative Commons Attribution/Non-Commercial/Share-Alike\", \"license_url\": \"http://creativecommons.org/licenses/by-nc-sa/3.0\", \"deleted_mod_time\": \"2013-07-13T00:03:08Z\", \"thumbnail_data\": {\"url\": \"\", \"skip_filter\": false, \"title_text\": \"Logarithms\", \"gcs_name\": \"/ka_thumbnails/Z5myJ8dg_rM.jpg\"}, \"related_exercise_url\": \"http://www.khanacademy.org/exercise/logarithms_1.5\", \"description\": \"Sal explains what logarithms are and gives a few examples of finding logarithms.\", \"extra_properties\": null, \"node_slug\": \"v/logarithms\", \"deleted\": false, \"license_name\": \"CC BY-NC-SA (KA default)\", \"backup_timestamp\": \"2013-09-23T18:42:23Z\", \"concept_tags_info\": [{\"display_name\": \"Writing and evaluating logarithms\", \"id\": \"Tag:x9b9694b373905953\", \"slug\": \"writing-and-evaluating-logarithms\"}], \"date_added\": \"2012-12-21T00:14:51Z\", \"translated_youtube_lang\": \"en\", \"kind\": \"Video\", \"date_modified\": \"2016-03-31T01:36:24Z\", \"url\": \"http://www.youtube.com/watch?v=Z5myJ8dg_rM&feature=youtube_gdata_player\", \"clarifications_enabled\": true, \"ka_user_license\": \"cc-by-nc-sa\", \"global_id\": \"v1242982964\", \"sha\": \"d4d84ae7551f24d0c1e80ceec98c931e62fda481\", \"translated_description\": \"Sal explains what logarithms are and gives a few examples of finding logarithms.\", \"image_url\": \"https://fastly.kastatic.org/googleusercontent/_RkZoOHKtmVk5F8_teMl8HJnKuYpGcFOUu9QgleddEiix-1mZsZf4T2CRlqmZLeq2jmOuybi1N6RCIMjkLHMTO8png\", \"keywords\": \"\", \"youtube_id\": \"Z5myJ8dg_rM\", \"title\": \"Intro to logarithms\", \"content_id\": \"1242982964\", \"content_kind\": \"Video\", \"readable_id\": \"logarithms\"}]";
 
+        public const string SamplePerseusExercisesJson = "[{\"id\": \"x6e2a3a85\", \"title\": \"Solve problems with line plots 1\"}, {\"id\": \"x68a6bb67\", \"title\": \"Variation in samples\"}]";
+
         public static readonly Exercise NamingShapesExercise = new Exercise()
         {
             IsSkillCheck = false,
@@ -761,6 +763,20 @@ namespace KhanDotNet.Tests.Data
                 ContentId = "1242982964",
                 ContentKind = "Video",
                 ReadableId = "logarithms"
+            }
+        };
+
+        public static readonly List<PerseusExercise> SamplePerseusExercsises = new List<PerseusExercise>()
+        {
+            new PerseusExercise()
+            {
+                Id = "x6e2a3a85",
+                Title = "Solve problems with line plots 1"
+            },
+            new PerseusExercise()
+            {
+                Id = "x68a6bb67",
+                Title = "Variation in samples"
             }
         };
     }

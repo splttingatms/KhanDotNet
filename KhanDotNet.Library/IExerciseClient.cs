@@ -14,5 +14,7 @@ namespace KhanDotNet.Library
         Task<List<Exercise>> GetFollowUpExercisesAsync(string name);
 
         Task<List<Video>> GetExerciseVideosAsync(string name);
+
+        Task<List<PerseusExercise>> GetPerseusExercisesAsync();
     }
 }

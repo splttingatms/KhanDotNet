@@ -64,6 +64,7 @@
     <Compile Include="Contract\Exercise.cs" />
     <Compile Include="Contract\Icons.cs" />
     <Compile Include="Contract\Item.cs" />
+    <Compile Include="Contract\PerseusExercise.cs" />
     <Compile Include="Contract\ProblemType.cs" />
     <Compile Include="Contract\ThumbnailData.cs" />
     <Compile Include="Contract\TranslatedProblemType.cs" />

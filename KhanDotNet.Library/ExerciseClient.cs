@@ -61,5 +61,13 @@ namespace KhanDotNet.Library
                 return await response.Content.ReadAsAsync<List<Video>>();
             }
         }
+
+        public async Task<List<PerseusExercise>> GetPerseusExercisesAsync()
+        {
+            using (var response = await _httpClient.GetAsync("http://www.khanacademy.org/api/v1/exercises/perseus_autocomplete"))
+            {
+                return await response.Content.ReadAsAsync<List<PerseusExercise>>();
+            }
+        }
     }
 }

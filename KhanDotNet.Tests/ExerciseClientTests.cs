@@ -185,7 +185,6 @@ namespace KhanDotNet.Tests
             await _client.GetExerciseVideosAsync(null);
         }
 
-        // TODO: make a handler that encodes path automatically
         [TestMethod]
         public async Task GetExerciseVideosShouldEncodeInput()
         {
@@ -214,6 +213,30 @@ namespace KhanDotNet.Tests
             _khanResponse.Content = new JsonContent(ExerciseTestData.SampleVideosJson);
 
             var actual = await _client.GetExerciseVideosAsync("logarithms-1");
+
+            expected.AssertDeepEqual(actual);
+        }
+
+        #endregion
+
+        #region GetPerseusExercises
+
+        [TestMethod]
+        public async Task GetPerseusExercisesShouldTargetCorrectPath()
+        {
+            await _client.GetPerseusExercisesAsync();
+
+            _httpClientMock.Verify(c =>
+                c.GetAsync(It.Is<string>(url => url.ContainsIgnoreCase("/api/v1/exercises/perseus_autocomplete"))));
+        }
+
+        [TestMethod]
+        public async Task GetPerseusExercisesShouldReturnDeserializedResponse()
+        {
+            var expected = ExerciseTestData.SamplePerseusExercsises;
+            _khanResponse.Content = new JsonContent(ExerciseTestData.SamplePerseusExercisesJson);
+
+            var actual = await _client.GetPerseusExercisesAsync();
 
             expected.AssertDeepEqual(actual);
         }

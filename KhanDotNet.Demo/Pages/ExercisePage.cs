@@ -15,6 +15,7 @@ namespace KhanDotNet.Demo.Pages
             Menu.Add("Get exercise", GetExerciseCallback);
             Menu.Add("Get follow-up exercises", GetFollowUpExercisesCallback);
             Menu.Add("Get exercise videos", GetExerciseVideosCallback);
+            Menu.Add("Get Perseus exercises", GetPerseusExercisesCallback);
 
             _client = client;
         }
@@ -47,6 +48,12 @@ namespace KhanDotNet.Demo.Pages
 
             var videos = _client.Exercises.GetExerciseVideosAsync(input).Result;
             OutputHelper.Success(videos);
+        }
+
+        private void GetPerseusExercisesCallback()
+        {
+            var exercises = _client.Exercises.GetPerseusExercisesAsync().Result;
+            OutputHelper.Success(exercises);
         }
     }
 }
