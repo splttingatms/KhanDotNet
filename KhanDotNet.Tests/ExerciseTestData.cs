@@ -10,6 +10,10 @@ namespace KhanDotNet.Tests
 
         public const string CountingExerciseJson = "{\"is_skill_check\": false,\"uses_worked_examples\": false,\"v_position\": 3,\"relative_url\": \"/exercise/counting-out-1-20-objects\",\"has_custom_thumbnail\": true,\"file_name\": null,\"related_video_readable_ids\": [\"counting-with-small-numbers\"],\"author_name\": \"Gail Hargrave\",\"creation_date\": \"2016-03-01T19:29:20Z\",\"translated_short_display_name\": \"Count with \",\"uses_assessment_items\": true,\"ka_url\": \"http://www.khanacademy.org/exercise/counting-out-1-20-objects\",\"short_display_name\": \"Count with \",\"translated_title\": \"Count with small numbers\",\"author_key\": \"ag5zfmtoYW4tYWNhZGVteXJaCxIIVXNlckRhdGEiTHVzZXJfaWRfa2V5X2h0dHA6Ly9ub3VzZXJpZC5raGFuYWNhZGVteS5vcmcvNjZmOTNhODE4YjU2ZWUxZTliOTM1MGI2OTc2OGQ4ZTMM\",\"translated_description_html\": \"Practice counting up to 10 objects.\",\"id\": \"x4debd8a3\",\"concept_tags\": [\"Tag:x731f236a6d33f0ff\",\"Tag:xf444fba1e72e5158\"],\"is_quiz\": false,\"display_name\": \"Count with small numbers\",\"tracking_document_url\": null,\"description_html\": \"Practice counting up to 10 objects.\",\"do_not_publish\": false,\"tags\": [],\"translated_problem_types\": [{\"items\": [{\"sha\": \"c2074685910760669c855d628b7a44ef8d828be9\",\"live\": true,\"id\": \"xde8147b8edb82294\"},{\"sha\": \"76c7fd55c20dfe0f4f938745b73e1e7d0c4757ac\",\"live\": true,\"id\": \"xa5c8d62485b6bf16\"},{\"sha\": \"a4318a5630a8766f55dc6830527dbaffc7fb917b\",\"live\": true,\"id\": \"x2313c50d4dfd4a0a\"},{\"sha\": \"b350b21cf286a64c0e7869a6429fc6c5fd139c1f\",\"live\": true,\"id\": \"xcd7ba1c0c381fadb\"},{\"sha\": \"e8ba59f1f99433fbd0360332f999cde76ab8976b\",\"live\": true,\"id\": \"x4cb56360820eece5\"},{\"sha\": \"954fcd5885c36b841a22bc5bf89207bced27b8be\",\"live\": true,\"id\": \"xcc39b61282c884be\"},{\"sha\": \"15070fc64826e1cd00665c38e2e42e5834ed359a\",\"live\": true,\"id\": \"x9c6c9733676e5240\"},{\"sha\": \"89d992ba940c4ecaa7687d7a84ce632ead085882\",\"live\": true,\"id\": \"x8ae458b86dfe440b\"},{\"sha\": \"54f92d19cabbd7647cd5d21d4678e8711431e9fb\",\"live\": true,\"id\": \"x8e7fd4a4b5b002c1\"},{\"sha\": \"8d00285eae0fab5210dcfb325be7741e48c75681\",\"live\": true,\"id\": \"xeee62e178c0cfe6f\"},{\"sha\": \"4453b349bad32a1e416e7e74af64e09e2c5810f8\",\"live\": true,\"id\": \"xdee0840c85c0add5\"},{\"sha\": \"bb340ca13b104a9b9d1065b74a2fdfa423f817d1\",\"live\": true,\"id\": \"xa756d02df7435e1a\"},{\"sha\": \"f65a9c4a6a8df260021fe424d562e8ff6d1741bd\",\"live\": true,\"id\": \"x6b9db70231ff254d\"},{\"sha\": \"00808cbc066910be1220235faa7d93a9126f6a57\",\"live\": true,\"id\": \"x1855395b96b1e34f\"},{\"sha\": \"90db973ee0fd319c596410e215a76a651601901d\",\"live\": true,\"id\": \"x477b6212a24d08da\"},{\"sha\": \"f6cf4d0675de30afee8cab929b97000e2c41fbc8\",\"live\": true,\"id\": \"xfc8946e7c80f2800\"},{\"sha\": \"4f522fb965ab3805f56250db187fefadb281edd2\",\"live\": true,\"id\": \"x14784d8f428fa949\"},{\"sha\": \"849c88aa2122ea5a40bb39540acf551d3ac67728\",\"live\": true,\"id\": \"x3f2d3b6cb53f67a4\"},{\"sha\": \"a9197ffb73ad014d477c7eb1eed41f9ea025774b\",\"live\": true,\"id\": \"xb6e923d2f396f5ab\"},{\"sha\": \"446eef76c02fc29049012312c704c12b4b54ba8d\",\"live\": true,\"id\": \"x9ef4ca7e914c87ec\"}],\"related_videos\": [],\"name\": \"A\"}],\"progress_key\": \"ex4debd8a3\",\"suggested_completion_criteria\": \"num_correct_in_a_row_5\",\"edit_slug\": \"edit/e/x4debd8a3\",\"summative\": false,\"live\": true,\"translated_description\": \"Practice counting up to 10 objects.\",\"pretty_display_name\": \"Count with small numbers\",\"deleted_mod_time\": null,\"thumbnail_data\": {\"url\": \"\",\"skip_filter\": false,\"title_text\": \"\",\"gcs_name\": \"/ka_thumbnails/counting-out-1-20-objects.png\"},\"all_assessment_items\": [{\"sha\": \"c2074685910760669c855d628b7a44ef8d828be9\",\"live\": true,\"id\": \"xde8147b8edb82294\"},{\"sha\": \"76c7fd55c20dfe0f4f938745b73e1e7d0c4757ac\",\"live\": true,\"id\": \"xa5c8d62485b6bf16\"},{\"sha\": \"a4318a5630a8766f55dc6830527dbaffc7fb917b\",\"live\": true,\"id\": \"x2313c50d4dfd4a0a\"},{\"sha\": \"b350b21cf286a64c0e7869a6429fc6c5fd139c1f\",\"live\": true,\"id\": \"xcd7ba1c0c381fadb\"},{\"sha\": \"e8ba59f1f99433fbd0360332f999cde76ab8976b\",\"live\": true,\"id\": \"x4cb56360820eece5\"},{\"sha\": \"954fcd5885c36b841a22bc5bf89207bced27b8be\",\"live\": true,\"id\": \"xcc39b61282c884be\"},{\"sha\": \"15070fc64826e1cd00665c38e2e42e5834ed359a\",\"live\": true,\"id\": \"x9c6c9733676e5240\"},{\"sha\": \"89d992ba940c4ecaa7687d7a84ce632ead085882\",\"live\": true,\"id\": \"x8ae458b86dfe440b\"},{\"sha\": \"54f92d19cabbd7647cd5d21d4678e8711431e9fb\",\"live\": true,\"id\": \"x8e7fd4a4b5b002c1\"},{\"sha\": \"8d00285eae0fab5210dcfb325be7741e48c75681\",\"live\": true,\"id\": \"xeee62e178c0cfe6f\"},{\"sha\": \"4453b349bad32a1e416e7e74af64e09e2c5810f8\",\"live\": true,\"id\": \"xdee0840c85c0add5\"},{\"sha\": \"bb340ca13b104a9b9d1065b74a2fdfa423f817d1\",\"live\": true,\"id\": \"xa756d02df7435e1a\"},{\"sha\": \"f65a9c4a6a8df260021fe424d562e8ff6d1741bd\",\"live\": true,\"id\": \"x6b9db70231ff254d\"},{\"sha\": \"00808cbc066910be1220235faa7d93a9126f6a57\",\"live\": true,\"id\": \"x1855395b96b1e34f\"},{\"sha\": \"90db973ee0fd319c596410e215a76a651601901d\",\"live\": true,\"id\": \"x477b6212a24d08da\"},{\"sha\": \"f6cf4d0675de30afee8cab929b97000e2c41fbc8\",\"live\": true,\"id\": \"xfc8946e7c80f2800\"},{\"sha\": \"4f522fb965ab3805f56250db187fefadb281edd2\",\"live\": true,\"id\": \"x14784d8f428fa949\"},{\"sha\": \"849c88aa2122ea5a40bb39540acf551d3ac67728\",\"live\": true,\"id\": \"x3f2d3b6cb53f67a4\"},{\"sha\": \"a9197ffb73ad014d477c7eb1eed41f9ea025774b\",\"live\": true,\"id\": \"xb6e923d2f396f5ab\"},{\"sha\": \"446eef76c02fc29049012312c704c12b4b54ba8d\",\"live\": true,\"id\": \"x9ef4ca7e914c87ec\"}],\"description\": \"Practice counting up to 10 objects.\",\"translated_pretty_display_name\": \"Count with small numbers\",\"node_slug\": \"e/counting-out-1-20-objects\",\"deleted\": false,\"backup_timestamp\": null,\"concept_tags_info\": [{\"display_name\": \"Counting\",\"id\": \"Tag:x731f236a6d33f0ff\",\"slug\": \"counting\"},{\"display_name\": \"Counting objects\",\"id\": \"Tag:xf444fba1e72e5158\",\"slug\": \"counting-objects\"}],\"problem_types\": [{\"items\": [{\"sha\": \"c2074685910760669c855d628b7a44ef8d828be9\",\"live\": true,\"id\": \"xde8147b8edb82294\"},{\"sha\": \"76c7fd55c20dfe0f4f938745b73e1e7d0c4757ac\",\"live\": true,\"id\": \"xa5c8d62485b6bf16\"},{\"sha\": \"a4318a5630a8766f55dc6830527dbaffc7fb917b\",\"live\": true,\"id\": \"x2313c50d4dfd4a0a\"},{\"sha\": \"b350b21cf286a64c0e7869a6429fc6c5fd139c1f\",\"live\": true,\"id\": \"xcd7ba1c0c381fadb\"},{\"sha\": \"e8ba59f1f99433fbd0360332f999cde76ab8976b\",\"live\": true,\"id\": \"x4cb56360820eece5\"},{\"sha\": \"954fcd5885c36b841a22bc5bf89207bced27b8be\",\"live\": true,\"id\": \"xcc39b61282c884be\"},{\"sha\": \"15070fc64826e1cd00665c38e2e42e5834ed359a\",\"live\": true,\"id\": \"x9c6c9733676e5240\"},{\"sha\": \"89d992ba940c4ecaa7687d7a84ce632ead085882\",\"live\": true,\"id\": \"x8ae458b86dfe440b\"},{\"sha\": \"54f92d19cabbd7647cd5d21d4678e8711431e9fb\",\"live\": true,\"id\": \"x8e7fd4a4b5b002c1\"},{\"sha\": \"8d00285eae0fab5210dcfb325be7741e48c75681\",\"live\": true,\"id\": \"xeee62e178c0cfe6f\"},{\"sha\": \"4453b349bad32a1e416e7e74af64e09e2c5810f8\",\"live\": true,\"id\": \"xdee0840c85c0add5\"},{\"sha\": \"bb340ca13b104a9b9d1065b74a2fdfa423f817d1\",\"live\": true,\"id\": \"xa756d02df7435e1a\"},{\"sha\": \"f65a9c4a6a8df260021fe424d562e8ff6d1741bd\",\"live\": true,\"id\": \"x6b9db70231ff254d\"},{\"sha\": \"00808cbc066910be1220235faa7d93a9126f6a57\",\"live\": true,\"id\": \"x1855395b96b1e34f\"},{\"sha\": \"90db973ee0fd319c596410e215a76a651601901d\",\"live\": true,\"id\": \"x477b6212a24d08da\"},{\"sha\": \"f6cf4d0675de30afee8cab929b97000e2c41fbc8\",\"live\": true,\"id\": \"xfc8946e7c80f2800\"},{\"sha\": \"4f522fb965ab3805f56250db187fefadb281edd2\",\"live\": true,\"id\": \"x14784d8f428fa949\"},{\"sha\": \"849c88aa2122ea5a40bb39540acf551d3ac67728\",\"live\": true,\"id\": \"x3f2d3b6cb53f67a4\"},{\"sha\": \"a9197ffb73ad014d477c7eb1eed41f9ea025774b\",\"live\": true,\"id\": \"xb6e923d2f396f5ab\"},{\"sha\": \"446eef76c02fc29049012312c704c12b4b54ba8d\",\"live\": true,\"id\": \"x9ef4ca7e914c87ec\"}],\"related_videos\": [],\"name\": \"A\"}],\"curated_related_videos\": [\"x9b4a5e7a\"],\"covers\": [],\"h_position\": -40,\"translated_display_name\": \"Count with small numbers\",\"kind\": \"Exercise\",\"sha1\": \"c6dfa454b415736e95f50981cb3a17f428424162\",\"name\": \"counting-out-1-20-objects\",\"date_modified\": \"2016-05-05T20:05:26Z\",\"prerequisites\": [],\"assessment_item_tags\": [\"ag5zfmtoYW4tYWNhZGVteXI2CxIRQXNzZXNzbWVudEl0ZW1UYWciATAMCxIRQXNzZXNzbWVudEl0ZW1UYWcYgICAwIKTqAoM\",\"ag5zfmtoYW4tYWNhZGVteXI2CxIRQXNzZXNzbWVudEl0ZW1UYWciATAMCxIRQXNzZXNzbWVudEl0ZW1UYWcYgICAgKqcsgoM\"],\"title\": \"Count with small numbers\",\"global_id\": \"ex4debd8a3\",\"seconds_per_fast_problem\": 4.0,\"sha\": \"7bc7ef1a01cb89d73239a4387ed06ecc63ba962f\",\"image_url\": \"https://fastly.kastatic.org/ka-exercise-screenshots/counting-out-1-20-objects.png\",\"tutorial_only\": false,\"current_revision_key\": \"7bc7ef1a01cb89d73239a4387ed06ecc63ba962f\",\"image_url_256\": \"https://fastly.kastatic.org/ka-exercise-screenshots/counting-out-1-20-objects_256.png\",\"content_id\": \"x4debd8a3\",\"content_kind\": \"Exercise\"}";
 
+        public const string SampleExercisesJson = "[" + CountingExerciseJson + ", " + NamingShapesExerciseJson + "]";
+
+        public const string SampleVideosJson = "[{\"translated_youtube_id\": \"Z5myJ8dg_rM\", \"relative_url\": \"/video/logarithms\", \"has_custom_thumbnail\": true, \"has_questions\": false, \"creation_date\": \"2016-03-02T15:41:15Z\", \"download_urls\": {\"mp4\": \"http://fastly.kastatic.org/KA-youtube-converted/Z5myJ8dg_rM.mp4/Z5myJ8dg_rM.mp4\", \"m3u8\": \"http://fastly.kastatic.org/KA-youtube-converted/Z5myJ8dg_rM.m3u8/Z5myJ8dg_rM.m3u8\", \"png\": \"http://fastly.kastatic.org/KA-youtube-converted/Z5myJ8dg_rM.mp4/Z5myJ8dg_rM.png\", \"mp4-low\": \"http://fastly.kastatic.org/KA-youtube-converted/Z5myJ8dg_rM.mp4-low/Z5myJ8dg_rM-low.mp4\"}, \"ka_url\": \"http://www.khanacademy.org/video/logarithms\", \"duration\": 422, \"translated_title\": \"Intro to logarithms\", \"author_key\": \"ag5zfmtoYW4tYWNhZGVteXIXCxIIVXNlckRhdGEiCVRvbWVyIEdhbAw\", \"translated_description_html\": \"Sal explains what logarithms are and gives a few examples of finding logarithms.\", \"id\": \"1242982964\", \"concept_tags\": [\"Tag:x9b9694b373905953\"], \"download_size\": 4670219.0, \"description_html\": \"Sal explains what logarithms are and gives a few examples of finding logarithms.\", \"do_not_publish\": false, \"license_logo_url\": \"/images/license-logos/by-nc-sa.png\", \"progress_key\": \"v1242982964\", \"edit_slug\": \"edit/v/1242982964\", \"author_names\": [\"Sal Khan\"], \"license_full_name\": \"Creative Commons Attribution/Non-Commercial/Share-Alike\", \"license_url\": \"http://creativecommons.org/licenses/by-nc-sa/3.0\", \"deleted_mod_time\": \"2013-07-13T00:03:08Z\", \"thumbnail_data\": {\"url\": \"\", \"skip_filter\": false, \"title_text\": \"Logarithms\", \"gcs_name\": \"/ka_thumbnails/Z5myJ8dg_rM.jpg\"}, \"related_exercise_url\": \"http://www.khanacademy.org/exercise/logarithms_1.5\", \"description\": \"Sal explains what logarithms are and gives a few examples of finding logarithms.\", \"extra_properties\": null, \"node_slug\": \"v/logarithms\", \"deleted\": false, \"license_name\": \"CC BY-NC-SA (KA default)\", \"backup_timestamp\": \"2013-09-23T18:42:23Z\", \"concept_tags_info\": [{\"display_name\": \"Writing and evaluating logarithms\", \"id\": \"Tag:x9b9694b373905953\", \"slug\": \"writing-and-evaluating-logarithms\"}], \"date_added\": \"2012-12-21T00:14:51Z\", \"translated_youtube_lang\": \"en\", \"kind\": \"Video\", \"date_modified\": \"2016-03-31T01:36:24Z\", \"url\": \"http://www.youtube.com/watch?v=Z5myJ8dg_rM&feature=youtube_gdata_player\", \"clarifications_enabled\": true, \"ka_user_license\": \"cc-by-nc-sa\", \"global_id\": \"v1242982964\", \"sha\": \"d4d84ae7551f24d0c1e80ceec98c931e62fda481\", \"translated_description\": \"Sal explains what logarithms are and gives a few examples of finding logarithms.\", \"image_url\": \"https://fastly.kastatic.org/googleusercontent/_RkZoOHKtmVk5F8_teMl8HJnKuYpGcFOUu9QgleddEiix-1mZsZf4T2CRlqmZLeq2jmOuybi1N6RCIMjkLHMTO8png\", \"keywords\": \"\", \"youtube_id\": \"Z5myJ8dg_rM\", \"title\": \"Intro to logarithms\", \"content_id\": \"1242982964\", \"content_kind\": \"Video\", \"readable_id\": \"logarithms\"}]";
+
         public static readonly Exercise NamingShapesExercise = new Exercise()
         {
             IsSkillCheck = false,
@@ -684,7 +688,80 @@ namespace KhanDotNet.Tests
             NamingShapesExercise
         };
 
-        public const string SampleExercisesJson = "[" + CountingExerciseJson + ", " + NamingShapesExerciseJson + "]";
-
+        public static readonly List<Video> SampleVideos = new List<Video>()
+        {
+            new Video()
+            {
+                TranslatedYouTubeId = "Z5myJ8dg_rM",
+                RelativeUrl = new Uri("/video/logarithms", UriKind.Relative),
+                HasCustomThumbnail = true,
+                HasQuestions = false,
+                CreationDate = new DateTime(2016, 03, 02, 15, 41, 15),
+                DownloadUrls = new DownloadUrls()
+                {
+                    Mp4 = new Uri("http://fastly.kastatic.org/KA-youtube-converted/Z5myJ8dg_rM.mp4/Z5myJ8dg_rM.mp4"),
+                    M3U8 = new Uri("http://fastly.kastatic.org/KA-youtube-converted/Z5myJ8dg_rM.m3u8/Z5myJ8dg_rM.m3u8"),
+                    Png = new Uri("http://fastly.kastatic.org/KA-youtube-converted/Z5myJ8dg_rM.mp4/Z5myJ8dg_rM.png"),
+                    Mp4Low = new Uri("http://fastly.kastatic.org/KA-youtube-converted/Z5myJ8dg_rM.mp4-low/Z5myJ8dg_rM-low.mp4")
+                },
+                KaUrl = new Uri("http://www.khanacademy.org/video/logarithms"),
+                Duration = 422,
+                TranslatedTitle = "Intro to logarithms",
+                AuthorKey = "ag5zfmtoYW4tYWNhZGVteXIXCxIIVXNlckRhdGEiCVRvbWVyIEdhbAw",
+                TranslatedDescriptionHtml = "Sal explains what logarithms are and gives a few examples of finding logarithms.",
+                Id = "1242982964",
+                ConceptTags = new List<string>() { "Tag:x9b9694b373905953" },
+                DownloadSize = 4670219.0,
+                DescriptionHtml = "Sal explains what logarithms are and gives a few examples of finding logarithms.",
+                DoNotPublish = false,
+                LicenseLogoUrl = new Uri("/images/license-logos/by-nc-sa.png", UriKind.Relative),
+                ProgressKey = "v1242982964",
+                EditSlug = "edit/v/1242982964",
+                AuthorNames = new List<string>() { "Sal Khan" },
+                LicenseFullName = "Creative Commons Attribution/Non-Commercial/Share-Alike",
+                LicenseUrl = new Uri("http://creativecommons.org/licenses/by-nc-sa/3.0"),
+                DeletedModTime = new DateTime(2013, 07, 13, 00, 03, 08),
+                ThumbnailData = new ThumbnailData()
+                {
+                    Url = null,
+                    SkipFilter = false,
+                    TitleText = "Logarithms",
+                    GcsName = "/ka_thumbnails/Z5myJ8dg_rM.jpg"
+                },
+                RelatedExerciseUrl = new Uri("http://www.khanacademy.org/exercise/logarithms_1.5"),
+                Description = "Sal explains what logarithms are and gives a few examples of finding logarithms.",
+                ExtraProperties = null,
+                NodeSlug = "v/logarithms",
+                Deleted = false,
+                LicenseName = "CC BY-NC-SA (KA default)",
+                BackupTimestamp = new DateTime(2013, 09, 23, 18, 42, 23),
+                ConceptTagsInfo = new List<ConceptTag>()
+                {
+                    new ConceptTag()
+                    {
+                        DisplayName = "Writing and evaluating logarithms",
+                        Id = "Tag:x9b9694b373905953",
+                        Slug = "writing-and-evaluating-logarithms"
+                    }
+                },
+                DateAdded = new DateTime(2012, 12, 21, 00, 14, 51),
+                TranslatedYouTubeLang = "en",
+                Kind = "Video",
+                DateModified = new DateTime(2016, 03, 31, 01, 36, 24),
+                Url = new Uri("http://www.youtube.com/watch?v=Z5myJ8dg_rM&feature=youtube_gdata_player"),
+                ClarificationsEnabled = true,
+                KaUserLicense = "cc-by-nc-sa",
+                GlobalId = "v1242982964",
+                Sha = "d4d84ae7551f24d0c1e80ceec98c931e62fda481",
+                TranslatedDescription = "Sal explains what logarithms are and gives a few examples of finding logarithms.",
+                ImageUrl = new Uri("https://fastly.kastatic.org/googleusercontent/_RkZoOHKtmVk5F8_teMl8HJnKuYpGcFOUu9QgleddEiix-1mZsZf4T2CRlqmZLeq2jmOuybi1N6RCIMjkLHMTO8png"),
+                keywords = "",
+                YouTubeId = "Z5myJ8dg_rM",
+                Title = "Intro to logarithms",
+                ContentId = "1242982964",
+                ContentKind = "Video",
+                ReadableId = "logarithms"
+            }
+        };
     }
 }

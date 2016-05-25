@@ -60,12 +60,14 @@
     <Compile Include="Contract\BadgeCategory.cs" />
     <Compile Include="Contract\Category.cs" />
     <Compile Include="Contract\ConceptTag.cs" />
+    <Compile Include="Contract\DownloadUrls.cs" />
     <Compile Include="Contract\Exercise.cs" />
     <Compile Include="Contract\Icons.cs" />
     <Compile Include="Contract\Item.cs" />
     <Compile Include="Contract\ProblemType.cs" />
     <Compile Include="Contract\ThumbnailData.cs" />
     <Compile Include="Contract\TranslatedProblemType.cs" />
+    <Compile Include="Contract\Video.cs" />
     <Compile Include="ExerciseClient.cs" />
     <Compile Include="IBadgeClient.cs" />
     <Compile Include="IExerciseClient.cs" />

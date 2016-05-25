@@ -173,5 +173,50 @@ namespace KhanDotNet.Tests
         }
 
         #endregion
+
+        #region GetExerciseVideos
+
+        // TODO: verify exception message contains name of property
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public async Task GetExerciseVideosShouldThrowIfNullInput()
+        {
+            await _client.GetExerciseVideosAsync(null);
+        }
+
+        // TODO: make a handler that encodes path automatically
+        [TestMethod]
+        public async Task GetExerciseVideosShouldEncodeInput()
+        {
+            var input = "^foo&bar$";
+            var encodedInput = "%5Efoo%26bar%24";
+
+            await _client.GetExerciseVideosAsync(input);
+
+            _httpClientMock.Verify(c =>
+                c.GetAsync(It.Is<string>(url => url.ContainsIgnoreCase(encodedInput))));
+        }
+
+        [TestMethod]
+        public async Task GetExerciseVideosShouldTargetCorrectPath()
+        {
+            await _client.GetExerciseVideosAsync("foo");
+
+            _httpClientMock.Verify(c =>
+                c.GetAsync(It.Is<string>(url => url.ContainsIgnoreCase("/api/v1/exercises/foo/videos"))));
+        }
+
+        [TestMethod]
+        public async Task GetExerciseVideosShouldDeserializeResponse()
+        {
+            var expected = ExerciseTestData.SampleVideos;
+            _khanResponse.Content = new JsonContent(ExerciseTestData.SampleVideosJson);
+
+            var actual = await _client.GetExerciseVideosAsync("logarithms-1");
+
+            expected.AssertDeepEqual(actual);
+        }
+
+        #endregion
     }
 }

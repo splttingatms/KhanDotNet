@@ -48,5 +48,18 @@ namespace KhanDotNet.Library
                 return await response.Content.ReadAsAsync<List<Exercise>>();
             }
         }
+
+        public async Task<List<Video>> GetExerciseVideosAsync(string name)
+        {
+            Ensure.That(name, nameof(name)).IsNotNullOrWhiteSpace();
+
+            name = HttpUtility.UrlEncode(name);
+            var path = "http://www.khanacademy.org/api/v1/exercises/{0}/videos".F(name);
+
+            using (var response = await _httpClient.GetAsync(path))
+            {
+                return await response.Content.ReadAsAsync<List<Video>>();
+            }
+        }
     }
 }
