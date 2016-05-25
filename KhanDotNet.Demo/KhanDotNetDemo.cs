@@ -17,6 +17,7 @@ namespace KhanDotNet.Demo
             AddPage(new ResourcePage(this));
             AddPage(new BadgePage(this, _client));
             AddPage(new ExercisePage(this, _client));
+            AddPage(new TopicPage(this, _client));
 
             SetPage<ResourcePage>();
         }

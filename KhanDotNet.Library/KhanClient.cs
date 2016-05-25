@@ -10,22 +10,26 @@ namespace KhanDotNet.Library
             var innerClient = DisposableUtilities.SafeCreate<HttpClientWithValidator>();
             Initialize(
                 new BadgeClient(innerClient),
-                new ExerciseClient(innerClient));
+                new ExerciseClient(innerClient),
+                new TopicClient(innerClient));
         }
 
-        public KhanClient(IBadgeClient badgeClient, IExerciseClient exerciseClient)
+        public KhanClient(IBadgeClient badgeClient, IExerciseClient exerciseClient, ITopicClient topicClient)
         {
-            Initialize(badgeClient, exerciseClient);
+            Initialize(badgeClient, exerciseClient, topicClient);
         }
 
         public IBadgeClient Badges { get; private set; }
 
         public IExerciseClient Exercises { get; private set; }
 
-        private void Initialize(IBadgeClient badgeClient, IExerciseClient exerciseClient)
+        public ITopicClient Topics { get; private set; }
+
+        private void Initialize(IBadgeClient badgeClient, IExerciseClient exerciseClient, ITopicClient topicClient)
         {
             Badges = badgeClient;
             Exercises = exerciseClient;
+            Topics = topicClient;
         }
 
         public void Dispose()

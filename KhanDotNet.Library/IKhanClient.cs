@@ -7,5 +7,7 @@ namespace KhanDotNet.Library
         IBadgeClient Badges { get; }
 
         IExerciseClient Exercises { get; }
+
+        ITopicClient Topics { get; }
     }
 }
