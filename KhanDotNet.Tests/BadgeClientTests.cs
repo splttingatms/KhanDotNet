@@ -2,6 +2,7 @@
 using KhanDotNet.Library.Contract;
 using KhanDotNet.Library.Utilities;
 using KhanDotNet.Tests.Data;
+using KhanDotNet.Tests.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Newtonsoft.Json;

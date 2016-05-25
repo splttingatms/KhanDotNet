@@ -1,7 +1,7 @@
 ﻿using KellermanSoftware.CompareNetObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace KhanDotNet.Tests
+namespace KhanDotNet.Tests.Utilities
 {
     public static class TestExtensions
     {

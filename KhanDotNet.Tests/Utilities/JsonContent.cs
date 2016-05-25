@@ -2,7 +2,7 @@
 using System.Net.Http;
 using System.Text;
 
-namespace KhanDotNet.Tests
+namespace KhanDotNet.Tests.Utilities
 {
     class JsonContent : StringContent
     {
