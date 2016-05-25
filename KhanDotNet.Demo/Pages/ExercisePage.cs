@@ -1,5 +1,4 @@
-﻿using System;
-using EasyConsole;
+﻿using EasyConsole;
 using KhanDotNet.Demo.Utilities;
 using KhanDotNet.Library;
 
@@ -12,8 +11,8 @@ namespace KhanDotNet.Demo.Pages
         public ExercisePage(Program program, IKhanClient client)
             : base("Exercises", program)
         {
-            // TODO: add GetExercises
-            Menu.Add("Get exercise", GetExercisesCallback);
+            Menu.Add("Get exercises", GetExercisesCallback);
+            Menu.Add("Get exercise", GetExerciseCallback);
             Menu.Add("Get follow-up exercises", GetFollowUpExercisesCallback);
             Menu.Add("Get exercise videos", GetExerciseVideosCallback);
 
@@ -21,6 +20,12 @@ namespace KhanDotNet.Demo.Pages
         }
 
         private void GetExercisesCallback()
+        {
+            var exercises = _client.Exercises.GetExercisesAsync().Result;
+            OutputHelper.Success(exercises);
+        }
+
+        private void GetExerciseCallback()
         {
             var input = Input.ReadString("Enter exercise name:");
 
