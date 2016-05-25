@@ -126,6 +126,45 @@ namespace KhanDotNet.Tests
             expected.AssertDeepEqual(actual);
         }
 
+        #endregion
+
+        #region GetTopicVideos
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public async Task GetTopicVideosShouldThrowIfNullInput()
+        {
+            await _client.GetTopicVideosAsync(null);
+        }
+
+        [TestMethod]
+        public async Task GetTopicVideosShouldTargetCorrectPath()
+        {
+            await _client.GetTopicVideosAsync("root");
+            _httpClientMock.Verify(c =>
+                c.GetAsync(It.Is<string>(url => url.ContainsIgnoreCase("/api/v1/topic/root/videos"))));
+        }
+
+        [TestMethod]
+        public async Task GetTopicVideosShouldUrlEncodeInput()
+        {
+            var input = "^foo&bar$";
+            var encodedInput = "%5Efoo%26bar%24";
+
+            await _client.GetTopicVideosAsync(input);
+            _httpClientMock.Verify(c => c.GetAsync(It.Is<string>(url => url.ContainsIgnoreCase(encodedInput))));
+        }
+
+        [TestMethod]
+        public async Task GetTopicVideosShouldReturnDeserializedResponse()
+        {
+            var expected = TopicTestData.SampleTopicVideos;
+            _khanResponse.Content = new JsonContent(TopicTestData.SampleTopicVideosJson);
+
+            var actual = await _client.GetTopicVideosAsync("root");
+
+            expected.AssertDeepEqual(actual);
+        }
 
         #endregion
     }

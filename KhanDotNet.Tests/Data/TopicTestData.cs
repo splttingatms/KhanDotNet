@@ -11,6 +11,9 @@ namespace KhanDotNet.Tests.Data
         // TODO: verify contract - Khan API returns empty list for all topics
         public const string SampleTopicExercisesJson = "[]";
 
+        // TODO: verify contract - Khan API returns empty list for all topics
+        public const string SampleTopicVideosJson = "[]";
+
         public static readonly Topic SampleTopic = new Topic()
         {
             IconSrc = null,
@@ -102,5 +105,7 @@ namespace KhanDotNet.Tests.Data
         };
 
         public static readonly List<Exercise> SampleTopicExercises = new List<Exercise>();
+
+        public static readonly List<Video> SampleTopicVideos = new List<Video>();
     }
 }

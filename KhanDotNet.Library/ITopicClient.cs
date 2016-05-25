@@ -10,5 +10,7 @@ namespace KhanDotNet.Library
         Task<Topic> GetTopicAsync(string slug);
 
         Task<List<Exercise>> GetTopicExercisesAsync(string slug);
+
+        Task<List<Video>> GetTopicVideosAsync(string slug);
     }
 }
