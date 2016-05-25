@@ -11,12 +11,13 @@ namespace KhanDotNet.Library
             Initialize(
                 new BadgeClient(innerClient),
                 new ExerciseClient(innerClient),
-                new TopicClient(innerClient));
+                new TopicClient(innerClient),
+                new TopicTreeClient(innerClient));
         }
 
-        public KhanClient(IBadgeClient badgeClient, IExerciseClient exerciseClient, ITopicClient topicClient)
+        public KhanClient(IBadgeClient badgeClient, IExerciseClient exerciseClient, ITopicClient topicClient, ITopicTreeClient topicTreeClient)
         {
-            Initialize(badgeClient, exerciseClient, topicClient);
+            Initialize(badgeClient, exerciseClient, topicClient, topicTreeClient);
         }
 
         public IBadgeClient Badges { get; private set; }
@@ -25,11 +26,14 @@ namespace KhanDotNet.Library
 
         public ITopicClient Topics { get; private set; }
 
-        private void Initialize(IBadgeClient badgeClient, IExerciseClient exerciseClient, ITopicClient topicClient)
+        public ITopicTreeClient TopicTree { get; private set; }
+
+        private void Initialize(IBadgeClient badgeClient, IExerciseClient exerciseClient, ITopicClient topicClient, ITopicTreeClient topicTreeClient)
         {
             Badges = badgeClient;
             Exercises = exerciseClient;
             Topics = topicClient;
+            TopicTree = topicTreeClient;
         }
 
         public void Dispose()
@@ -47,6 +51,12 @@ namespace KhanDotNet.Library
 
                 Exercises?.Dispose();
                 Exercises = null;
+
+                Topics?.Dispose();
+                Topics = null;
+
+                TopicTree?.Dispose();
+                TopicTree = null;
             }
         }
     }

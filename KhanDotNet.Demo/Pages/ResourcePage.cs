@@ -10,6 +10,7 @@ namespace KhanDotNet.Demo.Pages
             Menu.Add("Badges", () => program.NavigateTo<BadgePage>());
             Menu.Add("Exercises", () => program.NavigateTo<ExercisePage>());
             Menu.Add("Topics", () => program.NavigateTo<TopicPage>());
+            Menu.Add("Topic Tree", () => program.NavigateTo<TopicTreePage>());
         }
     }
 }

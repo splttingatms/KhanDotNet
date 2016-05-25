@@ -9,5 +9,7 @@ namespace KhanDotNet.Library
         IExerciseClient Exercises { get; }
 
         ITopicClient Topics { get; }
+
+        ITopicTreeClient TopicTree { get; }
     }
 }

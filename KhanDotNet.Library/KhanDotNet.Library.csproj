@@ -77,7 +77,9 @@
     <Compile Include="IBadgeClient.cs" />
     <Compile Include="IExerciseClient.cs" />
     <Compile Include="ITopicClient.cs" />
+    <Compile Include="ITopicTreeClient.cs" />
     <Compile Include="TopicClient.cs" />
+    <Compile Include="TopicTreeClient.cs" />
     <Compile Include="Utilities\DisposableUtilities.cs" />
     <Compile Include="IKhanClient.cs" />
     <Compile Include="KhanClient.cs" />

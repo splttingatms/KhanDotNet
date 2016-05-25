@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace KhanDotNet.Library.Utilities
 {
+    // TODO: move to nuget package
     public interface IHttpClient : IDisposable
     {
         Uri BaseAddress { get; set; }
