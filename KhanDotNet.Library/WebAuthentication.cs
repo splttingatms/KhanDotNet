@@ -1,8 +1,10 @@
-﻿using OAuth;
+﻿using EnsureThat;
+using OAuth;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Formatting;
+using System.Security.Principal;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -61,6 +63,12 @@ namespace KhanDotNet.Library
 
         private async Task<OAuthAuthorizedToken> AuthorizeRequestToken(OAuthToken requestToken)
         {
+            // TODO: pull request WithExtraMessageOf should take in a string
+            var isElevated = new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator);
+            Ensure.That(isElevated, nameof(isElevated))
+                .WithExtraMessageOf(() => "Must run with administrator privileges to start server")
+                .IsTrue();
+
             OAuthAuthorizedToken authorizedRequestToken;
 
             // open browser to allow user to accept access
@@ -70,7 +78,6 @@ namespace KhanDotNet.Library
             proc.Start();
 
             // start server to listen for callback when user accepts access
-            // TODO: ensure that VS has admin access for HttpListener
             using (var server = new HttpListener())
             {
                 server.Prefixes.Add("http://*:1895/");
