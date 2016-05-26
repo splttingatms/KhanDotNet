@@ -11,6 +11,7 @@ namespace KhanDotNet.Demo.Pages
             Menu.Add("Exercises", () => program.NavigateTo<ExercisePage>());
             Menu.Add("Topics", () => program.NavigateTo<TopicPage>());
             Menu.Add("Topic Tree", () => program.NavigateTo<TopicTreePage>());
+            Menu.Add("Users", () => program.NavigateTo<UserPage>());
         }
     }
 }

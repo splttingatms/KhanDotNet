@@ -71,10 +71,12 @@
     <Compile Include="Data\BadgeTestData.cs" />
     <Compile Include="Data\TopicTestData.cs" />
     <Compile Include="Data\TopicTreeTestData.cs" />
+    <Compile Include="Data\UserTestData.cs" />
     <Compile Include="EnsureSuccessHandlerTests.cs" />
     <Compile Include="Data\ExerciseTestData.cs" />
     <Compile Include="TopicClientTests.cs" />
     <Compile Include="TopicTreeClientTests.cs" />
+    <Compile Include="UserClientTests.cs" />
     <Compile Include="Utilities\JsonContent.cs" />
     <Compile Include="ExerciseClientTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

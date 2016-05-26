@@ -6,18 +6,27 @@ namespace KhanDotNet.Library
     public class KhanClient : IKhanClient
     {
         public KhanClient()
+            : this(authenticator: null, credentials: null)
+        {
+        }
+
+        public KhanClient(IAuthentication authenticator, ConsumerCredentials credentials)
         {
             var innerClient = DisposableUtilities.SafeCreate<HttpClientWithValidator>();
             Initialize(
                 new BadgeClient(innerClient),
                 new ExerciseClient(innerClient),
                 new TopicClient(innerClient),
-                new TopicTreeClient(innerClient));
+                new TopicTreeClient(innerClient),
+                new UserClient(innerClient, authenticator, credentials));
         }
 
-        public KhanClient(IBadgeClient badgeClient, IExerciseClient exerciseClient, ITopicClient topicClient, ITopicTreeClient topicTreeClient)
+        public KhanClient(
+            IBadgeClient badgeClient, IExerciseClient exerciseClient, 
+            ITopicClient topicClient, ITopicTreeClient topicTreeClient,
+            IUserClient userClient)
         {
-            Initialize(badgeClient, exerciseClient, topicClient, topicTreeClient);
+            Initialize(badgeClient, exerciseClient, topicClient, topicTreeClient, userClient);
         }
 
         public IBadgeClient Badges { get; private set; }
@@ -28,12 +37,18 @@ namespace KhanDotNet.Library
 
         public ITopicTreeClient TopicTree { get; private set; }
 
-        private void Initialize(IBadgeClient badgeClient, IExerciseClient exerciseClient, ITopicClient topicClient, ITopicTreeClient topicTreeClient)
+        public IUserClient Users { get; private set; }
+
+        private void Initialize(
+            IBadgeClient badgeClient, IExerciseClient exerciseClient, 
+            ITopicClient topicClient, ITopicTreeClient topicTreeClient,
+            IUserClient userClient)
         {
             Badges = badgeClient;
             Exercises = exerciseClient;
             Topics = topicClient;
             TopicTree = topicTreeClient;
+            Users = userClient;
         }
 
         public void Dispose()
@@ -57,6 +72,9 @@ namespace KhanDotNet.Library
 
                 TopicTree?.Dispose();
                 TopicTree = null;
+
+                Users?.Dispose();
+                Users = null;
             }
         }
     }

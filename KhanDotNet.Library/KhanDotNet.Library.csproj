@@ -39,6 +39,10 @@
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="OAuth, Version=1.0.0.0, Culture=neutral, PublicKeyToken=75b3c62967edc2a2, processorArchitecture=MSIL">
+      <HintPath>..\packages\OAuth.1.0.3\lib\net40\OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -56,6 +60,7 @@
   <ItemGroup>
     <Compile Include="BadgeClient.cs" />
     <Compile Include="BaseClient.cs" />
+    <Compile Include="ConsumerCredentials.cs" />
     <Compile Include="Contract\Badge.cs" />
     <Compile Include="Contract\BadgeCategory.cs" />
     <Compile Include="Contract\Category.cs" />
@@ -65,6 +70,7 @@
     <Compile Include="Contract\Curation.cs" />
     <Compile Include="Contract\DownloadUrls.cs" />
     <Compile Include="Contract\Exercise.cs" />
+    <Compile Include="Contract\Student.cs" />
     <Compile Include="Contract\Icons.cs" />
     <Compile Include="Contract\Item.cs" />
     <Compile Include="Contract\PerseusExercise.cs" />
@@ -72,14 +78,21 @@
     <Compile Include="Contract\ThumbnailData.cs" />
     <Compile Include="Contract\Topic.cs" />
     <Compile Include="Contract\TranslatedProblemType.cs" />
+    <Compile Include="Contract\User.cs" />
     <Compile Include="Contract\Video.cs" />
     <Compile Include="ExerciseClient.cs" />
+    <Compile Include="IAuthentication.cs" />
     <Compile Include="IBadgeClient.cs" />
     <Compile Include="IExerciseClient.cs" />
     <Compile Include="ITopicClient.cs" />
     <Compile Include="ITopicTreeClient.cs" />
+    <Compile Include="IUserClient.cs" />
+    <Compile Include="OAuthAuthorizedToken.cs" />
+    <Compile Include="OAuthToken.cs" />
+    <Compile Include="StaticAuthentication.cs" />
     <Compile Include="TopicClient.cs" />
     <Compile Include="TopicTreeClient.cs" />
+    <Compile Include="UserClient.cs" />
     <Compile Include="Utilities\DisposableUtilities.cs" />
     <Compile Include="IKhanClient.cs" />
     <Compile Include="KhanClient.cs" />
@@ -90,6 +103,7 @@
     <Compile Include="Utilities\StringExtensions.cs" />
     <Compile Include="Utilities\HttpClientWrapper.cs" />
     <Compile Include="Utilities\IHttpClient.cs" />
+    <Compile Include="WebAuthentication.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">

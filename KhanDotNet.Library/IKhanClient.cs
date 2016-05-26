@@ -11,5 +11,7 @@ namespace KhanDotNet.Library
         ITopicClient Topics { get; }
 
         ITopicTreeClient TopicTree { get; }
+
+        IUserClient Users { get; }
     }
 }
