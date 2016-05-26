@@ -22,7 +22,7 @@ namespace KhanDotNet.Library
             slug = HttpUtility.UrlEncode(slug);
             var path = "http://www.khanacademy.com/api/v1/topic/{0}".F(slug);
 
-            // TODO: use cancellation token for long running operations
+            // TODO 1: use cancellation token for long running operations
             using (var response = await _httpClient.GetAsync(path))
             {
                 return await response.Content.ReadAsAsync<Topic>();

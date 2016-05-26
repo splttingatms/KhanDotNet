@@ -27,7 +27,7 @@ namespace KhanDotNet.Library.Contract
         [JsonProperty("spawned_by_kaid")]
         public object SpawnedByKaId { get; set; }
 
-        // TODO: map to custom datetime format
+        // TODO 3: map to custom datetime format
         [JsonProperty("tos_accepted")]
         public string TosAccepted { get; set; }
 

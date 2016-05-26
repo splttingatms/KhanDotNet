@@ -2,7 +2,7 @@
 
 namespace KhanDotNet.Library.Utilities
 {
-    // TODO: verify visiblity of utility classes
+    // TODO 2: verify visiblity of utility classes
     public class NonSuccessStatusCodeException : HttpRequestException
     {
         public HttpResponseMessage Response { get; private set; }

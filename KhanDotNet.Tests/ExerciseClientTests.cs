@@ -177,7 +177,7 @@ namespace KhanDotNet.Tests
 
         #region GetExerciseVideos
 
-        // TODO: verify exception message contains name of property
+        // TODO 2: verify exception message contains name of property
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public async Task GetExerciseVideosShouldThrowIfNullInput()

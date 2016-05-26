@@ -20,14 +20,14 @@ namespace KhanDotNet.Library
             Credentials = credentials;
         }
 
-        // TODO: add tests
+        // TODO 1: add tests
         public async Task<OAuthToken> GetAccessTokenAsync()
         {
             var requestToken = await GetRequestTokenAsync();
             var authorizedRequestToken = await AuthorizeRequestToken(requestToken);
             var accessToken = await ExchangeForAccessToken(authorizedRequestToken);
 
-            // TODO: add listeners in Demo
+            // TODO 1: add listeners in Demo
             Trace.TraceInformation("Access Token: {0}", accessToken);
 
             return accessToken;
@@ -37,7 +37,7 @@ namespace KhanDotNet.Library
         {
             OAuthToken requestToken;
 
-            // TODO: create a pull request to add RequestURL param to method, since it is required
+            // TODO 3: create a pull request to add RequestURL param to method, since it is required
             var oauthPreparer = OAuthRequest.ForRequestToken(
                 Credentials.Key, Credentials.Secret, callbackUrl: "http://localhost:1895");
             oauthPreparer.RequestUrl = "https://www.khanacademy.org/api/auth2/request_token";
@@ -48,7 +48,7 @@ namespace KhanDotNet.Library
                 using (var response = await client.GetAsync(path))
                 {
                     var body = (response.Content != null) ? await response.Content.ReadAsStringAsync() : "";
-                    // TODO: This would be nice except for the fact that there is no easy way to customize the parameter binding name
+                    // TODO 2: This would be nice except for the fact that there is no easy way to customize the parameter binding name
                     //// find out how to do var value = response.Content.ReadAsAsync<OAuthResponseToken>();
                     //// var foo = new System.Net.Http.Formatting.FormDataCollection(body).ReadAs<OAuthResponseToken>();
                     var value = new FormDataCollection(body).ReadAsNameValueCollection();
@@ -63,7 +63,7 @@ namespace KhanDotNet.Library
 
         private async Task<OAuthAuthorizedToken> AuthorizeRequestToken(OAuthToken requestToken)
         {
-            // TODO: pull request WithExtraMessageOf should take in a string
+            // TODO 3: pull request WithExtraMessageOf should take in a string
             var isElevated = new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator);
             Ensure.That(isElevated, nameof(isElevated))
                 .WithExtraMessageOf(() => "Must run with administrator privileges to start server")

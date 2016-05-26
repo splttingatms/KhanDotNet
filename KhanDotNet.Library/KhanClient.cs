@@ -12,7 +12,7 @@ namespace KhanDotNet.Library
 
         public KhanClient(IAuthentication authenticator, ConsumerCredentials credentials)
         {
-            // TODO: create HttpClientFactory but for IHttpClient
+            // TODO 2: create HttpClientFactory but for IHttpClient
             var innerClient = DisposableUtilities.SafeCreate<HttpClientWithValidator>();
             Initialize(
                 new BadgeClient(innerClient),

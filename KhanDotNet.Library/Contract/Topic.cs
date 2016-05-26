@@ -57,7 +57,7 @@ namespace KhanDotNet.Library.Contract
         [JsonProperty("child_data")]
         public List<ChildData> ChildData { get; set; }
 
-        // TODO: verify contract
+        // TODO 3: verify contract
         [JsonProperty("user_authored_content_types_info")]
         public List<object> UserAuthoredContentTypesInfo { get; set; }
 

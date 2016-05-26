@@ -26,7 +26,7 @@ namespace KhanDotNet.Tests
 
         private IUserClient _client;
 
-        // TODO: move common test code to base test class
+        // TODO 3: move common test code to base test class
         [TestInitialize]
         public void Initialize()
         {
@@ -65,7 +65,7 @@ namespace KhanDotNet.Tests
 
         #region GetUser
 
-        // TODO: verify message contains param name
+        // TODO 2: verify message contains param name
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public async Task GetUserShouldThrowIfNoAuthenticatorWasGiven()

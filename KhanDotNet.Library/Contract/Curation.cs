@@ -2,7 +2,7 @@
 
 namespace KhanDotNet.Library.Contract
 {
-    // TODO: verify contract
+    // TODO 3: verify contract
     public class Curation
     {
         public override string ToString()

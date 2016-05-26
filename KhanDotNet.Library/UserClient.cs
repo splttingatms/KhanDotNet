@@ -23,13 +23,13 @@ namespace KhanDotNet.Library
         public async Task<User> GetUserAsync()
         {
             // authenticated API calls require authentication
-            // TODO: add custom message saying this is an authenticated API
+            // TODO 1: add custom message saying this is an authenticated API
             Ensure.That(Authenticator, nameof(Authenticator)).IsNotNull();
             Ensure.That(Credentials, nameof(Credentials)).IsNotNull();
 
             var accessToken = await Authenticator.GetAccessTokenAsync();
 
-            // TODO: move endpoint to constants file
+            // TODO 2: move endpoint to constants file
             var req = OAuthRequest.ForProtectedResource("GET", Credentials.Key, Credentials.Secret, accessToken.Token, accessToken.Secret);
             req.RequestUrl = "https://www.khanacademy.org/api/v1/user";
 

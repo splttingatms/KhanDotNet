@@ -84,7 +84,7 @@ namespace KhanDotNet.Library.Contract
         [JsonProperty("description")]
         public string Description { get; set; }
 
-        // TODO: find what contract this follows
+        // TODO 3: find what contract this follows
         [JsonProperty("extra_properties")]
         public object ExtraProperties { get; set; }
 
@@ -136,7 +136,7 @@ namespace KhanDotNet.Library.Contract
         [JsonProperty("image_url")]
         public Uri ImageUrl { get; set; }
 
-        // TODO: verify this is not an array
+        // TODO 3: verify this is not an array
         [JsonProperty("keywords")]
         public string keywords { get; set; }
 

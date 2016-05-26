@@ -14,7 +14,7 @@ namespace KhanDotNet.Demo
         public KhanDotNetDemo()
             : base("KhanDotNet Demo", true)
         {
-            // TODO: allow developer to not specify consumer cred and only use public APIs
+            // TODO 1: allow developer to not specify consumer cred and only use public APIs
             var credentials = GetConsumerCredentials();
             var authenticator = GetAuthenticator(credentials);
             _client = new KhanClient(authenticator, credentials);
