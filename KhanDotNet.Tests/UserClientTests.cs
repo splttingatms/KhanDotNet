@@ -7,6 +7,7 @@ using Moq;
 using System;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace KhanDotNet.Tests
@@ -38,7 +39,7 @@ namespace KhanDotNet.Tests
 
             _httpClientMock = new Mock<IHttpClient>();
             _httpClientMock
-                .Setup(c => c.GetAsync(It.IsAny<string>()))
+                .Setup(c => c.GetAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(_khanResponse);
 
             _accessToken = new OAuthToken("fakeToken", "fakeSecret");
@@ -93,8 +94,9 @@ namespace KhanDotNet.Tests
         {
             await _client.GetUserAsync();
 
-            _httpClientMock.Verify(c =>
-                c.GetAsync(It.Is<string>(url => url.ContainsIgnoreCase("/api/v1/user"))));
+            _httpClientMock.Verify(c => c.GetAsync(
+                It.Is<string>(url => url.ContainsIgnoreCase("/api/v1/user")),
+                It.IsAny<CancellationToken>()));
         }
 
         [TestMethod]
@@ -105,14 +107,15 @@ namespace KhanDotNet.Tests
             // request must contains parameters specified in documentation
             // https://github.com/Khan/khan-api/wiki/Khan-Academy-API-Authentication#4-make-an-authenticated-api-call
             // NOTE: "oauth_token" is not actually required!
-            _httpClientMock.Verify(c =>
-                c.GetAsync(It.Is<string>(url =>
+            _httpClientMock.Verify(c => c.GetAsync(
+                It.Is<string>(url =>
                     url.ContainsIgnoreCase("oauth_consumer_key") &&
                     url.ContainsIgnoreCase("oauth_nonce") &&
                     url.ContainsIgnoreCase("oauth_version") &&
                     url.ContainsIgnoreCase("oauth_signature") &&
                     url.ContainsIgnoreCase("oauth_signature_method") &&
-                    url.ContainsIgnoreCase("oauth_timestamp"))));
+                    url.ContainsIgnoreCase("oauth_timestamp")),
+                It.IsAny<CancellationToken>()));
         }
         
         [TestMethod]
@@ -124,6 +127,32 @@ namespace KhanDotNet.Tests
             var actual = await _client.GetUserAsync();
 
             expected.AssertDeepEqual(actual);
+        }
+
+        [TestMethod]
+        public async Task GetUserShouldPassThroughTokenToHttpClient()
+        {
+            var expectedToken = new CancellationToken(true);
+
+            await _client.GetUserAsync(expectedToken);
+
+            _httpClientMock.Verify(c =>
+                c.GetAsync(
+                    It.IsAny<string>(),
+                    It.Is<CancellationToken>(actualToken => actualToken.Equals(expectedToken))));
+        }
+
+        [TestMethod]
+        public async Task GetUserShouldPassEmptyTokenToHttpClient()
+        {
+            var expectedToken = CancellationToken.None;
+
+            await _client.GetUserAsync();
+
+            _httpClientMock.Verify(c =>
+                c.GetAsync(
+                    It.IsAny<string>(),
+                    It.Is<CancellationToken>(actualToken => actualToken.Equals(expectedToken))));
         }
 
         #endregion

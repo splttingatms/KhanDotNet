@@ -3,6 +3,7 @@ using KhanDotNet.Library.Utilities;
 using OAuth;
 using System;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace KhanDotNet.Library
@@ -22,6 +23,11 @@ namespace KhanDotNet.Library
 
         public async Task<User> GetUserAsync()
         {
+            return await GetUserAsync(CancellationToken.None);
+        }
+
+        public async Task<User> GetUserAsync(CancellationToken cancellationToken)
+        {
             if (Authenticator == null) throw new InvalidOperationException("Authenticated APIs require an authenticator");
             if (Credentials == null) throw new InvalidOperationException("Authenticated APIs require consumer credentials");
 
@@ -32,9 +38,9 @@ namespace KhanDotNet.Library
             req.RequestUrl = "https://www.khanacademy.org/api/v1/user";
 
             var path = "https://www.khanacademy.org/api/v1/user" + "?" + req.GetAuthorizationQuery();
-            using (var response = await _httpClient.GetAsync(path))
+            using (var response = await _httpClient.GetAsync(path, cancellationToken))
             {
-                return await response.Content.ReadAsAsync<User>();
+                return await response.Content.ReadAsAsync<User>(cancellationToken);
             }
         }
     }
