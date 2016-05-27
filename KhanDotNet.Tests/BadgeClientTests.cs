@@ -101,8 +101,17 @@ namespace KhanDotNet.Tests
 
         #endregion
 
-        // TODO 1: add test to verify targets correct API path
         #region GetBadgeCategories
+
+        [TestMethod]
+        public async Task GetBadgeCategoriesShouldTargetCorrectPath()
+        {
+            await _client.GetBadgeCategoriesAsync();
+
+            _httpClientMock.Verify(c => c.GetAsync(
+                It.Is<string>(url => url.ContainsIgnoreCase("/api/v1/badges/categories")),
+                It.IsAny<CancellationToken>()));
+        }
 
         [TestMethod]
         public async Task GetBadgeCategoriesShouldReturnDeserializedCategories()
