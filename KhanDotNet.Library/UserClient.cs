@@ -31,7 +31,7 @@ namespace KhanDotNet.Library
             if (Authenticator == null) throw new InvalidOperationException("Authenticated APIs require an authenticator");
             if (Credentials == null) throw new InvalidOperationException("Authenticated APIs require consumer credentials");
 
-            var accessToken = await Authenticator.GetAccessTokenAsync();
+            var accessToken = await Authenticator.GetAccessTokenAsync(cancellationToken);
 
             // TODO 2: move endpoint to constants file
             var req = OAuthRequest.ForProtectedResource("GET", Credentials.Key, Credentials.Secret, accessToken.Token, accessToken.Secret);

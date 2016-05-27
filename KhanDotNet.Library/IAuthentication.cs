@@ -1,10 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 namespace KhanDotNet.Library
 {
     public interface IAuthentication
     {
-        // TODO 1: add cancellation token
-        Task<OAuthToken> GetAccessTokenAsync();
+        Task<OAuthToken> GetAccessTokenAsync(CancellationToken cancellationToken);
     }
 }

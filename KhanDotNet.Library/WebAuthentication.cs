@@ -21,18 +21,18 @@ namespace KhanDotNet.Library
         }
 
         // TODO 1: add tests
-        public async Task<OAuthToken> GetAccessTokenAsync()
+        public async Task<OAuthToken> GetAccessTokenAsync(CancellationToken cancellationToken)
         {
-            var requestToken = await GetRequestTokenAsync();
-            var authorizedRequestToken = await AuthorizeRequestToken(requestToken);
-            var accessToken = await ExchangeForAccessToken(authorizedRequestToken);
+            var requestToken = await GetRequestTokenAsync(cancellationToken);
+            var authorizedRequestToken = await AuthorizeRequestToken(requestToken, cancellationToken);
+            var accessToken = await ExchangeForAccessToken(authorizedRequestToken, cancellationToken);
 
             Trace.TraceInformation("Access Token: {0}", accessToken);
 
             return accessToken;
         }
 
-        private async Task<OAuthToken> GetRequestTokenAsync()
+        private async Task<OAuthToken> GetRequestTokenAsync(CancellationToken cancellationToken)
         {
             OAuthToken requestToken;
 
@@ -44,7 +44,7 @@ namespace KhanDotNet.Library
             using (var client = new HttpClient())
             {
                 var path = "https://www.khanacademy.org/api/auth2/request_token" + "?" + oauthPreparer.GetAuthorizationQuery();
-                using (var response = await client.GetAsync(path))
+                using (var response = await client.GetAsync(path, cancellationToken))
                 {
                     var body = (response.Content != null) ? await response.Content.ReadAsStringAsync() : "";
                     // TODO 2: This would be nice except for the fact that there is no easy way to customize the parameter binding name
@@ -60,8 +60,10 @@ namespace KhanDotNet.Library
             return requestToken;
         }
 
-        private async Task<OAuthAuthorizedToken> AuthorizeRequestToken(OAuthToken requestToken)
+        private async Task<OAuthAuthorizedToken> AuthorizeRequestToken(OAuthToken requestToken, CancellationToken cancellationToken)
         {
+            cancellationToken.ThrowIfCancellationRequested();
+
             // TODO 3: pull request WithExtraMessageOf should take in a string
             var isElevated = new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator);
             Ensure.That(isElevated, nameof(isElevated))
@@ -104,7 +106,7 @@ namespace KhanDotNet.Library
             return authorizedRequestToken;
         }
 
-        private async Task<OAuthToken> ExchangeForAccessToken(OAuthAuthorizedToken authorizedRequestToken)
+        private async Task<OAuthToken> ExchangeForAccessToken(OAuthAuthorizedToken authorizedRequestToken, CancellationToken cancellationToken)
         {
             OAuthToken accessToken;
 
@@ -115,7 +117,7 @@ namespace KhanDotNet.Library
             using (var client = new HttpClient())
             {
                 var path = "https://www.khanacademy.org/api/auth2/access_token" + "?" + accessTokenRequest.GetAuthorizationQuery();
-                using (var response = await client.GetAsync(path))
+                using (var response = await client.GetAsync(path, cancellationToken))
                 {
                     var body = await response.Content.ReadAsStringAsync();
                     var value = new FormDataCollection(body).ReadAsNameValueCollection();

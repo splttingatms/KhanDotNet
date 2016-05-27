@@ -1,24 +1,21 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 namespace KhanDotNet.Library
 {
     public class StaticAuthentication : IAuthentication
     {
-        public string AccessToken { get; set; }
-
-        public string AccessTokenSecret { get; set; }
+        public OAuthToken AccessToken { get; set; }
 
         public StaticAuthentication(string accessToken, string accessTokenSecret)
         {
-            AccessToken = accessToken;
-            AccessTokenSecret = accessTokenSecret;
+            AccessToken = new OAuthToken(accessToken, accessTokenSecret);
         }
 
-        public Task<OAuthToken> GetAccessTokenAsync()
+        public Task<OAuthToken> GetAccessTokenAsync(CancellationToken cancellationToken)
         {
-            var accessToken = new OAuthToken(AccessToken, AccessTokenSecret);
-
-            return Task.FromResult(accessToken);
+            cancellationToken.ThrowIfCancellationRequested();
+            return Task.FromResult(AccessToken);
         }
     }
 }

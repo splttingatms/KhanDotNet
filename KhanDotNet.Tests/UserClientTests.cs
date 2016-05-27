@@ -46,7 +46,7 @@ namespace KhanDotNet.Tests
 
             _authenticator = new Mock<IAuthentication>();
             _authenticator
-                .Setup(c => c.GetAccessTokenAsync())
+                .Setup(c => c.GetAccessTokenAsync(It.IsAny<CancellationToken>()))
                 .ReturnsAsync(_accessToken);
 
             _credentials = new ConsumerCredentials("fakeKey", "fakeSecret");
@@ -86,7 +86,7 @@ namespace KhanDotNet.Tests
         public async Task GetUserShouldRequestAccessToken()
         {
             await _client.GetUserAsync();
-            _authenticator.Verify(a => a.GetAccessTokenAsync(), Times.Once);
+            _authenticator.Verify(a => a.GetAccessTokenAsync(It.IsAny<CancellationToken>()), Times.Once);
         }
 
         [TestMethod]
