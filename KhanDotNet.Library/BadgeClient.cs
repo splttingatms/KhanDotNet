@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Linq;
+using System.Threading;
 
 namespace KhanDotNet.Library
 {
@@ -14,30 +15,46 @@ namespace KhanDotNet.Library
         {
         }
 
-        public async Task<List<BadgeCategory>> GetBadgeCategoriesAsync()
+        public async Task<List<Badge>> GetBadgesAsync()
         {
-            using (var response = await _httpClient.GetAsync("http://khanacademy.org/api/v1/badges/categories"))
+            return await GetBadgesAsync(CancellationToken.None);
+        }
+
+        public async Task<List<Badge>> GetBadgesAsync(CancellationToken cancellationToken)
+        {
+            var path = "http://www.khanacademy.org/api/v1/badges";
+            using (var response = await _httpClient.GetAsync(path, cancellationToken))
             {
-                return await response.Content.ReadAsAsync<List<BadgeCategory>>();
+                return await response.Content.ReadAsAsync<List<Badge>>(cancellationToken);
             }
         }
 
-        public async Task<List<Badge>> GetBadgesAsync()
+        public async Task<List<BadgeCategory>> GetBadgeCategoriesAsync()
         {
-            using (var response = await _httpClient.GetAsync("http://www.khanacademy.org/api/v1/badges"))
+            return await GetBadgeCategoriesAsync(CancellationToken.None);
+        }
+
+        public async Task<List<BadgeCategory>> GetBadgeCategoriesAsync(CancellationToken cancellationToken)
+        {
+            var path = "http://khanacademy.org/api/v1/badges/categories";
+            using (var response = await _httpClient.GetAsync(path, cancellationToken))
             {
-                return await response.Content.ReadAsAsync<List<Badge>>();
+                return await response.Content.ReadAsAsync<List<BadgeCategory>>(cancellationToken);
             }
         }
 
         public async Task<BadgeCategory> GetBadgeCategoryAsync(Category category)
         {
-            var path = "http://www.khanacademy.org/api/v1/badges/categories/{0}".F((int)category);
+            return await GetBadgeCategoryAsync(category, CancellationToken.None);
+        }
 
-            using (var response = await _httpClient.GetAsync(path))
+        public async Task<BadgeCategory> GetBadgeCategoryAsync(Category category, CancellationToken cancellationToken)
+        {
+            var path = "http://www.khanacademy.org/api/v1/badges/categories/{0}".F((int)category);
+            using (var response = await _httpClient.GetAsync(path, cancellationToken))
             {
                 // API returns a list even though it contains only one element
-                var categories = await response.Content.ReadAsAsync<List<BadgeCategory>>();
+                var categories = await response.Content.ReadAsAsync<List<BadgeCategory>>(cancellationToken);
                 return categories.First();
             }
         }

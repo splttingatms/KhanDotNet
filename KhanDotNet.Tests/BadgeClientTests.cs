@@ -5,9 +5,9 @@ using KhanDotNet.Tests.Data;
 using KhanDotNet.Tests.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Newtonsoft.Json;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace KhanDotNet.Tests
@@ -27,13 +27,13 @@ namespace KhanDotNet.Tests
             _khanResponse = new HttpResponseMessage()
             {
                 StatusCode = HttpStatusCode.OK,
-                Content = new JsonContent(BadgeTestData.SampleBadgeCategoryJson)
+                Content = new StringContent("") // empty content prevents ReadAsAsync from throwing when token cancelled
             };
 
             _httpClientMock = new Mock<IHttpClient>();
 
             _httpClientMock
-                .Setup(c => c.GetAsync(It.IsAny<string>()))
+                .Setup(c => c.GetAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(_khanResponse);
 
             _client = new BadgeClient(_httpClientMock.Object);
@@ -52,14 +52,18 @@ namespace KhanDotNet.Tests
         public async Task GetBadgesShouldMakeAGetRequest()
         {
             await _client.GetBadgesAsync();
-            _httpClientMock.Verify(c => c.GetAsync(It.IsAny<string>()), Times.Once);
+            _httpClientMock.Verify(c => c.GetAsync(
+                It.IsAny<string>(),
+                It.IsAny<CancellationToken>()), Times.Once);
         }
 
         [TestMethod]
         public async Task GetBadgesShouldTargetCorrectPath()
         {
             await _client.GetBadgesAsync();
-            _httpClientMock.Verify(c => c.GetAsync(It.Is<string>(url => url == "http://www.khanacademy.org/api/v1/badges")));
+            _httpClientMock.Verify(c => c.GetAsync(
+                It.Is<string>(url => url == "http://www.khanacademy.org/api/v1/badges"),
+                It.IsAny<CancellationToken>()));
         }
 
         [TestMethod]
@@ -73,8 +77,31 @@ namespace KhanDotNet.Tests
             expected.AssertDeepEqual(actual);
         }
 
+        [TestMethod]
+        public async Task GetBadgesShouldPassThroughTokenToHttpClient()
+        {
+            var expectedToken = new CancellationToken(true);
+
+            await _client.GetBadgesAsync(expectedToken);
+
+            _httpClientMock.Verify(c => c.GetAsync(
+                    It.IsAny<string>(),
+                    It.Is<CancellationToken>(actualToken => actualToken.Equals(expectedToken))));
+        }
+
+        [TestMethod]
+        public async Task GetBadgesShouldPassEmptyToken()
+        {
+            await _client.GetBadgesAsync();
+
+            _httpClientMock.Verify(c => c.GetAsync(
+                It.IsAny<string>(),
+                It.Is<CancellationToken>(actualToken => actualToken.Equals(CancellationToken.None))));
+        }
+
         #endregion
 
+        // TODO 1: add test to verify targets correct API path
         #region GetBadgeCategories
 
         [TestMethod]
@@ -88,6 +115,28 @@ namespace KhanDotNet.Tests
             expected.AssertDeepEqual(actual);
         }
 
+        [TestMethod]
+        public async Task GetBadgeCategoriesShouldPassThroughTokenToHttpClient()
+        {
+            var expectedToken = new CancellationToken(true);
+
+            await _client.GetBadgeCategoriesAsync(expectedToken);
+
+            _httpClientMock.Verify(c => c.GetAsync(
+                    It.IsAny<string>(),
+                    It.Is<CancellationToken>(actualToken => actualToken.Equals(expectedToken))));
+        }
+
+        [TestMethod]
+        public async Task GetBadgeCategoriesShouldPassEmptyToken()
+        {
+            await _client.GetBadgeCategoriesAsync();
+
+            _httpClientMock.Verify(c => c.GetAsync(
+                It.IsAny<string>(),
+                It.Is<CancellationToken>(actualToken => actualToken.Equals(CancellationToken.None))));
+        }
+
         #endregion
 
         #region GetBadgeCategory
@@ -96,10 +145,13 @@ namespace KhanDotNet.Tests
         public async Task GetBadgeCategoryShouldTargetCorrectPath()
         {
             var expectedPath = "api/v1/badges/categories/0"; // API takes category as int
+            _khanResponse.Content = new JsonContent(BadgeTestData.SampleBadgeCategories);
 
             await _client.GetBadgeCategoryAsync(Category.Meteorite);
 
-            _httpClientMock.Verify(c => c.GetAsync(It.Is<string>(url => url.ContainsIgnoreCase(expectedPath))));
+            _httpClientMock.Verify(c => c.GetAsync(
+                It.Is<string>(url => url.ContainsIgnoreCase(expectedPath)),
+                It.IsAny<CancellationToken>()));
         }
 
         [TestMethod]
@@ -111,6 +163,31 @@ namespace KhanDotNet.Tests
             var actual = await _client.GetBadgeCategoryAsync(Category.Meteorite);
 
             expected.AssertDeepEqual(actual);
+        }
+
+        [TestMethod]
+        public async Task GetBadgeCategoryShouldPassThroughTokenToHttpClient()
+        {
+            var expectedToken = new CancellationToken();
+            _khanResponse.Content = new JsonContent(BadgeTestData.SampleBadgeCategoryJson);
+
+            await _client.GetBadgeCategoryAsync(Category.Meteorite, expectedToken);
+
+            _httpClientMock.Verify(c => c.GetAsync(
+                    It.IsAny<string>(),
+                    It.Is<CancellationToken>(actualToken => actualToken.Equals(expectedToken))));
+        }
+
+        [TestMethod]
+        public async Task GetBadgeCategoryShouldPassEmptyToken()
+        {
+            _khanResponse.Content = new JsonContent(BadgeTestData.SampleBadgeCategoryJson);
+
+            await _client.GetBadgeCategoryAsync(Category.Meteorite);
+
+            _httpClientMock.Verify(c => c.GetAsync(
+                It.IsAny<string>(),
+                It.Is<CancellationToken>(actualToken => actualToken.Equals(CancellationToken.None))));
         }
 
         #endregion
