@@ -1,4 +1,4 @@
-﻿using KhanDotNet.Library.Contract;
+﻿using KhanDotNet.Library.Contracts;
 
 namespace KhanDotNet.Tests.Data
 {

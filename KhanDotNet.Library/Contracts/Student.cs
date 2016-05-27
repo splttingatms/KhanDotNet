@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-// TODO 1: rename to plural "Contracts"
-namespace KhanDotNet.Library.Contract
+namespace KhanDotNet.Library.Contracts
 {
     public class Student
     {

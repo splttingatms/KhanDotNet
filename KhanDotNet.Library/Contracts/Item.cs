@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace KhanDotNet.Library.Contract
+namespace KhanDotNet.Library.Contracts
 {
     public class Item
     {

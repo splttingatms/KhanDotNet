@@ -1,5 +1,5 @@
 ﻿using KhanDotNet.Library;
-using KhanDotNet.Library.Contract;
+using KhanDotNet.Library.Contracts;
 using KhanDotNet.Library.Utilities;
 using KhanDotNet.Tests.Data;
 using KhanDotNet.Tests.Utilities;

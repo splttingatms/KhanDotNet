@@ -1,4 +1,4 @@
-﻿using KhanDotNet.Library.Contract;
+﻿using KhanDotNet.Library.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

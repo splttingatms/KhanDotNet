@@ -1,4 +1,4 @@
-﻿namespace KhanDotNet.Library.Contract
+﻿namespace KhanDotNet.Library.Contracts
 {
     public enum Category
     {

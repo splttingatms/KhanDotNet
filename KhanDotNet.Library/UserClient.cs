@@ -1,4 +1,4 @@
-﻿using KhanDotNet.Library.Contract;
+﻿using KhanDotNet.Library.Contracts;
 using KhanDotNet.Library.Utilities;
 using OAuth;
 using System;

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace KhanDotNet.Library.Contract
+namespace KhanDotNet.Library.Contracts
 {
     public class Child
     {

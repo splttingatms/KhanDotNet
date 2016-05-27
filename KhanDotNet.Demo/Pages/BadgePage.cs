@@ -1,6 +1,6 @@
 ﻿using EasyConsole;
 using KhanDotNet.Library;
-using KhanDotNet.Library.Contract;
+using KhanDotNet.Library.Contracts;
 using KhanDotNet.Demo.Utilities;
 
 namespace KhanDotNet.Demo.Pages
