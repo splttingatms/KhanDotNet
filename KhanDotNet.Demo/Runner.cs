@@ -1,4 +1,5 @@
 ﻿using KhanDotNet.Demo;
+using System.Diagnostics;
 
 namespace KhanDotNet
 {
@@ -6,6 +7,8 @@ namespace KhanDotNet
     {
         static void Main(string[] args)
         {
+            Trace.Listeners.Add(new ConsoleTraceListener());
+
             using (var demo = new KhanDotNetDemo())
             {
                 demo.Run();

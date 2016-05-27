@@ -27,7 +27,6 @@ namespace KhanDotNet.Library
             var authorizedRequestToken = await AuthorizeRequestToken(requestToken);
             var accessToken = await ExchangeForAccessToken(authorizedRequestToken);
 
-            // TODO 1: add listeners in Demo
             Trace.TraceInformation("Access Token: {0}", accessToken);
 
             return accessToken;
