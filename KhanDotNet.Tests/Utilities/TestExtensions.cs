@@ -9,6 +9,8 @@ namespace KhanDotNet.Tests.Utilities
         {
             var comparer = new CompareLogic(new ComparisonConfig() { MaxDifferences = 5 });
             var result = comparer.Compare(expected, actual);
+
+            // TODO 3: throw AssertFailedException instead
             Assert.IsTrue(result.AreEqual, result.DifferencesString);
         }
     }

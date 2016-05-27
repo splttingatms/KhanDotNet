@@ -77,9 +77,12 @@
     <Compile Include="TopicClientTests.cs" />
     <Compile Include="TopicTreeClientTests.cs" />
     <Compile Include="UserClientTests.cs" />
+    <Compile Include="Utilities\ExpectedExceptionWithMessageAttribute.cs" />
+    <Compile Include="Utilities\ExpectedExceptionWrapperAttribute.cs" />
     <Compile Include="Utilities\JsonContent.cs" />
     <Compile Include="ExerciseClientTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\StringAssertHelper.cs" />
     <Compile Include="Utilities\TestExtensions.cs" />
   </ItemGroup>
   <ItemGroup>

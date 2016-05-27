@@ -73,14 +73,6 @@ namespace KhanDotNet.Tests
             expected.AssertDeepEqual(actual);
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(JsonReaderException))]
-        public async Task GetBadgesShouldThrowIfInvalidJsonReturned()
-        {
-            _khanResponse.Content = new JsonContent("invalid_json");
-            await _client.GetBadgesAsync();
-        }
-
         #endregion
 
         #region GetBadgeCategories

@@ -23,9 +23,12 @@ namespace KhanDotNet.Library
         public async Task<User> GetUserAsync()
         {
             // authenticated API calls require authentication
-            // TODO 1: add custom message saying this is an authenticated API
-            Ensure.That(Authenticator, nameof(Authenticator)).IsNotNull();
-            Ensure.That(Credentials, nameof(Credentials)).IsNotNull();
+            Ensure.That(Authenticator, nameof(Authenticator))
+                .WithExtraMessageOf(() => "Authenticated APIs require an authenticator")
+                .IsNotNull();
+            Ensure.That(Credentials, nameof(Credentials))
+                .WithExtraMessageOf(() => "Authenticated APIs require consumer credentials")
+                .IsNotNull();
 
             var accessToken = await Authenticator.GetAccessTokenAsync();
 

@@ -9,14 +9,14 @@ namespace KhanDotNet.Library.Utilities
             return string.Format(format, args);
         }
         
-        public static bool ContainsIgnoreCase(this string paragraph, string word)
+        public static bool ContainsIgnoreCase(this string value, string substring)
         {
-            return Contains(paragraph, word, StringComparison.OrdinalIgnoreCase);
+            return Contains(value, substring, StringComparison.OrdinalIgnoreCase);
         }
 
-        public static bool Contains(this string paragraph, string word, StringComparison comparisonType = StringComparison.Ordinal)
+        public static bool Contains(this string value, string substring, StringComparison comparisonType = StringComparison.Ordinal)
         {
-            return paragraph.IndexOf(word, comparisonType) >= 0;
+            return value.IndexOf(substring, comparisonType) >= 0;
         }
     }
 }

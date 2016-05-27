@@ -101,21 +101,21 @@ namespace KhanDotNet.Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedExceptionWithMessage(typeof(ArgumentException), "name", match: false, ignoreCase: true)]
         public async Task GetExerciseShouldThrowIfNullInput()
         {
-            await _client.GetExerciseAsync(null);
+            await _client.GetExerciseAsync(name: null);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedExceptionWithMessage(typeof(ArgumentException), "name", match: false, ignoreCase: true)]
         public async Task GetExerciseShouldThrowIfEmptyInput()
         {
-            await _client.GetExerciseAsync(string.Empty);
+            await _client.GetExerciseAsync(name: string.Empty);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedExceptionWithMessage(typeof(ArgumentException), "name", match: false, ignoreCase: true)]
         public async Task GetExerciseShouldThrowIfWhitespaceInput()
         {
             await _client.GetExerciseAsync("   ");
@@ -126,17 +126,17 @@ namespace KhanDotNet.Tests
         #region GetFollowUpExercises
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedExceptionWithMessage(typeof(ArgumentException), "name", match: false, ignoreCase: true)]
         public async Task GetFollowUpExercisesShouldThrowIfNullInput()
         {
-            await _client.GetFollowUpExercisesAsync(null);
+            await _client.GetFollowUpExercisesAsync(name: null);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedExceptionWithMessage(typeof(ArgumentException), "name", match: false, ignoreCase: true)]
         public async Task GetFollowUpExercisesShouldThrowIfEmptyInput()
         {
-            await _client.GetFollowUpExercisesAsync(string.Empty);
+            await _client.GetFollowUpExercisesAsync(name: string.Empty);
         }
 
         [TestMethod]
@@ -177,12 +177,11 @@ namespace KhanDotNet.Tests
 
         #region GetExerciseVideos
 
-        // TODO 2: verify exception message contains name of property
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedExceptionWithMessage(typeof(ArgumentException), "name", match: false, ignoreCase: true)]
         public async Task GetExerciseVideosShouldThrowIfNullInput()
         {
-            await _client.GetExerciseVideosAsync(null);
+            await _client.GetExerciseVideosAsync(name: null);
         }
 
         [TestMethod]
