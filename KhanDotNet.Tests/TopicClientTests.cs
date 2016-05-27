@@ -7,6 +7,7 @@ using Moq;
 using System;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace KhanDotNet.Tests
@@ -32,7 +33,7 @@ namespace KhanDotNet.Tests
             _httpClientMock = new Mock<IHttpClient>();
 
             _httpClientMock
-                .Setup(c => c.GetAsync(It.IsAny<string>()))
+                .Setup(c => c.GetAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(_khanResponse);
 
             _client = new TopicClient(_httpClientMock.Object);
@@ -60,7 +61,9 @@ namespace KhanDotNet.Tests
             await _client.GetTopicAsync("talks-and-interviews");
 
             _httpClientMock.Verify(c =>
-                c.GetAsync(It.Is<string>(url => url.ContainsIgnoreCase("/api/v1/topic/talks-and-interviews"))));
+                c.GetAsync(
+                    It.Is<string>(url => url.ContainsIgnoreCase("/api/v1/topic/talks-and-interviews")),
+                    It.IsAny<CancellationToken>()));
         }
         
         [TestMethod]
@@ -70,7 +73,11 @@ namespace KhanDotNet.Tests
             var encodedInput = "%5Efoo%26bar%24";
 
             await _client.GetTopicAsync(input);
-            _httpClientMock.Verify(c => c.GetAsync(It.Is<string>(url => url.ContainsIgnoreCase(encodedInput))));
+
+            _httpClientMock.Verify(c => 
+                c.GetAsync(
+                        It.Is<string>(url => url.ContainsIgnoreCase(encodedInput)),
+                        It.IsAny<CancellationToken>()));
         }
 
         [TestMethod]
@@ -82,6 +89,32 @@ namespace KhanDotNet.Tests
             var actual = await _client.GetTopicAsync("talks-and-interviews");
 
             expected.AssertDeepEqual(actual);
+        }
+
+        [TestMethod]
+        public async Task GetTopicShouldPassThroughCancellationTokenToHttpClient()
+        {
+            var expectedToken = new CancellationToken(true);
+
+            await _client.GetTopicAsync("root", expectedToken);
+
+            _httpClientMock.Verify(c =>
+                c.GetAsync(
+                    It.IsAny<string>(),
+                    It.Is<CancellationToken>(actualToken => actualToken.Equals(expectedToken))));
+        }
+
+        [TestMethod]
+        public async Task GetTopicShouldPassEmptyCancellationTokenToHttpClient()
+        {
+            var expectedToken = CancellationToken.None;
+
+            await _client.GetTopicAsync("root");
+
+            _httpClientMock.Verify(c =>
+                c.GetAsync(
+                    It.IsAny<string>(),
+                    It.Is<CancellationToken>(actualToken => actualToken.Equals(expectedToken))));
         }
 
         #endregion
@@ -102,7 +135,9 @@ namespace KhanDotNet.Tests
             await _client.GetTopicExercisesAsync("foo");
 
             _httpClientMock.Verify(c =>
-                c.GetAsync(It.Is<string>(url => url.ContainsIgnoreCase("/api/v1/topic/foo/exercises"))));
+                c.GetAsync(
+                    It.Is<string>(url => url.ContainsIgnoreCase("/api/v1/topic/foo/exercises")),
+                    It.IsAny<CancellationToken>()));
         }
 
         [TestMethod]
@@ -112,7 +147,11 @@ namespace KhanDotNet.Tests
             var encodedInput = "%5Efoo%26bar%24";
 
             await _client.GetTopicExercisesAsync(input);
-            _httpClientMock.Verify(c => c.GetAsync(It.Is<string>(url => url.ContainsIgnoreCase(encodedInput))));
+
+            _httpClientMock.Verify(c =>
+                c.GetAsync(
+                    It.Is<string>(url => url.ContainsIgnoreCase(encodedInput)),
+                    It.IsAny<CancellationToken>()));
         }
 
         [TestMethod]
@@ -124,6 +163,32 @@ namespace KhanDotNet.Tests
             var actual = await _client.GetTopicExercisesAsync("talks-and-interviews");
 
             expected.AssertDeepEqual(actual);
+        }
+
+        [TestMethod]
+        public async Task GetTopicExercisesShouldPassThroughCancellationTokenToHttpClient()
+        {
+            var expectedToken = new CancellationToken(true);
+
+            await _client.GetTopicExercisesAsync("root", expectedToken);
+
+            _httpClientMock.Verify(c =>
+                c.GetAsync(
+                    It.IsAny<string>(),
+                    It.Is<CancellationToken>(actualToken => actualToken.Equals(expectedToken))));
+        }
+
+        [TestMethod]
+        public async Task GetTopicExercisesShouldPassEmptyCancellationTokenToHttpClient()
+        {
+            var expectedToken = CancellationToken.None;
+
+            await _client.GetTopicExercisesAsync("root");
+
+            _httpClientMock.Verify(c =>
+                c.GetAsync(
+                    It.IsAny<string>(),
+                    It.Is<CancellationToken>(actualToken => actualToken.Equals(expectedToken))));
         }
 
         #endregion
@@ -142,7 +207,9 @@ namespace KhanDotNet.Tests
         {
             await _client.GetTopicVideosAsync("root");
             _httpClientMock.Verify(c =>
-                c.GetAsync(It.Is<string>(url => url.ContainsIgnoreCase("/api/v1/topic/root/videos"))));
+                c.GetAsync(
+                    It.Is<string>(url => url.ContainsIgnoreCase("/api/v1/topic/root/videos")),
+                    It.IsAny<CancellationToken>()));
         }
 
         [TestMethod]
@@ -152,7 +219,11 @@ namespace KhanDotNet.Tests
             var encodedInput = "%5Efoo%26bar%24";
 
             await _client.GetTopicVideosAsync(input);
-            _httpClientMock.Verify(c => c.GetAsync(It.Is<string>(url => url.ContainsIgnoreCase(encodedInput))));
+
+            _httpClientMock.Verify(c => 
+                c.GetAsync(
+                    It.Is<string>(url => url.ContainsIgnoreCase(encodedInput)),
+                    It.IsAny<CancellationToken>()));
         }
 
         [TestMethod]
@@ -164,6 +235,32 @@ namespace KhanDotNet.Tests
             var actual = await _client.GetTopicVideosAsync("root");
 
             expected.AssertDeepEqual(actual);
+        }
+
+        [TestMethod]
+        public async Task GetTopicVideosShouldPassThroughCancellationTokenToHttpClient()
+        {
+            var expectedToken = new CancellationToken(true);
+
+            await _client.GetTopicVideosAsync("root", expectedToken);
+
+            _httpClientMock.Verify(c =>
+                c.GetAsync(
+                    It.IsAny<string>(),
+                    It.Is<CancellationToken>(actualToken => actualToken.Equals(expectedToken))));
+        }
+
+        [TestMethod]
+        public async Task GetTopicVideosShouldPassEmptyCancellationTokenToHttpClient()
+        {
+            var expectedToken = CancellationToken.None;
+
+            await _client.GetTopicVideosAsync("root");
+
+            _httpClientMock.Verify(c =>
+                c.GetAsync(
+                    It.IsAny<string>(),
+                    It.Is<CancellationToken>(actualToken => actualToken.Equals(expectedToken))));
         }
 
         #endregion

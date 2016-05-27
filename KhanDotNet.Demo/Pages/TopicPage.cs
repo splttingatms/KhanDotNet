@@ -23,6 +23,7 @@ namespace KhanDotNet.Demo.Pages
             var input = Input.ReadString("Enter topic slug:");
             var topic = _client.Topics.GetTopicAsync(input).Result;
             OutputHelper.Success(topic);
+            // TODO 3: Go back to home when done
         }
 
         private void GetTopicExercisesCallback()
