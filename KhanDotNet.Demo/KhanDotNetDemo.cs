@@ -1,9 +1,9 @@
 ﻿using EasyConsole;
-using EnsureThat;
 using KhanDotNet.Demo.Pages;
 using KhanDotNet.Library;
 using System;
 using System.Configuration;
+using System.Diagnostics;
 
 namespace KhanDotNet.Demo
 {
@@ -14,10 +14,7 @@ namespace KhanDotNet.Demo
         public KhanDotNetDemo()
             : base("KhanDotNet Demo", true)
         {
-            // TODO 1: allow developer to not specify consumer cred and only use public APIs
-            var credentials = GetConsumerCredentials();
-            var authenticator = GetAuthenticator(credentials);
-            _client = new KhanClient(authenticator, credentials);
+            _client = GetClient();
 
             AddPage(new ResourcePage(this));
             AddPage(new BadgePage(this, _client));
@@ -29,17 +26,27 @@ namespace KhanDotNet.Demo
             SetPage<ResourcePage>();
         }
 
+        private IKhanClient GetClient()
+        {
+            var credentials = GetConsumerCredentials();
+
+            if (credentials == null)
+            {
+                Trace.TraceWarning("No credentials specified in app settings so only public APIs will be available");
+                return new KhanClient();
+            }
+
+            var authenticator = GetAuthenticator(credentials);
+            return new KhanClient(authenticator, credentials);
+        }
+
         private ConsumerCredentials GetConsumerCredentials()
         {
             var consumerKey = ConfigurationManager.AppSettings["ConsumerKey"];
             var consumerSecret = ConfigurationManager.AppSettings["ConsumerSecret"];
 
-            Ensure.That(consumerKey, nameof(consumerKey))
-                .WithExtraMessageOf(() => "Must specify consumer key in app settings")
-                .IsNotNullOrEmpty();
-            Ensure.That(consumerSecret, nameof(consumerSecret))
-                .WithExtraMessageOf(() => "Must specify consumer secret in app settings")
-                .IsNotNullOrEmpty();
+            if (string.IsNullOrEmpty(consumerKey) || string.IsNullOrEmpty(consumerSecret))
+                return null;
 
             return new ConsumerCredentials(consumerKey, consumerSecret);
         }

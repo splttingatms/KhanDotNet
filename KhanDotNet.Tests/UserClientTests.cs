@@ -66,7 +66,7 @@ namespace KhanDotNet.Tests
         #region GetUser
 
         [TestMethod]
-        [ExpectedExceptionWithMessage(typeof(ArgumentNullException), "Authenticated APIs require an authenticator", match: false, ignoreCase: true)]
+        [ExpectedExceptionWithMessage(typeof(InvalidOperationException), "Authenticated APIs require an authenticator", match: false, ignoreCase: true)]
         public async Task GetUserShouldThrowIfNoAuthenticatorWasGiven()
         {
             _client = new UserClient(_httpClientMock.Object, null, _credentials);
@@ -74,7 +74,7 @@ namespace KhanDotNet.Tests
         }
 
         [TestMethod]
-        [ExpectedExceptionWithMessage(typeof(ArgumentNullException), "Authenticated APIs require consumer credentials", match: false, ignoreCase: true)]
+        [ExpectedExceptionWithMessage(typeof(InvalidOperationException), "Authenticated APIs require consumer credentials", match: false, ignoreCase: true)]
         public async Task GetUserShouldThrowIfNoConsumerCredentialsWereGiven()
         {
             _client = new UserClient(_httpClientMock.Object, _authenticator.Object, null);

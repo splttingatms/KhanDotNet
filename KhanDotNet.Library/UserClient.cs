@@ -1,7 +1,7 @@
-﻿using EnsureThat;
-using KhanDotNet.Library.Contract;
+﻿using KhanDotNet.Library.Contract;
 using KhanDotNet.Library.Utilities;
 using OAuth;
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -22,13 +22,8 @@ namespace KhanDotNet.Library
 
         public async Task<User> GetUserAsync()
         {
-            // authenticated API calls require authentication
-            Ensure.That(Authenticator, nameof(Authenticator))
-                .WithExtraMessageOf(() => "Authenticated APIs require an authenticator")
-                .IsNotNull();
-            Ensure.That(Credentials, nameof(Credentials))
-                .WithExtraMessageOf(() => "Authenticated APIs require consumer credentials")
-                .IsNotNull();
+            if (Authenticator == null) throw new InvalidOperationException("Authenticated APIs require an authenticator");
+            if (Credentials == null) throw new InvalidOperationException("Authenticated APIs require consumer credentials");
 
             var accessToken = await Authenticator.GetAccessTokenAsync();
 
