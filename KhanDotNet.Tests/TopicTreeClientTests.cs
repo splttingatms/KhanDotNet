@@ -6,6 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace KhanDotNet.Tests
@@ -31,7 +32,7 @@ namespace KhanDotNet.Tests
             _httpClientMock = new Mock<IHttpClient>();
 
             _httpClientMock
-                .Setup(c => c.GetAsync(It.IsAny<string>()))
+                .Setup(c => c.GetAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(_khanResponse);
 
             _client = new TopicTreeClient(_httpClientMock.Object);
@@ -51,8 +52,9 @@ namespace KhanDotNet.Tests
         {
             await _client.GetTopicTreeAsync();
 
-            _httpClientMock.Verify(c =>
-                c.GetAsync(It.Is<string>(url => url.ContainsIgnoreCase("/api/v1/topictree"))));
+            _httpClientMock.Verify(c => c.GetAsync(
+                It.Is<string>(url => url.ContainsIgnoreCase("/api/v1/topictree")),
+                It.IsAny<CancellationToken>()));
         }
 
         [TestMethod]
@@ -64,6 +66,32 @@ namespace KhanDotNet.Tests
             var actual = await _client.GetTopicTreeAsync();
 
             expected.AssertDeepEqual(actual);
+        }
+
+        [TestMethod]
+        public async Task GetTopicTreeShouldPassThroughTokenToHttpClient()
+        {
+            var expectedToken = new CancellationToken(true);
+
+            await _client.GetTopicTreeAsync(expectedToken);
+
+            _httpClientMock.Verify(c =>
+                c.GetAsync(
+                    It.IsAny<string>(),
+                    It.Is<CancellationToken>(actualToken => actualToken.Equals(expectedToken))));
+        }
+
+        [TestMethod]
+        public async Task GetTopicTreeShouldPassEmptyTokenToHttpClient()
+        {
+            var expectedToken = CancellationToken.None;
+
+            await _client.GetTopicTreeAsync();
+
+            _httpClientMock.Verify(c =>
+                c.GetAsync(
+                    It.IsAny<string>(),
+                    It.Is<CancellationToken>(actualToken => actualToken.Equals(expectedToken))));
         }
 
         #endregion
