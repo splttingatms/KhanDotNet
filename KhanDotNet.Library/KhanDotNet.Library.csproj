@@ -70,6 +70,9 @@
     <Compile Include="Contracts\Curation.cs" />
     <Compile Include="Contracts\DownloadUrls.cs" />
     <Compile Include="Contracts\Exercise.cs" />
+    <Compile Include="Contracts\ExerciseInteraction.cs" />
+    <Compile Include="Contracts\ExerciseProgress.cs" />
+    <Compile Include="Contracts\ExerciseStates.cs" />
     <Compile Include="Contracts\Student.cs" />
     <Compile Include="Contracts\Icons.cs" />
     <Compile Include="Contracts\Item.cs" />

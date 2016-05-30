@@ -2,6 +2,7 @@
 using KhanDotNet.Library.Utilities;
 using OAuth;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -41,6 +42,28 @@ namespace KhanDotNet.Library
             using (var response = await _httpClient.GetAsync(path, cancellationToken))
             {
                 return await response.Content.ReadAsAsync<User>(cancellationToken);
+            }
+        }
+
+        public async Task<List<ExerciseInteraction>> GetUserExercisesAsync()
+        {
+            return await GetUserExercisesAsync(CancellationToken.None);
+        }
+
+        public async Task<List<ExerciseInteraction>> GetUserExercisesAsync(CancellationToken cancellationToken)
+        {
+            if (Authenticator == null) throw new InvalidOperationException("Authenticated APIs require an authenticator");
+            if (Credentials == null) throw new InvalidOperationException("Authenticated APIs require consumer credentials");
+
+            var accessToken = await Authenticator.GetAccessTokenAsync(cancellationToken);
+
+            var req = OAuthRequest.ForProtectedResource("GET", Credentials.Key, Credentials.Secret, accessToken.Token, accessToken.Secret);
+            req.RequestUrl = "https://www.khanacademy.org/api/v1/user/exercises";
+
+            var path = "https://www.khanacademy.org/api/v1/user/exercises" + "?" + req.GetAuthorizationQuery();
+            using (var response = await _httpClient.GetAsync(path, cancellationToken))
+            {
+                return await response.Content.ReadAsAsync<List<ExerciseInteraction>>(cancellationToken);
             }
         }
     }

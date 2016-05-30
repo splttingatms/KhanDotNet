@@ -12,6 +12,7 @@ namespace KhanDotNet.Demo.Pages
             : base("Badges", program)
         {
             Menu.Add("Get user (authenticated)", GetUserCallback);
+            Menu.Add("Get user exercises (authenticated)", GetUserExercisesCallback);
 
             _client = client;
         }
@@ -20,6 +21,12 @@ namespace KhanDotNet.Demo.Pages
         {
             var user = _client.Users.GetUserAsync().Result;
             OutputHelper.Success(user);
+        }
+
+        private void GetUserExercisesCallback()
+        {
+            var exercises = _client.Users.GetUserExercisesAsync().Result;
+            OutputHelper.Success(exercises);
         }
     }
 }
