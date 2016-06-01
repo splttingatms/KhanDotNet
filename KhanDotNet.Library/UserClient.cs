@@ -65,7 +65,6 @@ namespace KhanDotNet.Library
             var path = "https://www.khanacademy.org/api/v1/user/exercises" + "?" + req.GetAuthorizationQuery();
             using (var response = await _httpClient.GetAsync(path, cancellationToken))
             {
-                System.IO.File.WriteAllText("user_exercises.json", await response.Content.ReadAsStringAsync());
                 return await response.Content.ReadAsAsync<List<ExerciseInteraction>>(cancellationToken);
             }
         }
