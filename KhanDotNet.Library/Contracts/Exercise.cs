@@ -24,6 +24,9 @@ namespace KhanDotNet.Library.Contracts
         [JsonProperty("file_name")]
         public string FileName { get; set; }
 
+        [JsonProperty("related_videos")]
+        public List<Video> RelatedVideos { get; set; }
+
         [JsonProperty("related_video_readable_ids")]
         public List<string> RelatedVideoReadableIds { get; set; }
 

@@ -13,6 +13,7 @@ namespace KhanDotNet.Demo.Pages
         {
             Menu.Add("Get user (authenticated)", GetUserCallback);
             Menu.Add("Get user exercises (authenticated)", GetUserExercisesCallback);
+            Menu.Add("Get user exercise (authenticated)", GetUserExerciseCallback);
 
             _client = client;
         }
@@ -27,6 +28,13 @@ namespace KhanDotNet.Demo.Pages
         {
             var exercises = _client.Users.GetUserExercisesAsync().Result;
             OutputHelper.Success(exercises);
+        }
+
+        private void GetUserExerciseCallback()
+        {
+            var name = Input.ReadString("Enter exercise name:");
+            var exercise = _client.Users.GetUserExerciseAsync(name).Result;
+            OutputHelper.Success(exercise);
         }
     }
 }

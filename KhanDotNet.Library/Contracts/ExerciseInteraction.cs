@@ -18,7 +18,7 @@ namespace KhanDotNet.Library.Contracts
         public string SnoozeTime { get; set; }
 
         [JsonProperty("maximum_exercise_progress_dt")]
-        public string MaximumExerciseProgressDt { get; set; }
+        public DateTime MaximumExerciseProgressDt { get; set; }
 
         [JsonProperty("last_count_hints")]
         public int LastCountHints { get; set; }
@@ -33,7 +33,7 @@ namespace KhanDotNet.Library.Contracts
         public ExerciseProgress ExerciseProgress { get; set; }
 
         [JsonProperty("practiced_date")]
-        public DateTime? practiced_date { get; set; }
+        public DateTime? PracticedDate { get; set; }
 
         [JsonProperty("exercise")]
         public string Exercise { get; set; }
@@ -66,10 +66,10 @@ namespace KhanDotNet.Library.Contracts
         public double SecondsPerFastProblem { get; set; }
 
         [JsonProperty("last_done")]
-        public string LastDone { get; set; }
+        public DateTime LastDone { get; set; }
 
         [JsonProperty("last_mastery_update")]
-        public string LastMasteryUpdate { get; set; }
+        public DateTime LastMasteryUpdate { get; set; }
 
         [JsonProperty("maximum_exercise_progress")]
         public ExerciseProgress MaximumExerciseProgress { get; set; }
