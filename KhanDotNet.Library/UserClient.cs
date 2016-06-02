@@ -93,5 +93,31 @@ namespace KhanDotNet.Library
                 return await response.Content.ReadAsAsync<ExerciseInteraction>(cancellationToken);
             }
         }
+
+        public async Task<List<ProblemLog>> GetUserExerciseProblemLogsAsync(string exerciseName)
+        {
+            return await GetUserExerciseProblemLogsAsync(exerciseName, CancellationToken.None);
+        }
+
+        public async Task<List<ProblemLog>> GetUserExerciseProblemLogsAsync(string exerciseName, CancellationToken cancellationToken)
+        {
+            // TODO 1: use ensure library
+            Ensure.That(exerciseName, nameof(exerciseName)).IsNotNullOrWhiteSpace();
+            if (Authenticator == null) throw new InvalidOperationException("Authenticated APIs require an authenticator");
+            if (Credentials == null) throw new InvalidOperationException("Authenticated APIs require consumer credentials");
+
+            var accessToken = await Authenticator.GetAccessTokenAsync(cancellationToken);
+
+            exerciseName = HttpUtility.UrlEncode(exerciseName);
+
+            var req = OAuthRequest.ForProtectedResource("GET", Credentials.Key, Credentials.Secret, accessToken.Token, accessToken.Secret);
+            req.RequestUrl = "https://www.khanacademy.org/api/v1/user/exercises/{0}/log".F(exerciseName);
+
+            var path = "{0}?{1}".F(req.RequestUrl, req.GetAuthorizationQuery());
+            using (var response = await _httpClient.GetAsync(path, cancellationToken))
+            {
+                return await response.Content.ReadAsAsync<List<ProblemLog>>(cancellationToken);
+            }
+        }
     }
 }

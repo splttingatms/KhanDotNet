@@ -73,6 +73,7 @@
     <Compile Include="Contracts\ExerciseInteraction.cs" />
     <Compile Include="Contracts\ExerciseProgress.cs" />
     <Compile Include="Contracts\ExerciseStates.cs" />
+    <Compile Include="Contracts\ProblemLog.cs" />
     <Compile Include="Contracts\Student.cs" />
     <Compile Include="Contracts\Icons.cs" />
     <Compile Include="Contracts\Item.cs" />
