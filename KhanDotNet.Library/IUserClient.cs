@@ -23,7 +23,7 @@ namespace KhanDotNet.Library
         Task<List<ProgressChange>> GetUserProgressChangesAsync();
         Task<List<ProgressChange>> GetUserProgressChangesAsync(CancellationToken cancellationToken);
 
-        Task<List<UserVideo>> GetUserWatchedVideosAsync();
-        Task<List<UserVideo>> GetUserWatchedVideosAsync(CancellationToken cancellationToken);
+        Task<List<UserVideo>> GetUserVideoInteractionsAsync();
+        Task<List<UserVideo>> GetUserVideoInteractionsAsync(CancellationToken cancellationToken);
     }
 }

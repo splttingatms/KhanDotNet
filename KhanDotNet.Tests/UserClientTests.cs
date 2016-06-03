@@ -393,12 +393,12 @@ namespace KhanDotNet.Tests
 
         #endregion
 
-        #region GetUserWatchedVideos
+        #region GetUserVideoInteractions
 
         [TestMethod]
-        public async Task GetWatchedVideosShouldTargetCorrectPath()
+        public async Task GetUserVideoInteractionsShouldTargetCorrectPath()
         {
-            await _client.GetUserWatchedVideosAsync();
+            await _client.GetUserVideoInteractionsAsync();
 
             _httpClientMock.Verify(c => c.GetAsync(
                 It.Is<string>(url => url.ContainsIgnoreCase("/api/v1/user/videos")),
@@ -406,9 +406,9 @@ namespace KhanDotNet.Tests
         }
 
         [TestMethod]
-        public async Task GetWatchedVideosShouldAuthenticate()
+        public async Task GetUserVideoInteractionsShouldAuthenticate()
         {
-            await _client.GetUserWatchedVideosAsync();
+            await _client.GetUserVideoInteractionsAsync();
 
             _authenticator.Verify(a =>
                 a.CreateAuthenticatedRequestPath(
@@ -418,22 +418,22 @@ namespace KhanDotNet.Tests
         }
 
         [TestMethod]
-        public async Task GetWatchedVideosShouldReturnDeserializedResult()
+        public async Task GetUserVideoInteractionsShouldReturnDeserializedResult()
         {
             var expected = UserTestData.SampleUserWatchedVideos;
             _khanResponse.Content = new JsonContent(UserTestData.SampleUserWatchedVideosJson);
 
-            var actual = await _client.GetUserWatchedVideosAsync();
+            var actual = await _client.GetUserVideoInteractionsAsync();
 
             expected.AssertDeepEqual(actual);
         }
 
         [TestMethod]
-        public async Task GetWatchedVideosShouldPassThroughTokenToHttpClient()
+        public async Task GetUserVideoInteractionsShouldPassThroughTokenToHttpClient()
         {
             var expectedToken = new CancellationToken(true);
 
-            await _client.GetUserWatchedVideosAsync(expectedToken);
+            await _client.GetUserVideoInteractionsAsync(expectedToken);
 
             _httpClientMock.Verify(c => c.GetAsync(
                     It.IsAny<string>(),
@@ -441,11 +441,11 @@ namespace KhanDotNet.Tests
         }
 
         [TestMethod]
-        public async Task GetWatchedVideosShouldPassEmptyTokenToHttpClient()
+        public async Task GetUserVideoInteractionsShouldPassEmptyTokenToHttpClient()
         {
             var expectedToken = CancellationToken.None;
 
-            await _client.GetUserWatchedVideosAsync();
+            await _client.GetUserVideoInteractionsAsync();
 
             _httpClientMock.Verify(c => c.GetAsync(
                     It.IsAny<string>(),

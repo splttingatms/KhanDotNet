@@ -96,12 +96,12 @@ namespace KhanDotNet.Library
             }
         }
 
-        public async Task<List<UserVideo>> GetUserWatchedVideosAsync()
+        public async Task<List<UserVideo>> GetUserVideoInteractionsAsync()
         {
-            return await GetUserWatchedVideosAsync(CancellationToken.None);
+            return await GetUserVideoInteractionsAsync(CancellationToken.None);
         }
 
-        public async Task<List<UserVideo>> GetUserWatchedVideosAsync(CancellationToken cancellationToken)
+        public async Task<List<UserVideo>> GetUserVideoInteractionsAsync(CancellationToken cancellationToken)
         {
             var path = await Authenticator.CreateAuthenticatedRequestPath("https://www.khanacademy.org/api/v1/user/videos", cancellationToken);
             using (var response = await _httpClient.GetAsync(path, cancellationToken))
