@@ -6,11 +6,11 @@ namespace KhanDotNet.Library
     public class KhanClient : IKhanClient
     {
         public KhanClient()
-            : this(authenticator: null, credentials: null)
+            : this(NoopAuthenticator.Instance)
         {
         }
 
-        public KhanClient(IAuthentication authenticator, ConsumerCredentials credentials)
+        public KhanClient(IAuthenticator authenticator)
         {
             // TODO 2: create HttpClientFactory but for IHttpClient
             var innerClient = DisposableUtilities.SafeCreate<HttpClientWithValidator>();
@@ -19,7 +19,7 @@ namespace KhanDotNet.Library
                 new ExerciseClient(innerClient),
                 new TopicClient(innerClient),
                 new TopicTreeClient(innerClient),
-                new UserClient(innerClient, authenticator, credentials));
+                new UserClient(innerClient, authenticator));
         }
 
         public KhanClient(

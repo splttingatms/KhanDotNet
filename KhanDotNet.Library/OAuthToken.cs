@@ -16,6 +16,7 @@ namespace KhanDotNet.Library
 
         public override string ToString()
         {
+            // TODO 1: remove tostring to reduce risk of leaking credentials in logs
             return JsonConvert.SerializeObject(this);
         }
     }

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace KhanDotNet.Library
 {
-    public interface IAuthentication
+    public interface IAccessTokenRetriever
     {
         Task<OAuthToken> GetAccessTokenAsync(CancellationToken cancellationToken);
     }

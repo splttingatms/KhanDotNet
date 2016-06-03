@@ -19,11 +19,7 @@ namespace KhanDotNet.Tests
 
         private Mock<IHttpClient> _httpClientMock;
 
-        private OAuthToken _accessToken;
-
-        private Mock<IAuthentication> _authenticator;
-
-        private ConsumerCredentials _credentials;
+        private Mock<IAuthenticator> _authenticator;
 
         private IUserClient _client;
 
@@ -42,16 +38,12 @@ namespace KhanDotNet.Tests
                 .Setup(c => c.GetAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(_khanResponse);
 
-            _accessToken = new OAuthToken("fakeToken", "fakeSecret");
-
-            _authenticator = new Mock<IAuthentication>();
+            _authenticator = new Mock<IAuthenticator>();
             _authenticator
-                .Setup(c => c.GetAccessTokenAsync(It.IsAny<CancellationToken>()))
-                .ReturnsAsync(_accessToken);
+                .Setup(c => c.CreateAuthenticatedRequestPath(It.IsAny<string>(), It.IsAny<CancellationToken>()))
+                .Returns<string, CancellationToken>((url, token) => Task.FromResult(url)); // Mirror input path to output value
 
-            _credentials = new ConsumerCredentials("fakeKey", "fakeSecret");
-
-            _client = new UserClient(_httpClientMock.Object, _authenticator.Object, _credentials);
+            _client = new UserClient(_httpClientMock.Object, _authenticator.Object);
         }
 
         [TestCleanup]
@@ -64,29 +56,25 @@ namespace KhanDotNet.Tests
             _client = null;
         }
 
+        #region Constructor
+
+        [TestMethod]
+        [ExpectedExceptionWithMessage(typeof(ArgumentNullException), "authenticator", match: false, ignoreCase: true)]
+        public void UserClientConstructorShouldThrowIfNoAuthenticatorIsGiven()
+        {
+            _client = new UserClient(_httpClientMock.Object, authenticator: null);
+        }
+
+        #endregion
+
         #region GetUser
 
         [TestMethod]
-        [ExpectedExceptionWithMessage(typeof(InvalidOperationException), "Authenticated APIs require an authenticator", match: false, ignoreCase: true)]
-        public async Task GetUserShouldThrowIfNoAuthenticatorWasGiven()
+        public async Task GetUserShouldAuthenticatePath()
         {
-            _client = new UserClient(_httpClientMock.Object, null, _credentials);
+            // TODO 1: verify path matches target API
             await _client.GetUserAsync();
-        }
-
-        [TestMethod]
-        [ExpectedExceptionWithMessage(typeof(InvalidOperationException), "Authenticated APIs require consumer credentials", match: false, ignoreCase: true)]
-        public async Task GetUserShouldThrowIfNoConsumerCredentialsWereGiven()
-        {
-            _client = new UserClient(_httpClientMock.Object, _authenticator.Object, null);
-            await _client.GetUserAsync();
-        }
-
-        [TestMethod]
-        public async Task GetUserShouldRequestAccessToken()
-        {
-            await _client.GetUserAsync();
-            _authenticator.Verify(a => a.GetAccessTokenAsync(It.IsAny<CancellationToken>()), Times.Once);
+            _authenticator.Verify(a => a.CreateAuthenticatedRequestPath(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Once);
         }
 
         [TestMethod]
@@ -96,25 +84,6 @@ namespace KhanDotNet.Tests
 
             _httpClientMock.Verify(c => c.GetAsync(
                 It.Is<string>(url => url.ContainsIgnoreCase("/api/v1/user")),
-                It.IsAny<CancellationToken>()));
-        }
-
-        [TestMethod]
-        public async Task GetUserShouldPassAuthenticationParameters()
-        {
-            await _client.GetUserAsync();
-
-            // request must contains parameters specified in documentation
-            // https://github.com/Khan/khan-api/wiki/Khan-Academy-API-Authentication#4-make-an-authenticated-api-call
-            // NOTE: "oauth_token" is not actually required!
-            _httpClientMock.Verify(c => c.GetAsync(
-                It.Is<string>(url =>
-                    url.ContainsIgnoreCase("oauth_consumer_key") &&
-                    url.ContainsIgnoreCase("oauth_nonce") &&
-                    url.ContainsIgnoreCase("oauth_version") &&
-                    url.ContainsIgnoreCase("oauth_signature") &&
-                    url.ContainsIgnoreCase("oauth_signature_method") &&
-                    url.ContainsIgnoreCase("oauth_timestamp")),
                 It.IsAny<CancellationToken>()));
         }
         
@@ -130,7 +99,7 @@ namespace KhanDotNet.Tests
         }
 
         [TestMethod]
-        public async Task GetUserShouldPassThroughTokenToHttpClient()
+        public async Task GetUserShouldPassTokenThroughToHttpClient()
         {
             var expectedToken = new CancellationToken(true);
 
@@ -160,26 +129,10 @@ namespace KhanDotNet.Tests
         #region GetUserExercises
 
         [TestMethod]
-        [ExpectedExceptionWithMessage(typeof(InvalidOperationException), "Authenticated APIs require an authenticator", match: false, ignoreCase: true)]
-        public async Task GetUserExercisesShouldThrowIfNoAuthenticatorWasGiven()
-        {
-            _client = new UserClient(_httpClientMock.Object, null, _credentials);
-            await _client.GetUserExercisesAsync();
-        }
-
-        [TestMethod]
-        [ExpectedExceptionWithMessage(typeof(InvalidOperationException), "Authenticated APIs require consumer credentials", match: false, ignoreCase: true)]
-        public async Task GetUserExercisesShouldThrowIfNoConsumerCredentialsWereGiven()
-        {
-            _client = new UserClient(_httpClientMock.Object, _authenticator.Object, null);
-            await _client.GetUserExercisesAsync();
-        }
-
-        [TestMethod]
-        public async Task GetUserExercisesShouldRequestAccessToken()
+        public async Task GetUserExercisesShouldAuthenticatePath()
         {
             await _client.GetUserExercisesAsync();
-            _authenticator.Verify(a => a.GetAccessTokenAsync(It.IsAny<CancellationToken>()), Times.Once);
+            _authenticator.Verify(a => a.CreateAuthenticatedRequestPath(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Once);
         }
 
         [TestMethod]
@@ -189,25 +142,6 @@ namespace KhanDotNet.Tests
 
             _httpClientMock.Verify(c => c.GetAsync(
                 It.Is<string>(url => url.ContainsIgnoreCase("/api/v1/user/exercises")),
-                It.IsAny<CancellationToken>()));
-        }
-
-        [TestMethod]
-        public async Task GetUserExercisesShouldPassAuthenticationParameters()
-        {
-            await _client.GetUserExercisesAsync();
-
-            // request must contains parameters specified in documentation
-            // https://github.com/Khan/khan-api/wiki/Khan-Academy-API-Authentication#4-make-an-authenticated-api-call
-            // NOTE: "oauth_token" is not actually required!
-            _httpClientMock.Verify(c => c.GetAsync(
-                It.Is<string>(url =>
-                    url.ContainsIgnoreCase("oauth_consumer_key") &&
-                    url.ContainsIgnoreCase("oauth_nonce") &&
-                    url.ContainsIgnoreCase("oauth_version") &&
-                    url.ContainsIgnoreCase("oauth_signature") &&
-                    url.ContainsIgnoreCase("oauth_signature_method") &&
-                    url.ContainsIgnoreCase("oauth_timestamp")),
                 It.IsAny<CancellationToken>()));
         }
 
@@ -253,26 +187,10 @@ namespace KhanDotNet.Tests
         #region GetUserExercise
 
         [TestMethod]
-        [ExpectedExceptionWithMessage(typeof(InvalidOperationException), "Authenticated APIs require an authenticator", match: false, ignoreCase: true)]
-        public async Task GetUserExerciseShouldThrowIfNoAuthenticatorWasGiven()
-        {
-            _client = new UserClient(_httpClientMock.Object, null, _credentials);
-            await _client.GetUserExerciseAsync("permutations_1");
-        }
-
-        [TestMethod]
-        [ExpectedExceptionWithMessage(typeof(InvalidOperationException), "Authenticated APIs require consumer credentials", match: false, ignoreCase: true)]
-        public async Task GetUserExerciseShouldThrowIfNoConsumerCredentialsWereGiven()
-        {
-            _client = new UserClient(_httpClientMock.Object, _authenticator.Object, null);
-            await _client.GetUserExerciseAsync("permutations_1");
-        }
-
-        [TestMethod]
-        public async Task GetUserExerciseShouldRequestAccessToken()
+        public async Task GetUserExerciseShouldAuthenticatePath()
         {
             await _client.GetUserExerciseAsync("permutations_1");
-            _authenticator.Verify(a => a.GetAccessTokenAsync(It.IsAny<CancellationToken>()), Times.Once);
+            _authenticator.Verify(a => a.CreateAuthenticatedRequestPath(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Once);
         }
 
         [TestMethod]
@@ -317,25 +235,6 @@ namespace KhanDotNet.Tests
         }
 
         [TestMethod]
-        public async Task GetUserExerciseShouldPassAuthenticationParameters()
-        {
-            await _client.GetUserExerciseAsync("permutations_1");
-
-            // request must contains parameters specified in documentation
-            // https://github.com/Khan/khan-api/wiki/Khan-Academy-API-Authentication#4-make-an-authenticated-api-call
-            // NOTE: "oauth_token" is not actually required!
-            _httpClientMock.Verify(c => c.GetAsync(
-                It.Is<string>(url =>
-                    url.ContainsIgnoreCase("oauth_consumer_key") &&
-                    url.ContainsIgnoreCase("oauth_nonce") &&
-                    url.ContainsIgnoreCase("oauth_version") &&
-                    url.ContainsIgnoreCase("oauth_signature") &&
-                    url.ContainsIgnoreCase("oauth_signature_method") &&
-                    url.ContainsIgnoreCase("oauth_timestamp")),
-                It.IsAny<CancellationToken>()));
-        }
-
-        [TestMethod]
         public async Task GetUserExerciseShouldPassThroughTokenToHttpClient()
         {
             var expectedToken = new CancellationToken(true);
@@ -363,30 +262,14 @@ namespace KhanDotNet.Tests
 
         #region GetUserExerciseProblemLogs
 
+        [TestMethod]
+        public async Task GetUserExerciseProblemLogsShouldAuthenticatePath()
+        {
+            await _client.GetUserExerciseProblemLogsAsync("permutations_1");
+            _authenticator.Verify(a => a.CreateAuthenticatedRequestPath(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Once);
+        }
+
         // TODO 1: create attribute that does not match exactly and ignores case
-        [TestMethod]
-        [ExpectedExceptionWithMessage(typeof(InvalidOperationException), "Authenticated APIs require an authenticator", match: false, ignoreCase: true)]
-        public async Task GetUserExerciseProblemLogsShouldThrowIfNoAuthenticatorWasGiven()
-        {
-            _client = new UserClient(_httpClientMock.Object, null, _credentials);
-            await _client.GetUserExerciseProblemLogsAsync("permutations_1");
-        }
-
-        [TestMethod]
-        [ExpectedExceptionWithMessage(typeof(InvalidOperationException), "Authenticated APIs require consumer credentials", match: false, ignoreCase: true)]
-        public async Task GetUserExerciseProblemLogsShouldThrowIfNoConsumerCredentialsWereGiven()
-        {
-            _client = new UserClient(_httpClientMock.Object, _authenticator.Object, null);
-            await _client.GetUserExerciseProblemLogsAsync("permutations_1");
-        }
-
-        [TestMethod]
-        public async Task GetUserExerciseProblemLogsShouldRequestAccessToken()
-        {
-            await _client.GetUserExerciseProblemLogsAsync("permutations_1");
-            _authenticator.Verify(a => a.GetAccessTokenAsync(It.IsAny<CancellationToken>()), Times.Once);
-        }
-
         [TestMethod]
         [ExpectedExceptionWithMessage(typeof(ArgumentException), "exerciseName", match: false, ignoreCase: true)]
         public async Task GetUserExerciseProblemLogsShouldThrowIfNullNameGiven()
@@ -397,13 +280,10 @@ namespace KhanDotNet.Tests
         [TestMethod]
         public async Task GetUserExerciseProblemLogsShouldEncodeInput()
         {
-            var input = "^foo&bar$";
-            var encodedInput = "%5Efoo%26bar%24";
-
-            await _client.GetUserExerciseProblemLogsAsync(input);
+            await _client.GetUserExerciseProblemLogsAsync("^foo&bar$");
 
             _httpClientMock.Verify(c => c.GetAsync(
-                It.Is<string>(url => url.ContainsIgnoreCase(encodedInput)),
+                It.Is<string>(url => url.ContainsIgnoreCase("%5Efoo%26bar%24")),
                 It.IsAny<CancellationToken>()));
         }
 
@@ -426,25 +306,6 @@ namespace KhanDotNet.Tests
             var actual = await _client.GetUserExerciseProblemLogsAsync("permutations_1");
 
             expected.AssertDeepEqual(actual);
-        }
-
-        [TestMethod]
-        public async Task GetUserExerciseProblemLogsShouldPassAuthenticationParameters()
-        {
-            await _client.GetUserExerciseProblemLogsAsync("permutations_1");
-
-            // request must contains parameters specified in documentation
-            // https://github.com/Khan/khan-api/wiki/Khan-Academy-API-Authentication#4-make-an-authenticated-api-call
-            // NOTE: "oauth_token" is not actually required!
-            _httpClientMock.Verify(c => c.GetAsync(
-                It.Is<string>(url =>
-                    url.ContainsIgnoreCase("oauth_consumer_key") &&
-                    url.ContainsIgnoreCase("oauth_nonce") &&
-                    url.ContainsIgnoreCase("oauth_version") &&
-                    url.ContainsIgnoreCase("oauth_signature") &&
-                    url.ContainsIgnoreCase("oauth_signature_method") &&
-                    url.ContainsIgnoreCase("oauth_timestamp")),
-                It.IsAny<CancellationToken>()));
         }
 
         [TestMethod]

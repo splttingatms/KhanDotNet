@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authenticator.cs" />
     <Compile Include="BadgeClient.cs" />
     <Compile Include="BaseClient.cs" />
     <Compile Include="ConsumerCredentials.cs" />
@@ -85,15 +86,18 @@
     <Compile Include="Contracts\User.cs" />
     <Compile Include="Contracts\Video.cs" />
     <Compile Include="ExerciseClient.cs" />
-    <Compile Include="IAuthentication.cs" />
+    <Compile Include="IAccessTokenRetriever.cs" />
+    <Compile Include="IAuthenticator.cs" />
     <Compile Include="IBadgeClient.cs" />
+    <Compile Include="IConsumerCredentialsRetriever.cs" />
     <Compile Include="IExerciseClient.cs" />
     <Compile Include="ITopicClient.cs" />
     <Compile Include="ITopicTreeClient.cs" />
     <Compile Include="IUserClient.cs" />
     <Compile Include="OAuthAuthorizedToken.cs" />
     <Compile Include="OAuthToken.cs" />
-    <Compile Include="StaticAuthentication.cs" />
+    <Compile Include="StaticAccessTokenRetriever.cs" />
+    <Compile Include="StaticConsumerCredentialsRetriever.cs" />
     <Compile Include="TopicClient.cs" />
     <Compile Include="TopicTreeClient.cs" />
     <Compile Include="UserClient.cs" />
@@ -107,7 +111,7 @@
     <Compile Include="Utilities\StringExtensions.cs" />
     <Compile Include="Utilities\HttpClientWrapper.cs" />
     <Compile Include="Utilities\IHttpClient.cs" />
-    <Compile Include="WebAuthentication.cs" />
+    <Compile Include="WebAccessTokenRetriever.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">

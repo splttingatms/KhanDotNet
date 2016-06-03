@@ -3,11 +3,11 @@ using System.Threading.Tasks;
 
 namespace KhanDotNet.Library
 {
-    public class StaticAuthentication : IAuthentication
+    public class StaticAccessTokenRetriever : IAccessTokenRetriever
     {
         public OAuthToken AccessToken { get; set; }
 
-        public StaticAuthentication(string accessToken, string accessTokenSecret)
+        public StaticAccessTokenRetriever(string accessToken, string accessTokenSecret)
         {
             AccessToken = new OAuthToken(accessToken, accessTokenSecret);
         }

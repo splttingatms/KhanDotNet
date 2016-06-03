@@ -67,6 +67,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="AuthenticatorTests.cs" />
     <Compile Include="BadgeClientTests.cs" />
     <Compile Include="Data\BadgeTestData.cs" />
     <Compile Include="Data\TopicTestData.cs" />

@@ -26,46 +26,39 @@ namespace KhanDotNet.Demo
             SetPage<ResourcePage>();
         }
 
-        private IKhanClient GetClient()
-        {
-            var credentials = GetConsumerCredentials();
-
-            if (credentials == null)
-            {
-                Trace.TraceWarning("No credentials specified in app settings so only public APIs will be available");
-                return new KhanClient();
-            }
-
-            var authenticator = GetAuthenticator(credentials);
-            return new KhanClient(authenticator, credentials);
-        }
-
-        private ConsumerCredentials GetConsumerCredentials()
-        {
-            var consumerKey = ConfigurationManager.AppSettings["ConsumerKey"];
-            var consumerSecret = ConfigurationManager.AppSettings["ConsumerSecret"];
-
-            if (string.IsNullOrEmpty(consumerKey) || string.IsNullOrEmpty(consumerSecret))
-                return null;
-
-            return new ConsumerCredentials(consumerKey, consumerSecret);
-        }
-
-        private IAuthentication GetAuthenticator(ConsumerCredentials credentials)
-        {
-            var accessToken = ConfigurationManager.AppSettings["AccessToken"];
-            var accessTokenSecret = ConfigurationManager.AppSettings["AccessTokenSecret"];
-
-            // Use web authenticator if developer has not specified access token in settings
-            return (string.IsNullOrEmpty(accessToken))
-                ? new WebAuthentication(credentials) as IAuthentication
-                : new StaticAuthentication(accessToken, accessTokenSecret);
-        }
-
         public void Dispose()
         {
             _client?.Dispose();
             _client = null;
+        }
+
+        private IKhanClient GetClient()
+        {
+            IConsumerCredentialsRetriever consumerCredentialsRetriever;
+            if (ConfigurationManager.AppSettings["ConsumerKey"] == null)
+            {
+                Trace.TraceWarning("No consumer key in app settings, only public APIs will be available");
+                return new KhanClient();
+            }
+            else
+            {
+                consumerCredentialsRetriever = new ConfigConsumerCredentialsRetriever("ConsumerKey", "ConsumerSecret");
+            }
+
+
+            IAccessTokenRetriever accessTokenRetriever;
+            if (ConfigurationManager.AppSettings["AccessToken"] == null)
+            {
+                Trace.TraceWarning("No access token in app settings, defaulting to using web retriever instead");
+                accessTokenRetriever = new WebAccessTokenRetriever(consumerCredentialsRetriever);
+            }
+            else
+            {
+                accessTokenRetriever = new ConfigAccessTokenRetriever("AccessToken", "AccessTokenSecret");
+            }
+
+            var authenticator = new Authenticator(consumerCredentialsRetriever, accessTokenRetriever);
+            return new KhanClient(authenticator);
         }
     }
 }

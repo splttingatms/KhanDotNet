@@ -56,6 +56,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigAccessTokenRetriever.cs" />
+    <Compile Include="ConfigConsumerCredentialsRetriever.cs" />
     <Compile Include="KhanDotNetDemo.cs" />
     <Compile Include="Pages\BadgePage.cs" />
     <Compile Include="Pages\ExercisePage.cs" />

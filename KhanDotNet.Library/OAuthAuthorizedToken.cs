@@ -14,6 +14,7 @@ namespace KhanDotNet.Library
 
         public override string ToString()
         {
+            // TODO 1: remove secret from being exposed in logs
             return JsonConvert.SerializeObject(this);
         }
     }

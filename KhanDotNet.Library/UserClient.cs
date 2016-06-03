@@ -1,8 +1,6 @@
 ﻿using EnsureThat;
 using KhanDotNet.Library.Contracts;
 using KhanDotNet.Library.Utilities;
-using OAuth;
-using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
@@ -12,15 +10,14 @@ namespace KhanDotNet.Library
 {
     public class UserClient : BaseClient, IUserClient
     {
-        private IAuthentication Authenticator { get; set; }
+        private IAuthenticator Authenticator { get; set; }
 
-        private ConsumerCredentials Credentials { get; set; }
-
-        public UserClient(IHttpClient httpClient, IAuthentication authenticator, ConsumerCredentials credentials)
+        public UserClient(IHttpClient httpClient, IAuthenticator authenticator)
             : base(httpClient)
         {
+            Ensure.That(authenticator, nameof(authenticator)).IsNotNull();
+
             Authenticator = authenticator;
-            Credentials = credentials;
         }
 
         public async Task<User> GetUserAsync()
@@ -31,8 +28,7 @@ namespace KhanDotNet.Library
         public async Task<User> GetUserAsync(CancellationToken cancellationToken)
         {
             // TODO 2: move endpoint to constants file
-            // TODO 1: ensure cancellation token not null
-            var path = await CreateAuthenticatedRequestPath("https://www.khanacademy.org/api/v1/user", cancellationToken);
+            var path = await Authenticator.CreateAuthenticatedRequestPath("https://www.khanacademy.org/api/v1/user", cancellationToken);
             using (var response = await _httpClient.GetAsync(path, cancellationToken))
             {
                 return await response.Content.ReadAsAsync<User>(cancellationToken);
@@ -46,7 +42,7 @@ namespace KhanDotNet.Library
 
         public async Task<List<ExerciseInteraction>> GetUserExercisesAsync(CancellationToken cancellationToken)
         {
-            var path = await CreateAuthenticatedRequestPath("https://www.khanacademy.org/api/v1/user/exercises", cancellationToken);
+            var path = await Authenticator.CreateAuthenticatedRequestPath("https://www.khanacademy.org/api/v1/user/exercises", cancellationToken);
             using (var response = await _httpClient.GetAsync(path, cancellationToken))
             {
                 return await response.Content.ReadAsAsync<List<ExerciseInteraction>>(cancellationToken);
@@ -62,7 +58,7 @@ namespace KhanDotNet.Library
         {
             Ensure.That(exerciseName, nameof(exerciseName)).IsNotNullOrWhiteSpace();
 
-            var path = await CreateAuthenticatedRequestPath("https://www.khanacademy.org/api/v1/user/exercises/{0}".FUrlEncoded(exerciseName), cancellationToken);
+            var path = await Authenticator.CreateAuthenticatedRequestPath("https://www.khanacademy.org/api/v1/user/exercises/{0}".FUrlEncoded(exerciseName), cancellationToken);
             using (var response = await _httpClient.GetAsync(path, cancellationToken))
             {
                 return await response.Content.ReadAsAsync<ExerciseInteraction>(cancellationToken);
@@ -78,34 +74,11 @@ namespace KhanDotNet.Library
         {
             Ensure.That(exerciseName, nameof(exerciseName)).IsNotNullOrWhiteSpace();
 
-            var path = await CreateAuthenticatedRequestPath("https://www.khanacademy.org/api/v1/user/exercises/{0}/log".FUrlEncoded(exerciseName), cancellationToken);
+            var path = await Authenticator.CreateAuthenticatedRequestPath("https://www.khanacademy.org/api/v1/user/exercises/{0}/log".FUrlEncoded(exerciseName), cancellationToken);
             using (var response = await _httpClient.GetAsync(path, cancellationToken))
             {
                 return await response.Content.ReadAsAsync<List<ProblemLog>>(cancellationToken);
             }
-        }
-
-        private void EnsureClientSetupWithAuthentication()
-        {
-            Ensure.That(Authenticator, nameof(Authenticator))
-                  .WithExtraMessageOf(() => "Authenticated APIs require an authenticator")
-                  .IsNotNull(throws => throws.InvalidOperationException);
-
-            Ensure.That(Credentials)
-                  .WithExtraMessageOf(() => "Authenticated APIs require consumer credentials")
-                  .IsNotNull(throws => throws.InvalidOperationException);
-        }
-
-        private async Task<string> CreateAuthenticatedRequestPath(string url, CancellationToken cancellationToken)
-        {
-            EnsureClientSetupWithAuthentication();
-
-            var accessToken = await Authenticator.GetAccessTokenAsync(cancellationToken);
-
-            var req = OAuthRequest.ForProtectedResource("GET", Credentials.Key, Credentials.Secret, accessToken.Token, accessToken.Secret);
-            req.RequestUrl = url;
-
-            return new UriBuilder(url) { Query = req.GetAuthorizationQuery() }.ToString();
         }
     }
 }

@@ -11,13 +11,13 @@ using System.Threading.Tasks;
 
 namespace KhanDotNet.Library
 {
-    public class WebAuthentication : IAuthentication
+    public class WebAccessTokenRetriever : IAccessTokenRetriever
     {
-        private ConsumerCredentials Credentials { get; set; }
+        private IConsumerCredentialsRetriever CredentialsRetriever { get; set; }
 
-        public WebAuthentication(ConsumerCredentials credentials)
+        public WebAccessTokenRetriever(IConsumerCredentialsRetriever consumerCredentialsRetriever)
         {
-            Credentials = credentials;
+            CredentialsRetriever = consumerCredentialsRetriever;
         }
 
         // TODO 1: add tests
@@ -36,9 +36,11 @@ namespace KhanDotNet.Library
         {
             OAuthToken requestToken;
 
+            var credentials = await CredentialsRetriever.GetConsumerCredentialsAsync(cancellationToken);
+
             // TODO 3: create a pull request to add RequestURL param to method, since it is required
             var oauthPreparer = OAuthRequest.ForRequestToken(
-                Credentials.Key, Credentials.Secret, callbackUrl: "http://localhost:1895");
+                credentials.Key, credentials.Secret, callbackUrl: "http://localhost:1895");
             oauthPreparer.RequestUrl = "https://www.khanacademy.org/api/auth2/request_token";
 
             using (var client = new HttpClient())
@@ -110,8 +112,9 @@ namespace KhanDotNet.Library
         {
             OAuthToken accessToken;
 
+            var credentials = await CredentialsRetriever.GetConsumerCredentialsAsync(cancellationToken);
             var accessTokenRequest = OAuthRequest.ForAccessToken(
-                Credentials.Key, Credentials.Secret, authorizedRequestToken.Token, authorizedRequestToken.Secret, authorizedRequestToken.Verifier);
+                credentials.Key, credentials.Secret, authorizedRequestToken.Token, authorizedRequestToken.Secret, authorizedRequestToken.Verifier);
             accessTokenRequest.RequestUrl = "https://www.khanacademy.org/api/auth2/access_token";
 
             using (var client = new HttpClient())
