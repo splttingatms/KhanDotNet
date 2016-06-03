@@ -9,7 +9,7 @@ namespace KhanDotNet.Demo.Pages
         private IKhanClient _client;
 
         public UserPage(Program program, IKhanClient client)
-            : base("Badges", program)
+            : base("Users", program)
         {
             Menu.Add("Get user (authenticated)", GetUserCallback);
             Menu.Add("Get user exercises (authenticated)", GetUserExercisesCallback);
