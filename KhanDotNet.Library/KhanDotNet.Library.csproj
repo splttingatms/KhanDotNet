@@ -86,6 +86,7 @@
     <Compile Include="Contracts\Topic.cs" />
     <Compile Include="Contracts\TranslatedProblemType.cs" />
     <Compile Include="Contracts\User.cs" />
+    <Compile Include="Contracts\UserVideo.cs" />
     <Compile Include="Contracts\Video.cs" />
     <Compile Include="ExerciseClient.cs" />
     <Compile Include="Authentication\IAccessTokenRetriever.cs" />

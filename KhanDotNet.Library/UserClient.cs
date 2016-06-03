@@ -95,5 +95,19 @@ namespace KhanDotNet.Library
                 return await response.Content.ReadAsAsync<List<ProgressChange>>(cancellationToken);
             }
         }
+
+        public async Task<List<UserVideo>> GetUserWatchedVideosAsync()
+        {
+            return await GetUserWatchedVideosAsync(CancellationToken.None);
+        }
+
+        public async Task<List<UserVideo>> GetUserWatchedVideosAsync(CancellationToken cancellationToken)
+        {
+            var path = await Authenticator.CreateAuthenticatedRequestPath("https://www.khanacademy.org/api/v1/user/videos", cancellationToken);
+            using (var response = await _httpClient.GetAsync(path, cancellationToken))
+            {
+                return await response.Content.ReadAsAsync<List<UserVideo>>(cancellationToken);
+            }
+        }
     }
 }

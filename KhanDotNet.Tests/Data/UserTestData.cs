@@ -16,6 +16,8 @@ namespace KhanDotNet.Tests.Data
 
         public const string SampleUserProgressChangesJson = "[{\"date\": \"2014-10-24T06:43:34Z\",\"exercise_name\": \"counting_2\",\"to_progress\": {\"practiced\": true,\"mastered\": false,\"level\": \"practiced\"},\"from_progress\": {\"practiced\": false,\"mastered\": false,\"level\": \"unstarted\"}},{\"date\": \"2014-10-24T08:05:11Z\",\"exercise_name\": \"permutations_1\",\"to_progress\": {\"practiced\": true,\"mastered\": false,\"level\": \"practiced\"},\"from_progress\": {\"practiced\": false,\"mastered\": false,\"level\": \"unstarted\"}}]";
 
+        public const string SampleUserWatchedVideosJson = "[  {\"kind\": \"UserVideo\",\"seconds_watched\": 1306,\"last_watched\": \"2012-05-15T01:41:09Z\",\"completed\": true,\"backup_timestamp\": \"2012-05-15T01:41:09Z\",\"last_second_watched\": 638,\"points\": 750,\"video\": null,\"user\": \"http://nouserid.khanacademy.org/dd3d25359ba55b34e2eaa20f4bc776f7\",\"duration\": 686,\"progress\": 1.0,\"kaid\": null  }]";
+
         public static readonly User SampleUser = new User()
         {
             SpawnedBy = null,
@@ -502,6 +504,25 @@ namespace KhanDotNet.Tests.Data
                     Mastered = false,
                     Level = "unstarted"
                 }
+            }
+        };
+
+        public static readonly List<UserVideo> SampleUserWatchedVideos = new List<UserVideo>()
+        {
+            new UserVideo()
+            {
+                Kind = "UserVideo",
+                SecondsWatched = 1306,
+                LastWatched = new DateTime(2012, 05, 15, 01, 41, 09),
+                Completed = true,
+                BackupTimestamp = new DateTime(2012, 05, 15, 01, 41, 09),
+                LastSecondWatched = 638,
+                Points = 750,
+                Video = null,
+                User = "http://nouserid.khanacademy.org/dd3d25359ba55b34e2eaa20f4bc776f7",
+                Duration = 686,
+                Progress = 1.0,
+                KaId = null
             }
         };
     }

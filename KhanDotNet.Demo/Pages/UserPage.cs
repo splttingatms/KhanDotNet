@@ -16,6 +16,7 @@ namespace KhanDotNet.Demo.Pages
             Menu.Add("Get user exercise (authenticated)", GetUserExerciseCallback);
             Menu.Add("Get user exercise problem logs (authenticated)", GetUserExerciseProblemLogsCallback);
             Menu.Add("Get user progress changes (authenticated)", GetUserProgressChangesCallback);
+            Menu.Add("Get user watched videos (authenticated)", GetUserWatchedVideosCallback);
             _client = client;
         }
 
@@ -49,6 +50,12 @@ namespace KhanDotNet.Demo.Pages
         {
             var changes = _client.Users.GetUserProgressChangesAsync().Result;
             OutputHelper.Success(changes);
+        }
+
+        private void GetUserWatchedVideosCallback()
+        {
+            var videos = _client.Users.GetUserWatchedVideosAsync().Result;
+            OutputHelper.Success(videos);
         }
     }
 }

@@ -392,5 +392,66 @@ namespace KhanDotNet.Tests
         }
 
         #endregion
+
+        #region GetUserWatchedVideos
+
+        [TestMethod]
+        public async Task GetWatchedVideosShouldTargetCorrectPath()
+        {
+            await _client.GetUserWatchedVideosAsync();
+
+            _httpClientMock.Verify(c => c.GetAsync(
+                It.Is<string>(url => url.ContainsIgnoreCase("/api/v1/user/videos")),
+                It.IsAny<CancellationToken>()));
+        }
+
+        [TestMethod]
+        public async Task GetWatchedVideosShouldAuthenticate()
+        {
+            await _client.GetUserWatchedVideosAsync();
+
+            _authenticator.Verify(a =>
+                a.CreateAuthenticatedRequestPath(
+                    It.IsAny<string>(),
+                    It.IsAny<CancellationToken>()),
+                Times.Once);
+        }
+
+        [TestMethod]
+        public async Task GetWatchedVideosShouldReturnDeserializedResult()
+        {
+            var expected = UserTestData.SampleUserWatchedVideos;
+            _khanResponse.Content = new JsonContent(UserTestData.SampleUserWatchedVideosJson);
+
+            var actual = await _client.GetUserWatchedVideosAsync();
+
+            expected.AssertDeepEqual(actual);
+        }
+
+        [TestMethod]
+        public async Task GetWatchedVideosShouldPassThroughTokenToHttpClient()
+        {
+            var expectedToken = new CancellationToken(true);
+
+            await _client.GetUserWatchedVideosAsync(expectedToken);
+
+            _httpClientMock.Verify(c => c.GetAsync(
+                    It.IsAny<string>(),
+                    It.Is<CancellationToken>(actualToken => actualToken.Equals(expectedToken))));
+        }
+
+        [TestMethod]
+        public async Task GetWatchedVideosShouldPassEmptyTokenToHttpClient()
+        {
+            var expectedToken = CancellationToken.None;
+
+            await _client.GetUserWatchedVideosAsync();
+
+            _httpClientMock.Verify(c => c.GetAsync(
+                    It.IsAny<string>(),
+                    It.Is<CancellationToken>(actualToken => actualToken.Equals(expectedToken))));
+        }
+
+        #endregion
     }
 }
