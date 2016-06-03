@@ -109,9 +109,9 @@ namespace KhanDotNet.Tests.Data
         };
 
 
-        public static readonly List<ExerciseInteraction> SampleUserExercises = new List<ExerciseInteraction>()
+        public static readonly List<UserExercise> SampleUserExercises = new List<UserExercise>()
         {
-            new ExerciseInteraction()
+            new UserExercise()
             {
                 Streak = 6,
                 IsSkillCheck = false,
@@ -161,7 +161,7 @@ namespace KhanDotNet.Tests.Data
             }
         };
 
-        public static readonly ExerciseInteraction SampleUserExercise = new ExerciseInteraction()
+        public static readonly UserExercise SampleUserExercise = new UserExercise()
         {
             Streak = 6,
             IsSkillCheck = false,

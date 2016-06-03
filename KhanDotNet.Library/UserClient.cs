@@ -36,33 +36,33 @@ namespace KhanDotNet.Library
             }
         }
 
-        public async Task<List<ExerciseInteraction>> GetUserExercisesAsync()
+        public async Task<List<UserExercise>> GetUserExercisesAsync()
         {
             return await GetUserExercisesAsync(CancellationToken.None);
         }
 
-        public async Task<List<ExerciseInteraction>> GetUserExercisesAsync(CancellationToken cancellationToken)
+        public async Task<List<UserExercise>> GetUserExercisesAsync(CancellationToken cancellationToken)
         {
             var path = await Authenticator.CreateAuthenticatedRequestPath("https://www.khanacademy.org/api/v1/user/exercises", cancellationToken);
             using (var response = await _httpClient.GetAsync(path, cancellationToken))
             {
-                return await response.Content.ReadAsAsync<List<ExerciseInteraction>>(cancellationToken);
+                return await response.Content.ReadAsAsync<List<UserExercise>>(cancellationToken);
             }
         }
 
-        public async Task<ExerciseInteraction> GetUserExerciseAsync(string exerciseName)
+        public async Task<UserExercise> GetUserExerciseAsync(string exerciseName)
         {
             return await GetUserExerciseAsync(exerciseName, CancellationToken.None);
         }
 
-        public async Task<ExerciseInteraction> GetUserExerciseAsync(string exerciseName, CancellationToken cancellationToken)
+        public async Task<UserExercise> GetUserExerciseAsync(string exerciseName, CancellationToken cancellationToken)
         {
             Ensure.That(exerciseName, nameof(exerciseName)).IsNotNullOrWhiteSpace();
 
             var path = await Authenticator.CreateAuthenticatedRequestPath("https://www.khanacademy.org/api/v1/user/exercises/{0}".FUrlEncoded(exerciseName), cancellationToken);
             using (var response = await _httpClient.GetAsync(path, cancellationToken))
             {
-                return await response.Content.ReadAsAsync<ExerciseInteraction>(cancellationToken);
+                return await response.Content.ReadAsAsync<UserExercise>(cancellationToken);
             }
         }
 

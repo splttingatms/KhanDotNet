@@ -3,7 +3,7 @@ using System;
 
 namespace KhanDotNet.Library.Contracts
 {
-    public class ExerciseInteraction
+    public class UserExercise
     {
         [JsonProperty("streak")]
         public int Streak { get; set; }
@@ -18,7 +18,7 @@ namespace KhanDotNet.Library.Contracts
         public string SnoozeTime { get; set; }
 
         [JsonProperty("maximum_exercise_progress_dt")]
-        public DateTime MaximumExerciseProgressDt { get; set; }
+        public DateTime? MaximumExerciseProgressDt { get; set; }
 
         [JsonProperty("last_count_hints")]
         public int LastCountHints { get; set; }
@@ -69,7 +69,7 @@ namespace KhanDotNet.Library.Contracts
         public DateTime LastDone { get; set; }
 
         [JsonProperty("last_mastery_update")]
-        public DateTime LastMasteryUpdate { get; set; }
+        public DateTime? LastMasteryUpdate { get; set; }
 
         [JsonProperty("maximum_exercise_progress")]
         public ExerciseProgress MaximumExerciseProgress { get; set; }

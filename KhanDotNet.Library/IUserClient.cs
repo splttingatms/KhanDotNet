@@ -11,11 +11,11 @@ namespace KhanDotNet.Library
         Task<User> GetUserAsync();
         Task<User> GetUserAsync(CancellationToken cancellationToken);
 
-        Task<List<ExerciseInteraction>> GetUserExercisesAsync();
-        Task<List<ExerciseInteraction>> GetUserExercisesAsync(CancellationToken cancellationToken);
+        Task<List<UserExercise>> GetUserExercisesAsync();
+        Task<List<UserExercise>> GetUserExercisesAsync(CancellationToken cancellationToken);
 
-        Task<ExerciseInteraction> GetUserExerciseAsync(string exerciseName);
-        Task<ExerciseInteraction> GetUserExerciseAsync(string exerciseName, CancellationToken cancellationToken);
+        Task<UserExercise> GetUserExerciseAsync(string exerciseName);
+        Task<UserExercise> GetUserExerciseAsync(string exerciseName, CancellationToken cancellationToken);
 
         Task<List<ProblemLog>> GetUserExerciseProblemLogsAsync(string exerciseName);
         Task<List<ProblemLog>> GetUserExerciseProblemLogsAsync(string exerciseName, CancellationToken cancellationToken);

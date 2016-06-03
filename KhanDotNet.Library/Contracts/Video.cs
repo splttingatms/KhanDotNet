@@ -73,7 +73,7 @@ namespace KhanDotNet.Library.Contracts
         public Uri LicenseUrl { get; set; }
 
         [JsonProperty("deleted_mod_time")]
-        public DateTime DeletedModTime { get; set; }
+        public DateTime? DeletedModTime { get; set; }
 
         [JsonProperty("thumbnail_data")]
         public ThumbnailData ThumbnailData { get; set; }

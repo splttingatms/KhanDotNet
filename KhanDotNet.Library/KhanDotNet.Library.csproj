@@ -71,7 +71,7 @@
     <Compile Include="Contracts\Curation.cs" />
     <Compile Include="Contracts\DownloadUrls.cs" />
     <Compile Include="Contracts\Exercise.cs" />
-    <Compile Include="Contracts\ExerciseInteraction.cs" />
+    <Compile Include="Contracts\UserExercise.cs" />
     <Compile Include="Contracts\ExerciseProgress.cs" />
     <Compile Include="Contracts\ExerciseStates.cs" />
     <Compile Include="Contracts\ProblemLog.cs" />
