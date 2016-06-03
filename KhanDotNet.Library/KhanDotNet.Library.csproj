@@ -94,6 +94,7 @@
     <Compile Include="ITopicClient.cs" />
     <Compile Include="ITopicTreeClient.cs" />
     <Compile Include="IUserClient.cs" />
+    <Compile Include="NoopAuthenticator.cs" />
     <Compile Include="OAuthAuthorizedToken.cs" />
     <Compile Include="OAuthToken.cs" />
     <Compile Include="StaticAccessTokenRetriever.cs" />
