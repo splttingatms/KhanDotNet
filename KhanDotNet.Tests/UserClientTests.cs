@@ -59,7 +59,7 @@ namespace KhanDotNet.Tests
         #region Constructor
 
         [TestMethod]
-        [ExpectedExceptionWithMessage(typeof(ArgumentNullException), "authenticator", match: false, ignoreCase: true)]
+        [ExpectedExceptionWithSubstring(typeof(ArgumentNullException), "authenticator")]
         public void UserClientConstructorShouldThrowIfNoAuthenticatorIsGiven()
         {
             _client = new UserClient(_httpClientMock.Object, authenticator: null);
@@ -194,7 +194,7 @@ namespace KhanDotNet.Tests
         }
 
         [TestMethod]
-        [ExpectedExceptionWithMessage(typeof(ArgumentException), "exerciseName", match: false, ignoreCase: true)]
+        [ExpectedExceptionWithSubstring(typeof(ArgumentException), "exerciseName")]
         public async Task GetUserExerciseShouldThrowIfNullNameGiven()
         {
             await _client.GetUserExerciseAsync(exerciseName: null);
@@ -269,9 +269,8 @@ namespace KhanDotNet.Tests
             _authenticator.Verify(a => a.CreateAuthenticatedRequestPath(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Once);
         }
 
-        // TODO 1: create attribute that does not match exactly and ignores case
         [TestMethod]
-        [ExpectedExceptionWithMessage(typeof(ArgumentException), "exerciseName", match: false, ignoreCase: true)]
+        [ExpectedExceptionWithSubstring(typeof(ArgumentException), "exerciseName")]
         public async Task GetUserExerciseProblemLogsShouldThrowIfNullNameGiven()
         {
             await _client.GetUserExerciseProblemLogsAsync(exerciseName: null);

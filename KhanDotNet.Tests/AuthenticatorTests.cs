@@ -36,14 +36,14 @@ namespace KhanDotNet.Tests
         #region constructor
 
         [TestMethod]
-        [ExpectedExceptionWithMessage(typeof(ArgumentNullException), "consumerCredentialsRetriever", match: false, ignoreCase: true)]
+        [ExpectedExceptionWithSubstring(typeof(ArgumentNullException), "consumerCredentialsRetriever")]
         public void AuthenticatorConstructorShouldThrowIfConsumerCredentialsRetrieverIsNull()
         {
             new Authenticator(consumerCredentialsRetriever: null, accessTokenRetriever: _mockAccessTokenRetriever.Object);
         }
 
         [TestMethod]
-        [ExpectedExceptionWithMessage(typeof(ArgumentNullException), "accessTokenRetriever", match: false, ignoreCase: true)]
+        [ExpectedExceptionWithSubstring(typeof(ArgumentNullException), "accessTokenRetriever")]
         public void AuthenticatorConstructorShouldThrowIfAccessTokenRetrieverIsNull()
         {
             new Authenticator(_mockConsumerCredentialsRetriever.Object, accessTokenRetriever: null);
@@ -54,7 +54,7 @@ namespace KhanDotNet.Tests
         #region CreateAuthenticatedRequestPath
 
         [TestMethod]
-        [ExpectedExceptionWithMessage(typeof(ArgumentException), "url", match: false, ignoreCase: true)]
+        [ExpectedExceptionWithSubstring(typeof(ArgumentException), "url")]
         public async Task CreateAuthenticatedPathShouldThrowIfUrlNull()
         {
             await _authenticator.CreateAuthenticatedRequestPath(null, CancellationToken.None);

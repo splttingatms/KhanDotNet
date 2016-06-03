@@ -55,7 +55,7 @@ namespace KhanDotNet.Tests
         }
 
         [TestMethod]
-        [ExpectedExceptionWithMessage(typeof(HttpRequestException), "response was null", match: false, ignoreCase: true)]
+        [ExpectedExceptionWithSubstring(typeof(HttpRequestException), "response was null")]
         public async Task EnsureSuccessHandlerShouldThrowIfNullResponseRecieved()
         {
             var mockHandler = new Mock<HttpMessageHandler>();
@@ -70,7 +70,7 @@ namespace KhanDotNet.Tests
         }
 
         [TestMethod]
-        [ExpectedExceptionWithMessage(typeof(NonSuccessStatusCodeException), "StatusCode: (400) BadRequest", match: false, ignoreCase: true)]
+        [ExpectedExceptionWithSubstring(typeof(NonSuccessStatusCodeException), "StatusCode: (400) BadRequest")]
         public async Task EnsureSuccessHandlerShouldThrowIfNonSuccessResponseReceived()
         {
             _fakeResponse.StatusCode = HttpStatusCode.BadRequest;
@@ -80,7 +80,7 @@ namespace KhanDotNet.Tests
         }
 
         [TestMethod]
-        [ExpectedExceptionWithMessage(typeof(HttpRequestException), "content was null", match: false, ignoreCase: true)]
+        [ExpectedExceptionWithSubstring(typeof(HttpRequestException), "content was null")]
         public async Task EnsureSuccessHandlerShouldThrowIfNullContent()
         {
             _fakeResponse.Content = null;

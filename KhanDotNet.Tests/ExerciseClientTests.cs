@@ -134,21 +134,21 @@ namespace KhanDotNet.Tests
         }
 
         [TestMethod]
-        [ExpectedExceptionWithMessage(typeof(ArgumentException), "name", match: false, ignoreCase: true)]
+        [ExpectedExceptionWithSubstring(typeof(ArgumentException), "name")]
         public async Task GetExerciseShouldThrowIfNullInput()
         {
             await _client.GetExerciseAsync(name: null);
         }
 
         [TestMethod]
-        [ExpectedExceptionWithMessage(typeof(ArgumentException), "name", match: false, ignoreCase: true)]
+        [ExpectedExceptionWithSubstring(typeof(ArgumentException), "name")]
         public async Task GetExerciseShouldThrowIfEmptyInput()
         {
             await _client.GetExerciseAsync(name: string.Empty);
         }
 
         [TestMethod]
-        [ExpectedExceptionWithMessage(typeof(ArgumentException), "name", match: false, ignoreCase: true)]
+        [ExpectedExceptionWithSubstring(typeof(ArgumentException), "name")]
         public async Task GetExerciseShouldThrowIfWhitespaceInput()
         {
             await _client.GetExerciseAsync("   ");
@@ -184,14 +184,14 @@ namespace KhanDotNet.Tests
         #region GetFollowUpExercises
 
         [TestMethod]
-        [ExpectedExceptionWithMessage(typeof(ArgumentException), "name", match: false, ignoreCase: true)]
+        [ExpectedExceptionWithSubstring(typeof(ArgumentException), "name")]
         public async Task GetFollowUpExercisesShouldThrowIfNullInput()
         {
             await _client.GetFollowUpExercisesAsync(name: null);
         }
 
         [TestMethod]
-        [ExpectedExceptionWithMessage(typeof(ArgumentException), "name", match: false, ignoreCase: true)]
+        [ExpectedExceptionWithSubstring(typeof(ArgumentException), "name")]
         public async Task GetFollowUpExercisesShouldThrowIfEmptyInput()
         {
             await _client.GetFollowUpExercisesAsync(name: string.Empty);
@@ -264,7 +264,7 @@ namespace KhanDotNet.Tests
         #region GetExerciseVideos
 
         [TestMethod]
-        [ExpectedExceptionWithMessage(typeof(ArgumentException), "name", match: false, ignoreCase: true)]
+        [ExpectedExceptionWithSubstring(typeof(ArgumentException), "name")]
         public async Task GetExerciseVideosShouldThrowIfNullInput()
         {
             await _client.GetExerciseVideosAsync(name: null);

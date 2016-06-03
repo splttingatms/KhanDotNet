@@ -35,7 +35,5 @@ namespace KhanDotNet.Tests.Utilities
                     "Exception message did not contain expected message");
             }
         }
-
-
     }
 }

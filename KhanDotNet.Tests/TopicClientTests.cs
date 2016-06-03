@@ -49,7 +49,7 @@ namespace KhanDotNet.Tests
         #region GetTopic
 
         [TestMethod]
-        [ExpectedExceptionWithMessage(typeof(ArgumentException), "slug", match: false, ignoreCase: true)]
+        [ExpectedExceptionWithSubstring(typeof(ArgumentException), "slug")]
         public async Task GetTopicShouldThrowIfInputNull()
         {
             await _client.GetTopicAsync(slug: null);
@@ -122,7 +122,7 @@ namespace KhanDotNet.Tests
         #region GetTopicExercises
 
         [TestMethod]
-        [ExpectedExceptionWithMessage(typeof(ArgumentException), "slug", match: false, ignoreCase: true)]
+        [ExpectedExceptionWithSubstring(typeof(ArgumentException), "slug")]
         public async Task GetTopicExercisesShouldThrowIfNullInput()
         {
             await _client.GetTopicExercisesAsync(slug: null);
@@ -196,7 +196,7 @@ namespace KhanDotNet.Tests
         #region GetTopicVideos
 
         [TestMethod]
-        [ExpectedExceptionWithMessage(typeof(ArgumentException), "slug", match: false, ignoreCase: true)]
+        [ExpectedExceptionWithSubstring(typeof(ArgumentException), "slug")]
         public async Task GetTopicVideosShouldThrowIfNullInput()
         {
             await _client.GetTopicVideosAsync(slug: null);

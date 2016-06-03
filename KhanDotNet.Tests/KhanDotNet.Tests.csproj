@@ -79,6 +79,7 @@
     <Compile Include="TopicTreeClientTests.cs" />
     <Compile Include="UserClientTests.cs" />
     <Compile Include="Utilities\ExpectedExceptionWithMessageAttribute.cs" />
+    <Compile Include="Utilities\ExpectedExceptionWithSubstringAttribute.cs" />
     <Compile Include="Utilities\ExpectedExceptionWrapperAttribute.cs" />
     <Compile Include="Utilities\JsonContent.cs" />
     <Compile Include="ExerciseClientTests.cs" />
