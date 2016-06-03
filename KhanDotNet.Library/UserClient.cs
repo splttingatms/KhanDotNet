@@ -80,5 +80,19 @@ namespace KhanDotNet.Library
                 return await response.Content.ReadAsAsync<List<ProblemLog>>(cancellationToken);
             }
         }
+
+        public async Task<List<ProgressChange>> GetUserProgressChangesAsync()
+        {
+            return await GetUserProgressChangesAsync(CancellationToken.None);
+        }
+
+        public async Task<List<ProgressChange>> GetUserProgressChangesAsync(CancellationToken cancellationToken)
+        {
+            var path = await Authenticator.CreateAuthenticatedRequestPath("https://www.khanacademy.org/api/v1/user/exercises/progress_changes", cancellationToken);
+            using (var response = await _httpClient.GetAsync(path, cancellationToken))
+            {
+                return await response.Content.ReadAsAsync<List<ProgressChange>>(cancellationToken);
+            }
+        }
     }
 }

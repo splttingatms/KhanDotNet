@@ -19,5 +19,8 @@ namespace KhanDotNet.Library
 
         Task<List<ProblemLog>> GetUserExerciseProblemLogsAsync(string exerciseName);
         Task<List<ProblemLog>> GetUserExerciseProblemLogsAsync(string exerciseName, CancellationToken cancellationToken);
+
+        Task<List<ProgressChange>> GetUserProgressChangesAsync();
+        Task<List<ProgressChange>> GetUserProgressChangesAsync(CancellationToken cancellationToken);
     }
 }

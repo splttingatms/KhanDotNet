@@ -266,7 +266,8 @@ namespace KhanDotNet.Tests
         public async Task GetUserExerciseProblemLogsShouldAuthenticatePath()
         {
             await _client.GetUserExerciseProblemLogsAsync("permutations_1");
-            _authenticator.Verify(a => a.CreateAuthenticatedRequestPath(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Once);
+            _authenticator.Verify(a => a.CreateAuthenticatedRequestPath(
+                It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Once);
         }
 
         [TestMethod]
@@ -325,6 +326,64 @@ namespace KhanDotNet.Tests
             var expectedToken = CancellationToken.None;
 
             await _client.GetUserExerciseProblemLogsAsync("permutations_1");
+
+            _httpClientMock.Verify(c => c.GetAsync(
+                    It.IsAny<string>(),
+                    It.Is<CancellationToken>(actualToken => actualToken.Equals(expectedToken))));
+        }
+
+        #endregion
+
+        #region GetUserProgressChanges
+
+        [TestMethod]
+        public async Task GetUserProgressShouldAuthenticate()
+        {
+            await _client.GetUserProgressChangesAsync();
+
+            _authenticator.Verify(a => a.CreateAuthenticatedRequestPath(
+                It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Once);
+        }
+
+        [TestMethod]
+        public async Task GetUserProgressShouldTargetCorrectPath()
+        {
+            await _client.GetUserProgressChangesAsync();
+
+            _httpClientMock.Verify(c => c.GetAsync(
+                It.Is<string>(url => url.ContainsIgnoreCase("/api/v1/user/exercises/progress_changes")),
+                It.IsAny<CancellationToken>()));
+        }
+
+        [TestMethod]
+        public async Task GetUserProgressShouldReturnDeserializedResult()
+        {
+            var expected = UserTestData.SampleUserProgressChanges;
+            _khanResponse.Content = new JsonContent(UserTestData.SampleUserProgressChangesJson);
+
+            var actual = await _client.GetUserProgressChangesAsync();
+
+            expected.AssertDeepEqual(actual);
+        }
+
+        [TestMethod]
+        public async Task GetUserProgressShouldPassThroughTokenToHttpClient()
+        {
+            var expectedToken = new CancellationToken(true);
+
+            await _client.GetUserProgressChangesAsync(expectedToken);
+
+            _httpClientMock.Verify(c => c.GetAsync(
+                    It.IsAny<string>(),
+                    It.Is<CancellationToken>(actualToken => actualToken.Equals(expectedToken))));
+        }
+
+        [TestMethod]
+        public async Task GetUserProgressShouldPassEmptyTokenToHttpClient()
+        {
+            var expectedToken = CancellationToken.None;
+
+            await _client.GetUserProgressChangesAsync();
 
             _httpClientMock.Verify(c => c.GetAsync(
                     It.IsAny<string>(),

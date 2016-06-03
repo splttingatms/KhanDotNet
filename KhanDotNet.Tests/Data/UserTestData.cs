@@ -14,6 +14,8 @@ namespace KhanDotNet.Tests.Data
 
         public const string SampleUserExerciseProblemLogsJson = "[{\"relative_url\":\"/exercise/permutations_1?problem_number=1\",\"mission\":null,\"pre_attempt_prediction\":0.44683653285651542,\"attempts\":[\"\\\"6\\\"\"],\"seed\":\"19\",\"ka_url\":\"https://www.khanacademy.org/exercise/permutations_1?problem_number=1\",\"problem_type\":\"letters\",\"count_hints\":0,\"task_type\":\"practice.tutorial\",\"user_id\":\"http://googleid.khanacademy.org/113933792523419662884\",\"time_taken\":103,\"review_mode\":false,\"post_attempt_prediction\":0.81350811575055282,\"hint_used\":false,\"time_taken_attempts\":[103],\"correct\":true,\"exercise\":\"permutations_1\",\"skipped\":false,\"hint_time_taken_list\":[],\"backup_timestamp\":\"2014-10-24T08:05:11Z\",\"earned_proficiency\":false,\"user\":\"http://nouserid.khanacademy.org/dd3d25359ba55b34e2eaa20f4bc776f7\",\"outgoing_level\":\"practiced\",\"ip_address\":\"127.0.0.1\",\"problem_number\":1,\"kind\":\"ProblemLog\",\"sha1\":\"778c5cb08ef70e9f6b4b067d8bc6b36cc5885382\",\"count_attempts\":1,\"task_id\":\"5898544860102656\",\"points_earned\":175,\"practiced_prereqs\":true,\"date_done_str\":\"2014-10-24\",\"prediction_version\":null,\"time_done\":\"2014-10-24T08:05:10Z\",\"random_float\":0.17358451528696217,\"kaid\":null,\"incoming_level\":\"unstarted\",\"hint_after_attempt_list\":[]}]";
 
+        public const string SampleUserProgressChangesJson = "[{\"date\": \"2014-10-24T06:43:34Z\",\"exercise_name\": \"counting_2\",\"to_progress\": {\"practiced\": true,\"mastered\": false,\"level\": \"practiced\"},\"from_progress\": {\"practiced\": false,\"mastered\": false,\"level\": \"unstarted\"}},{\"date\": \"2014-10-24T08:05:11Z\",\"exercise_name\": \"permutations_1\",\"to_progress\": {\"practiced\": true,\"mastered\": false,\"level\": \"practiced\"},\"from_progress\": {\"practiced\": false,\"mastered\": false,\"level\": \"unstarted\"}}]";
+
         public static readonly User SampleUser = new User()
         {
             SpawnedBy = null,
@@ -462,6 +464,44 @@ namespace KhanDotNet.Tests.Data
                 KaId = null,
                 IncomingLevel = "unstarted",
                 HintAfterAttemptList = new List<object>()
+            }
+        };
+
+        public static readonly List<ProgressChange> SampleUserProgressChanges = new List<ProgressChange>()
+        {
+            new ProgressChange()
+            {
+                Date = new DateTime(2014, 10, 24, 06, 43, 34),
+                ExerciseName = "counting_2",
+                ToProgress = new Progress()
+                {
+                    Practiced = true,
+                    Mastered = false,
+                    Level = "practiced"
+                },
+                FromProgress = new Progress()
+                {
+                    Practiced = false,
+                    Mastered = false,
+                    Level = "unstarted"
+                }
+            },
+            new ProgressChange()
+            {
+                Date = new DateTime(2014, 10, 24, 08, 05, 11),
+                ExerciseName = "permutations_1",
+                ToProgress = new Progress()
+                {
+                    Practiced = true,
+                    Mastered = false,
+                    Level = "practiced"
+                },
+                FromProgress = new Progress()
+                {
+                    Practiced = false,
+                    Mastered = false,
+                    Level = "unstarted"
+                }
             }
         };
     }

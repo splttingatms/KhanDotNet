@@ -15,7 +15,7 @@ namespace KhanDotNet.Demo.Pages
             Menu.Add("Get user exercises (authenticated)", GetUserExercisesCallback);
             Menu.Add("Get user exercise (authenticated)", GetUserExerciseCallback);
             Menu.Add("Get user exercise problem logs (authenticated)", GetUserExerciseProblemLogsCallback);
-
+            Menu.Add("Get user progress changes (authenticated)", GetUserProgressChangesCallback);
             _client = client;
         }
 
@@ -43,6 +43,12 @@ namespace KhanDotNet.Demo.Pages
             var name = Input.ReadString("Enter exercise name:");
             var logs = _client.Users.GetUserExerciseProblemLogsAsync(name).Result;
             OutputHelper.Success(logs);
+        }
+
+        private void GetUserProgressChangesCallback()
+        {
+            var changes = _client.Users.GetUserProgressChangesAsync().Result;
+            OutputHelper.Success(changes);
         }
     }
 }
