@@ -111,6 +111,9 @@
     <Compile Include="Utilities\EnsureSuccessHandler.cs" />
     <Compile Include="Utilities\HttpClientWithValidator.cs" />
     <Compile Include="Utilities\NonSuccessStatusCodeException.cs" />
+    <Compile Include="Utilities\SensitiveAttribute.cs" />
+    <Compile Include="Utilities\SensitiveConverter.cs" />
+    <Compile Include="Utilities\SensitiveSerializer.cs" />
     <Compile Include="Utilities\StringExtensions.cs" />
     <Compile Include="Utilities\HttpClientWrapper.cs" />
     <Compile Include="Utilities\IHttpClient.cs" />

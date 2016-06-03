@@ -1,9 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using KhanDotNet.Library.Utilities;
 
 namespace KhanDotNet.Library
 {
     public class OAuthAuthorizedToken : OAuthToken
     {
+        [Sensitive]
         public string Verifier { get; set; }
 
         public OAuthAuthorizedToken(string token, string secret, string verifier)
@@ -14,8 +15,7 @@ namespace KhanDotNet.Library
 
         public override string ToString()
         {
-            // TODO 1: remove secret from being exposed in logs
-            return JsonConvert.SerializeObject(this);
+            return SensitiveSerializer.Serialize(this);
         }
     }
 }
