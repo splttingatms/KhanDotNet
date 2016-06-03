@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace KhanDotNet.Library
+namespace KhanDotNet.Library.Authentication
 {
     public interface IAccessTokenRetriever
     {

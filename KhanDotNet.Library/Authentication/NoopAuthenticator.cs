@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace KhanDotNet.Library
+namespace KhanDotNet.Library.Authentication
 {
     // Followed "static initialization" singleton pattern from https://msdn.microsoft.com/en-us/library/ff650316.aspx
     public sealed class NoopAuthenticator : IAuthenticator

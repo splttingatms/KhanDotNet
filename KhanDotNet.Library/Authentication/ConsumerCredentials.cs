@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace KhanDotNet.Library
+namespace KhanDotNet.Library.Authentication
 {
     public class ConsumerCredentials
     {

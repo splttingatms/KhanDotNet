@@ -1,4 +1,5 @@
-﻿using KhanDotNet.Library.Utilities;
+﻿using KhanDotNet.Library.Authentication;
+using KhanDotNet.Library.Utilities;
 using System;
 
 namespace KhanDotNet.Library

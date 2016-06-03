@@ -1,4 +1,5 @@
 ﻿using KhanDotNet.Library;
+using KhanDotNet.Library.Authentication;
 using KhanDotNet.Tests.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;

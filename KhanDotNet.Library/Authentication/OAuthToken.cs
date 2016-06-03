@@ -1,6 +1,6 @@
 ﻿using KhanDotNet.Library.Utilities;
 
-namespace KhanDotNet.Library
+namespace KhanDotNet.Library.Authentication
 {
     public class OAuthToken
     {

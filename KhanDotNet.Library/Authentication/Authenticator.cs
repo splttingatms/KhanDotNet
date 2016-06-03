@@ -4,7 +4,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace KhanDotNet.Library
+namespace KhanDotNet.Library.Authentication
 {
     public class Authenticator : IAuthenticator
     {

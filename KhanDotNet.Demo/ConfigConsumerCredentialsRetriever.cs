@@ -1,4 +1,5 @@
 ﻿using KhanDotNet.Library;
+using KhanDotNet.Library.Authentication;
 using System.Configuration;
 using System.Threading;
 using System.Threading.Tasks;

@@ -1,4 +1,5 @@
 ﻿using EnsureThat;
+using KhanDotNet.Library.Authentication;
 using KhanDotNet.Library.Contracts;
 using KhanDotNet.Library.Utilities;
 using System.Collections.Generic;

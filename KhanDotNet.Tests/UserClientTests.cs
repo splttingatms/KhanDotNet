@@ -1,4 +1,5 @@
 ﻿using KhanDotNet.Library;
+using KhanDotNet.Library.Authentication;
 using KhanDotNet.Library.Utilities;
 using KhanDotNet.Tests.Data;
 using KhanDotNet.Tests.Utilities;

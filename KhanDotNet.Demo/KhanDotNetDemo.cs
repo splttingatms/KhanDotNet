@@ -1,6 +1,7 @@
 ﻿using EasyConsole;
 using KhanDotNet.Demo.Pages;
 using KhanDotNet.Library;
+using KhanDotNet.Library.Authentication;
 using System;
 using System.Configuration;
 using System.Diagnostics;
