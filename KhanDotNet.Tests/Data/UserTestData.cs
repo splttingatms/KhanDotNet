@@ -20,6 +20,8 @@ namespace KhanDotNet.Tests.Data
 
         public const string SampleUserVideoInteractionsByIdJson = "{\"kind\": \"UserVideo\",\"seconds_watched\": 1306,\"last_watched\": \"2012-05-15T01:41:09Z\",\"completed\": true,\"backup_timestamp\": \"2012-05-15T01:41:09Z\",\"ka_locale\": \"en\",\"last_second_watched\": 638,\"points\": 750,\"video\": null,\"user\": \"http://nouserid.khanacademy.org/dd3d25359ba55b34e2eaa20f4bc776f7\",\"duration\": 686,\"progress\": 1.0,\"action_results\": {\"notifications_added\": {\"urgent\": [],\"readable\": [],\"continue_url\": null},\"new_task_json\": {\"task_json\": {\"completion_criteria\": {\"name\": \"finish_video\"},\"slug\": \"hypothesis-testing-and-p-values\",\"task_type\": \"video\",\"description\": \"Sal walks through an example about a neurologist testing the effect of a drug to discuss hypothesis testing and p-values.\",\"badges_awarded\": [],\"title\": \"Hypothesis testing and p-values\",\"seconds_watched\": 0,\"language_tag\": \"en\",\"points_earned\": 0,\"direct_link\": \"/math/probability/statistics-inferential/hypothesis-testing/v/hypothesis-testing-and-p-values\",\"last_second_watched\": 0,\"content\": null,\"translated_description\": \"Sal walks through an example about a neurologist testing the effect of a drug to discuss hypothesis testing and p-values.\",\"point_bounty\": 100,\"key\": \"ag5zfmtoYW4tYWNhZGVteXJtCxIJVXNlclZpZGVvIkxodHRwOi8vbm91c2VyaWQua2hhbmFjYWRlbXkub3JnL2RkM2QyNTM1OWJhNTViMzRlMmVhYTIwZjRiYzc3NmY2Oi1GdGxINHN2cXg0DAsSDExlYXJuaW5nVGFzaxgBDX\",\"versions\": {\"LearningTask\": 4,\"VideoTask\": 3},\"translated_title\": \"Hypothesis testing and p-values\",\"translated_description_html\": \"Sal walks through an example about a neurologist testing the effect of a drug to discuss hypothesis testing and p-values.\",\"id\": \"1\",\"avatar_parts_awarded\": []}},\"badge_counts\": {\"0\": 22,\"1\": 3,\"2\": 0,\"3\": 0,\"4\": 0,\"5\": 0},\"user_profile\": {\"is_moderator\": false,\"streak_length\": 0,\"can_record_tutorial\": false,\"is_demo\": false,\"allowed_by_parent_to_add_any_coach\": true,\"user_key\": \"ag5zfmtoYW4tYWNhZGVteXJaCxIIVXNlckRhdGEiTHVzZXJfaWRfa2V5X2h0dHA6Ly9ub3VzZXJpZC5raGFuYWNhZGVteS5vcmcvZGQzZDI1MzU5YmE1NWIzNGUyZWFhMjBmNGJjNzc2ZjYX\",\"count_brand_new_notifications\": 0,\"has_changed_avatar\": false,\"avatar_name\": \"greenleaf\",\"moderator_level\": 0,\"is_activity_accessible\": true,\"has_child_students\": false,\"is_parent_of_logged_in_user\": false,\"date_joined\": \"2011-11-09T00:22:12Z\",\"user_id\": \"http://googleid.khanacademy.org/113933792523419662885\",\"affiliations\": [],\"user_location\": null,\"can_create_official_clarifications\": false,\"child_page_root\": \"/parent/child/kaid_78807109740671675685110/\",\"background_name\": \"blue\",\"profile_root\": \"/profile/kaid_78807109740671675685110/\",\"is_data_collectible\": true,\"streak_last_extended\": \"1900-01-01\",\"follow_requires_approval\": true,\"can_message_users\": false,\"is_phantom\": false,\"email\": \"fake@gmail.com\",\"global_permissions\": [],\"username\": \"\",\"bio\": \"\",\"hide_visual\": false,\"is_midsignup_phantom\": false,\"can_modify_coaches\": true,\"can_eval_cs_projects\": false,\"can_hellban\": false,\"public_badges\": [],\"is_child_account\": false,\"signed_up_as_teacher\": false,\"background\": {\"thumb_src\": \"https://cdn.kastatic.org/images/profile/backgrounds/bg-blue-preview.png\",\"display_name\": \"Blue\",\"image_path\": \"/images/profile/backgrounds/bg-blue.jpg\",\"reward_triggers\": \"set([])\",\"thumb_path\": \"/images/profile/backgrounds/bg-blue-preview.png\",\"translated_requirements\": [],\"thumbnail_path\": \"\",\"thumbnail_src\": \"https://cdn.kastatic.org/images/profile/backgrounds/bg-blue.jpg\",\"reward_type\": \"profile_background\",\"translated_display_name\": \"Blue\",\"image_src\": \"https://cdn.kastatic.org/images/profile/backgrounds/bg-blue.jpg\",\"name\": \"blue\"},\"is_creator\": false,\"count_videos_completed\": 34,\"is_public\": false,\"avatar_src\": \"https://cdn.kastatic.org/images/avatars/leaf-green.png\",\"sound_on\": true,\"nickname\": \"fake\",\"includes_user_data_info\": true,\"has_coach_homepage\": false,\"background_src\": \"https://cdn.kastatic.org/images/profile/backgrounds/bg-blue.jpg\",\"is_developer\": false,\"is_publisher\": false,\"is_curator\": false,\"restricted_domain\": null,\"has_parent_homepage\": false,\"homepage_url\": \"/\",\"points\": 38360,\"is_coaching_logged_in_user\": true,\"avatar\": {\"display_name\": \"Green Leaf\",\"image_path\": \"/images/avatars/leaf-green.png\",\"reward_triggers\": \"set([])\",\"translated_requirements\": [],\"part_type\": \"model\",\"thumbnail_path\": \"\",\"thumbnail_src\": \"https://cdn.kastatic.org/images/avatars/leaf-green.png\",\"reward_type\": \"avatar_reward\",\"translated_display_name\": \"Green Leaf\",\"image_src\": \"https://cdn.kastatic.org/images/avatars/leaf-green.png\",\"name\": \"greenleaf\"},\"is_self\": true,\"streak_last_length\": 0,\"is_orphan\": false,\"kaid\": \"kaid_78807109740671675685110\",\"badge_counts\": {\"0\": 22,\"1\": 3,\"2\": 0,\"3\": 0,\"4\": 0,\"5\": 0},\"has_students\": false}},\"kaid\": \"kaid_78807109740671675685110\"}";
 
+        public const string SampleUserVideoLogsJson = "[{\"kind\": \"VideoLog\", \"seconds_watched\": 78, \"translated_video_title\": \"Hypothesis Testing and P-values\", \"time_watched\": \"2012-05-14T08:49:31Z\", \"backup_timestamp\": \"2012-05-14T08:49:31Z\", \"points_earned\": 86, \"playlist_titles\": [   \"Statistics\" ], \"last_second_watched\": 78, \"is_video_completed\": false, \"fallback_player\": false, \"youtube_id\": \"-FtlH4svqx4\", \"captions_locale\": null, \"translated_playlist_titles\": [   \"Statistics\" ], \"kaid\": \"kaid_78807109740671675685110\", \"ip_address\": null, \"video_title\": \"Hypothesis Testing and P-values\", \"user\": \"http://nouserid.khanacademy.org/dd3d25359ba55b34e2eaa20f4bc776f7\"}]";
+
         public static readonly User SampleUser = new User()
         {
             SpawnedBy = null,
@@ -695,6 +697,30 @@ namespace KhanDotNet.Tests.Data
                 }
             },
             KaId = "kaid_78807109740671675685110"
+        };
+
+        public static readonly List<VideoLog> SampleUserVideoLogs = new List<VideoLog>()
+        {
+            new VideoLog()
+            {
+                Kind = "VideoLog",
+                SecondsWatched = 78,
+                TranslatedVideoTitle = "Hypothesis Testing and P-values",
+                TimeWatched = new DateTime(2012, 05, 14, 08, 49, 31),
+                BackupTimestamp = new DateTime(2012, 05, 14, 08, 49, 31),
+                PointsEarned = 86,
+                PlaylistTitles = new List<string>() { "Statistics" },
+                LastSecondWatched = 78,
+                IsVideoCompleted = false,
+                FallbackPlayer = false,
+                YouTubeId = "-FtlH4svqx4",
+                CaptionsLocale = null,
+                TranslatedPlaylistTitles = new List<string>() { "Statistics" },
+                KaId = "kaid_78807109740671675685110",
+                IpAddress = null,
+                VideoTitle = "Hypothesis Testing and P-values",
+                User = "http://nouserid.khanacademy.org/dd3d25359ba55b34e2eaa20f4bc776f7"
+            }
         };
     }
 }

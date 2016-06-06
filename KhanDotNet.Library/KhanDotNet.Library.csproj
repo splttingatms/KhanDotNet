@@ -97,6 +97,7 @@
     <Compile Include="Contracts\UserVideo.cs" />
     <Compile Include="Contracts\Versions.cs" />
     <Compile Include="Contracts\Video.cs" />
+    <Compile Include="Contracts\VideoLog.cs" />
     <Compile Include="ExerciseClient.cs" />
     <Compile Include="Authentication\IAccessTokenRetriever.cs" />
     <Compile Include="Authentication\IAuthenticator.cs" />

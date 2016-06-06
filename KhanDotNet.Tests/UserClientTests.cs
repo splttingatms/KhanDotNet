@@ -464,7 +464,7 @@ namespace KhanDotNet.Tests
         }
 
         [TestMethod]
-        public async Task GetUserVideoInteractionsByIdSShouldAuthenticatePath()
+        public async Task GetUserVideoInteractionsByIdShouldAuthenticatePath()
         {
             await _client.GetUserVideoInteractionsByIdAsync("-FtlH4svqx4");
 
@@ -530,6 +530,83 @@ namespace KhanDotNet.Tests
                     It.Is<CancellationToken>(actualToken => actualToken.Equals(expectedToken))));
         }
 
+        #endregion
+
+        #region GetUserVideoLog
+
+        [TestMethod]
+        [ExpectedExceptionWithSubstring(typeof(ArgumentException), "youTubeId")]
+        public async Task GetUserVideoLogShouldThrowIfNullIdGiven()
+        {
+            await _client.GetUserVideoLogAsync(youTubeId: null);
+        }
+
+        [TestMethod]
+        public async Task GetUserVideoLogShouldAuthenticatePath()
+        {
+            await _client.GetUserVideoLogAsync("-FtlH4svqx4");
+
+            _authenticator.Verify(c =>
+                c.CreateAuthenticatedRequestPath(
+                    It.Is<string>(url => url.ContainsIgnoreCase("-FtlH4svqx4")),
+                    It.IsAny<CancellationToken>()),
+                Times.Once);
+        }
+
+        [TestMethod]
+        public async Task GetUserVideoLogShouldEncodeInput()
+        {
+            await _client.GetUserVideoLogAsync("^foo&bar$");
+
+            _httpClientMock.Verify(c => c.GetAsync(
+                It.Is<string>(url => url.ContainsIgnoreCase("%5Efoo%26bar%24")),
+                It.IsAny<CancellationToken>()));
+        }
+
+        [TestMethod]
+        public async Task GetUserVideoLogShouldTargetCorrectPath()
+        {
+            await _client.GetUserVideoLogAsync("-FtlH4svqx4");
+
+            _httpClientMock.Verify(c => c.GetAsync(
+                It.Is<string>(url => url.ContainsIgnoreCase("/api/v1/user/videos/-FtlH4svqx4/log")),
+                It.IsAny<CancellationToken>()));
+        }
+
+        [TestMethod]
+        public async Task GetUserVideoLogShouldReturnDeserializedResult()
+        {
+            var expected = UserTestData.SampleUserVideoLogs;
+            _khanResponse.Content = new JsonContent(UserTestData.SampleUserVideoLogsJson);
+
+            var actual = await _client.GetUserVideoLogAsync("-FtlH4svqx4");
+
+            expected.AssertDeepEqual(actual);
+        }
+
+        [TestMethod]
+        public async Task GetUserVideoLogShouldPassThroughTokenToHttpClient()
+        {
+            var expectedToken = new CancellationToken(true);
+
+            await _client.GetUserVideoLogAsync("-FtlH4svqx4", expectedToken);
+
+            _httpClientMock.Verify(c => c.GetAsync(
+                    It.IsAny<string>(),
+                    It.Is<CancellationToken>(actualToken => actualToken.Equals(expectedToken))));
+        }
+
+        [TestMethod]
+        public async Task GetUserVideoLogPassEmptyTokenToHttpClient()
+        {
+            var expectedToken = CancellationToken.None;
+
+            await _client.GetUserVideoLogAsync("-FtlH4svqx4");
+
+            _httpClientMock.Verify(c => c.GetAsync(
+                    It.IsAny<string>(),
+                    It.Is<CancellationToken>(actualToken => actualToken.Equals(expectedToken))));
+        }
 
         #endregion
     }

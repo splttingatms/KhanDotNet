@@ -126,5 +126,21 @@ namespace KhanDotNet.Library
                 return await response.Content.ReadAsAsync<UserVideo>(cancellationToken);
             }
         }
+
+        public async Task<List<VideoLog>> GetUserVideoLogAsync(string youTubeId)
+        {
+            return await GetUserVideoLogAsync(youTubeId, CancellationToken.None);
+        }
+
+        public async Task<List<VideoLog>> GetUserVideoLogAsync(string youTubeId, CancellationToken cancellationToken)
+        {
+            Ensure.That(youTubeId, nameof(youTubeId)).IsNotNullOrEmpty();
+
+            var path = await Authenticator.CreateAuthenticatedRequestPath("https://www.khanacademy.org/api/v1/user/videos/{0}/log".FUrlEncoded(youTubeId), cancellationToken);
+            using (var response = await _httpClient.GetAsync(path, cancellationToken))
+            {
+                return await response.Content.ReadAsAsync<List<VideoLog>>(cancellationToken);
+            }
+        }
     }
 }

@@ -18,6 +18,7 @@ namespace KhanDotNet.Demo.Pages
             Menu.Add("Get user progress changes (authenticated)", GetUserProgressChangesCallback);
             Menu.Add("Get user video interactions (authenticated)", GetUserVideoInteractionsCallback);
             Menu.Add("Get user video interactions by YouTube ID (authenticated)", GetUserVideoInteractionsByIdCallback);
+            Menu.Add("Get user video log (authenticated)", GetUserVideoLogCallback);
 
             _client = client;
         }
@@ -62,9 +63,17 @@ namespace KhanDotNet.Demo.Pages
 
         private void GetUserVideoInteractionsByIdCallback()
         {
+            // TODO 1: fix returning result, also call the methods asynchronously
             var id = Input.ReadString("Enter YouTube ID:");
             var video = _client.Users.GetUserVideoInteractionsByIdAsync(id);
             OutputHelper.Success(video);
+        }
+
+        private void GetUserVideoLogCallback()
+        {
+            var id = Input.ReadString("Enter YouTube ID:");
+            var logs = _client.Users.GetUserVideoLogAsync(id).Result;
+            OutputHelper.Success(logs);
         }
     }
 }
