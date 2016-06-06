@@ -17,6 +17,8 @@ namespace KhanDotNet.Demo.Pages
             Menu.Add("Get user exercise problem logs (authenticated)", GetUserExerciseProblemLogsCallback);
             Menu.Add("Get user progress changes (authenticated)", GetUserProgressChangesCallback);
             Menu.Add("Get user video interactions (authenticated)", GetUserVideoInteractionsCallback);
+            Menu.Add("Get user video interactions by YouTube ID (authenticated)", GetUserVideoInteractionsByIdCallback);
+
             _client = client;
         }
 
@@ -56,6 +58,13 @@ namespace KhanDotNet.Demo.Pages
         {
             var videos = _client.Users.GetUserVideoInteractionsAsync().Result;
             OutputHelper.Success(videos);
+        }
+
+        private void GetUserVideoInteractionsByIdCallback()
+        {
+            var id = Input.ReadString("Enter YouTube ID:");
+            var video = _client.Users.GetUserVideoInteractionsByIdAsync(id);
+            OutputHelper.Success(video);
         }
     }
 }

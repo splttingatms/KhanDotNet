@@ -16,7 +16,9 @@ namespace KhanDotNet.Tests.Data
 
         public const string SampleUserProgressChangesJson = "[{\"date\": \"2014-10-24T06:43:34Z\",\"exercise_name\": \"counting_2\",\"to_progress\": {\"practiced\": true,\"mastered\": false,\"level\": \"practiced\"},\"from_progress\": {\"practiced\": false,\"mastered\": false,\"level\": \"unstarted\"}},{\"date\": \"2014-10-24T08:05:11Z\",\"exercise_name\": \"permutations_1\",\"to_progress\": {\"practiced\": true,\"mastered\": false,\"level\": \"practiced\"},\"from_progress\": {\"practiced\": false,\"mastered\": false,\"level\": \"unstarted\"}}]";
 
-        public const string SampleUserWatchedVideosJson = "[  {\"kind\": \"UserVideo\",\"seconds_watched\": 1306,\"last_watched\": \"2012-05-15T01:41:09Z\",\"completed\": true,\"backup_timestamp\": \"2012-05-15T01:41:09Z\",\"last_second_watched\": 638,\"points\": 750,\"video\": null,\"user\": \"http://nouserid.khanacademy.org/dd3d25359ba55b34e2eaa20f4bc776f7\",\"duration\": 686,\"progress\": 1.0,\"kaid\": null  }]";
+        public const string SampleUserWatchedVideosJson = "[{\"kind\": \"UserVideo\",\"seconds_watched\": 1306,\"last_watched\": \"2012-05-15T01:41:09Z\",\"completed\": true,\"backup_timestamp\": \"2012-05-15T01:41:09Z\",\"last_second_watched\": 638,\"points\": 750,\"video\": null,\"user\": \"http://nouserid.khanacademy.org/dd3d25359ba55b34e2eaa20f4bc776f7\",\"duration\": 686,\"progress\": 1.0,\"kaid\": null  }]";
+
+        public const string SampleUserVideoInteractionsByIdJson = "{\"kind\": \"UserVideo\",\"seconds_watched\": 1306,\"last_watched\": \"2012-05-15T01:41:09Z\",\"completed\": true,\"backup_timestamp\": \"2012-05-15T01:41:09Z\",\"ka_locale\": \"en\",\"last_second_watched\": 638,\"points\": 750,\"video\": null,\"user\": \"http://nouserid.khanacademy.org/dd3d25359ba55b34e2eaa20f4bc776f7\",\"duration\": 686,\"progress\": 1.0,\"action_results\": {\"notifications_added\": {\"urgent\": [],\"readable\": [],\"continue_url\": null},\"new_task_json\": {\"task_json\": {\"completion_criteria\": {\"name\": \"finish_video\"},\"slug\": \"hypothesis-testing-and-p-values\",\"task_type\": \"video\",\"description\": \"Sal walks through an example about a neurologist testing the effect of a drug to discuss hypothesis testing and p-values.\",\"badges_awarded\": [],\"title\": \"Hypothesis testing and p-values\",\"seconds_watched\": 0,\"language_tag\": \"en\",\"points_earned\": 0,\"direct_link\": \"/math/probability/statistics-inferential/hypothesis-testing/v/hypothesis-testing-and-p-values\",\"last_second_watched\": 0,\"content\": null,\"translated_description\": \"Sal walks through an example about a neurologist testing the effect of a drug to discuss hypothesis testing and p-values.\",\"point_bounty\": 100,\"key\": \"ag5zfmtoYW4tYWNhZGVteXJtCxIJVXNlclZpZGVvIkxodHRwOi8vbm91c2VyaWQua2hhbmFjYWRlbXkub3JnL2RkM2QyNTM1OWJhNTViMzRlMmVhYTIwZjRiYzc3NmY2Oi1GdGxINHN2cXg0DAsSDExlYXJuaW5nVGFzaxgBDX\",\"versions\": {\"LearningTask\": 4,\"VideoTask\": 3},\"translated_title\": \"Hypothesis testing and p-values\",\"translated_description_html\": \"Sal walks through an example about a neurologist testing the effect of a drug to discuss hypothesis testing and p-values.\",\"id\": \"1\",\"avatar_parts_awarded\": []}},\"badge_counts\": {\"0\": 22,\"1\": 3,\"2\": 0,\"3\": 0,\"4\": 0,\"5\": 0},\"user_profile\": {\"is_moderator\": false,\"streak_length\": 0,\"can_record_tutorial\": false,\"is_demo\": false,\"allowed_by_parent_to_add_any_coach\": true,\"user_key\": \"ag5zfmtoYW4tYWNhZGVteXJaCxIIVXNlckRhdGEiTHVzZXJfaWRfa2V5X2h0dHA6Ly9ub3VzZXJpZC5raGFuYWNhZGVteS5vcmcvZGQzZDI1MzU5YmE1NWIzNGUyZWFhMjBmNGJjNzc2ZjYX\",\"count_brand_new_notifications\": 0,\"has_changed_avatar\": false,\"avatar_name\": \"greenleaf\",\"moderator_level\": 0,\"is_activity_accessible\": true,\"has_child_students\": false,\"is_parent_of_logged_in_user\": false,\"date_joined\": \"2011-11-09T00:22:12Z\",\"user_id\": \"http://googleid.khanacademy.org/113933792523419662885\",\"affiliations\": [],\"user_location\": null,\"can_create_official_clarifications\": false,\"child_page_root\": \"/parent/child/kaid_78807109740671675685110/\",\"background_name\": \"blue\",\"profile_root\": \"/profile/kaid_78807109740671675685110/\",\"is_data_collectible\": true,\"streak_last_extended\": \"1900-01-01\",\"follow_requires_approval\": true,\"can_message_users\": false,\"is_phantom\": false,\"email\": \"fake@gmail.com\",\"global_permissions\": [],\"username\": \"\",\"bio\": \"\",\"hide_visual\": false,\"is_midsignup_phantom\": false,\"can_modify_coaches\": true,\"can_eval_cs_projects\": false,\"can_hellban\": false,\"public_badges\": [],\"is_child_account\": false,\"signed_up_as_teacher\": false,\"background\": {\"thumb_src\": \"https://cdn.kastatic.org/images/profile/backgrounds/bg-blue-preview.png\",\"display_name\": \"Blue\",\"image_path\": \"/images/profile/backgrounds/bg-blue.jpg\",\"reward_triggers\": \"set([])\",\"thumb_path\": \"/images/profile/backgrounds/bg-blue-preview.png\",\"translated_requirements\": [],\"thumbnail_path\": \"\",\"thumbnail_src\": \"https://cdn.kastatic.org/images/profile/backgrounds/bg-blue.jpg\",\"reward_type\": \"profile_background\",\"translated_display_name\": \"Blue\",\"image_src\": \"https://cdn.kastatic.org/images/profile/backgrounds/bg-blue.jpg\",\"name\": \"blue\"},\"is_creator\": false,\"count_videos_completed\": 34,\"is_public\": false,\"avatar_src\": \"https://cdn.kastatic.org/images/avatars/leaf-green.png\",\"sound_on\": true,\"nickname\": \"fake\",\"includes_user_data_info\": true,\"has_coach_homepage\": false,\"background_src\": \"https://cdn.kastatic.org/images/profile/backgrounds/bg-blue.jpg\",\"is_developer\": false,\"is_publisher\": false,\"is_curator\": false,\"restricted_domain\": null,\"has_parent_homepage\": false,\"homepage_url\": \"/\",\"points\": 38360,\"is_coaching_logged_in_user\": true,\"avatar\": {\"display_name\": \"Green Leaf\",\"image_path\": \"/images/avatars/leaf-green.png\",\"reward_triggers\": \"set([])\",\"translated_requirements\": [],\"part_type\": \"model\",\"thumbnail_path\": \"\",\"thumbnail_src\": \"https://cdn.kastatic.org/images/avatars/leaf-green.png\",\"reward_type\": \"avatar_reward\",\"translated_display_name\": \"Green Leaf\",\"image_src\": \"https://cdn.kastatic.org/images/avatars/leaf-green.png\",\"name\": \"greenleaf\"},\"is_self\": true,\"streak_last_length\": 0,\"is_orphan\": false,\"kaid\": \"kaid_78807109740671675685110\",\"badge_counts\": {\"0\": 22,\"1\": 3,\"2\": 0,\"3\": 0,\"4\": 0,\"5\": 0},\"has_students\": false}},\"kaid\": \"kaid_78807109740671675685110\"}";
 
         public static readonly User SampleUser = new User()
         {
@@ -524,6 +526,175 @@ namespace KhanDotNet.Tests.Data
                 Progress = 1.0,
                 KaId = null
             }
+        };
+
+        public static readonly UserVideo SampleUserVideoInteractionsById = new UserVideo()
+        {
+            Kind = "UserVideo",
+            SecondsWatched = 1306,
+            LastWatched = new DateTime(2012, 05, 15, 01, 41, 09),
+            Completed = true,
+            BackupTimestamp = new DateTime(2012, 05, 15, 01, 41, 09),
+            KaLocale = "en",
+            LastSecondWatched = 638,
+            Points = 750,
+            Video = null,
+            User = "http://nouserid.khanacademy.org/dd3d25359ba55b34e2eaa20f4bc776f7",
+            Duration = 686,
+            Progress = 1.0,
+            ActionResults = new ActionResults()
+            {
+                NotificationsAdded = new Notifications()
+                {
+                    Urgent = new List<object>(),
+                    Readable = new List<object>(),
+                    ContinueUrl = null
+                },
+                NewTask = new KhanTaskWrapper()
+                {
+                    Task = new KhanTask()
+                    {
+                        CompletionCriteria = new CompletionCriteria()
+                        {
+                            Name = "finish_video"
+                        },
+                        Slug = "hypothesis-testing-and-p-values",
+                        TaskType = "video",
+                        Description = "Sal walks through an example about a neurologist testing the effect of a drug to discuss hypothesis testing and p-values.",
+                        BadgesAwarded = new List<object>(),
+                        Title = "Hypothesis testing and p-values",
+                        SecondsWatched = 0,
+                        LanguageTag = "en",
+                        PointsEarned = 0,
+                        DirectLink = new Uri("/math/probability/statistics-inferential/hypothesis-testing/v/hypothesis-testing-and-p-values", UriKind.Relative),
+                        LastSecondWatched = 0,
+                        Content = null,
+                        TranslatedDescription = "Sal walks through an example about a neurologist testing the effect of a drug to discuss hypothesis testing and p-values.",
+                        PointBounty = 100,
+                        Key = "ag5zfmtoYW4tYWNhZGVteXJtCxIJVXNlclZpZGVvIkxodHRwOi8vbm91c2VyaWQua2hhbmFjYWRlbXkub3JnL2RkM2QyNTM1OWJhNTViMzRlMmVhYTIwZjRiYzc3NmY2Oi1GdGxINHN2cXg0DAsSDExlYXJuaW5nVGFzaxgBDX",
+                        Versions = new Versions()
+                        {
+                            LearningTask = 4,
+                            VideoTask = 3
+                        },
+                        TranslatedTitle = "Hypothesis testing and p-values",
+                        TranslatedDescriptionHtml = "Sal walks through an example about a neurologist testing the effect of a drug to discuss hypothesis testing and p-values.",
+                        Id = "1",
+                        AvatarPartsAwarded = new List<object>()
+                    }
+                },
+                BadgeCounts = new Dictionary<Category, int>()
+                {
+                    { Category.Meteorite, 22 },
+                    { Category.Moon, 3 },
+                    { Category.Earth, 0 },
+                    { Category.Sun, 0 },
+                    { Category.BlackHole, 0 },
+                    { Category.ChallengePatch, 0 }
+                },
+                UserProfile = new UserProfile()
+                {
+                    IsModerator = false,
+                    StreakLength = 0,
+                    CanRecordTutorial = false,
+                    IsDemo = false,
+                    AllowedByParentToAddAnyCoach = true,
+                    UserKey = "ag5zfmtoYW4tYWNhZGVteXJaCxIIVXNlckRhdGEiTHVzZXJfaWRfa2V5X2h0dHA6Ly9ub3VzZXJpZC5raGFuYWNhZGVteS5vcmcvZGQzZDI1MzU5YmE1NWIzNGUyZWFhMjBmNGJjNzc2ZjYX",
+                    CountBrandNewNotifications = 0,
+                    HasChangedAvatar = false,
+                    AvatarName = "greenleaf",
+                    ModeratorLevel = 0,
+                    IsActivityAccessible = true,
+                    HasChildStudents = false,
+                    IsParentOfLoggedInUser = false,
+                    DateJoined = new DateTime(2011, 11, 09, 00, 22, 12),
+                    UserId = "http://googleid.khanacademy.org/113933792523419662885",
+                    Affiliations = new List<object>(),
+                    UserLocation = null,
+                    CanCreateOfficialClarifications = false,
+                    ChildPageRoot = "/parent/child/kaid_78807109740671675685110/",
+                    BackgroundName = "blue",
+                    ProfileRoot = new Uri("/profile/kaid_78807109740671675685110/", UriKind.Relative),
+                    IsDataCollectible = true,
+                    StreakLastExtended = "1900-01-01",
+                    FollowRequiresApproval = true,
+                    CanMessageUsers = false,
+                    IsPhantom = false,
+                    Email = "fake@gmail.com",
+                    GlobalPermissions = new List<object>(),
+                    Username = "",
+                    Bio = "",
+                    HideVisual = false,
+                    IsMidsignupPhantom = false,
+                    CanModifyCoaches = true,
+                    CanEvalCsProjects = false,
+                    CanHellban = false,
+                    PublicBadges = new List<object>(),
+                    IsChildAccount = false,
+                    SignedUpAsTeacher = false,
+                    Background = new ImageDetails()
+                    {
+                        Name = "blue",
+                        TranslatedDisplayName = "Blue",
+                        DisplayName = "Blue",
+                        ImagePath = new Uri("/images/profile/backgrounds/bg-blue.jpg", UriKind.Relative),
+                        ImageSrc = new Uri("https://cdn.kastatic.org/images/profile/backgrounds/bg-blue.jpg"),
+                        RewardTriggers = "set([])",
+                        ThumbPath = new Uri("/images/profile/backgrounds/bg-blue-preview.png", UriKind.Relative),
+                        ThumbSrc = new Uri("https://cdn.kastatic.org/images/profile/backgrounds/bg-blue-preview.png"),
+                        TranslatedRequirements = new List<object>(),
+                        ThumbnailPath = null,
+                        ThumbnailSrc = new Uri("https://cdn.kastatic.org/images/profile/backgrounds/bg-blue.jpg"),
+                        RewardType = "profile_background",
+                    },
+                    IsCreator = false,
+                    CountVideosCompleted = 34,
+                    IsPublic = false,
+                    AvatarSrc = new Uri("https://cdn.kastatic.org/images/avatars/leaf-green.png"),
+                    SoundOn = true,
+                    Nickname = "fake",
+                    IncludesUserDataInfo = true,
+                    HasCoachHomepage = false,
+                    BackgroundSrc = new Uri("https://cdn.kastatic.org/images/profile/backgrounds/bg-blue.jpg"),
+                    IsDeveloper = false,
+                    IsPublisher = false,
+                    IsCurator = false,
+                    RestrictedDomain = null,
+                    HasParentHomepage = false,
+                    HomepageUrl = new Uri("/", UriKind.Relative),
+                    Points = 38360,
+                    IsCoachingLoggedInuser = true,
+                    Avatar = new ImageDetails()
+                    {
+                        DisplayName = "Green Leaf",
+                        ImagePath = new Uri("/images/avatars/leaf-green.png", UriKind.Relative),
+                        RewardTriggers = "set([])",
+                        TranslatedRequirements = new List<object>(),
+                        PartType = "model",
+                        ThumbnailPath= null,
+                        ThumbnailSrc = new Uri("https://cdn.kastatic.org/images/avatars/leaf-green.png"),
+                        RewardType = "avatar_reward",
+                        TranslatedDisplayName = "Green Leaf",
+                        ImageSrc = new Uri("https://cdn.kastatic.org/images/avatars/leaf-green.png"),
+                        Name = "greenleaf"
+                    },
+                    IsSelf = true,
+                    StreakLastLength = 0,
+                    IsOrphan = false,
+                    KaId = "kaid_78807109740671675685110",
+                    BadgeCounts = new Dictionary<Category, int>()
+                    {
+                        { Category.Meteorite, 22 },
+                        { Category.Moon, 3 },
+                        { Category.Earth, 0 },
+                        { Category.Sun, 0 },
+                        { Category.BlackHole, 0 },
+                        { Category.ChallengePatch, 0 }
+                    },
+                    HasStudents = false
+                }
+            },
+            KaId = "kaid_78807109740671675685110"
         };
     }
 }

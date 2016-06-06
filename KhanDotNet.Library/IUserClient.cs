@@ -25,5 +25,8 @@ namespace KhanDotNet.Library
 
         Task<List<UserVideo>> GetUserVideoInteractionsAsync();
         Task<List<UserVideo>> GetUserVideoInteractionsAsync(CancellationToken cancellationToken);
+
+        Task<UserVideo> GetUserVideoInteractionsByIdAsync(string youTubeId);
+        Task<UserVideo> GetUserVideoInteractionsByIdAsync(string youTubeId, CancellationToken cancellationToken);
     }
 }

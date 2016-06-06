@@ -453,5 +453,84 @@ namespace KhanDotNet.Tests
         }
 
         #endregion
+
+        #region GetUserVideoInteractionsById
+
+        [TestMethod]
+        [ExpectedExceptionWithSubstring(typeof(ArgumentException), "youTubeId")]
+        public async Task GetUserVideoInteractionsByIdShouldThrowIfNullIdGiven()
+        {
+            await _client.GetUserVideoInteractionsByIdAsync(youTubeId: null);
+        }
+
+        [TestMethod]
+        public async Task GetUserVideoInteractionsByIdSShouldAuthenticatePath()
+        {
+            await _client.GetUserVideoInteractionsByIdAsync("-FtlH4svqx4");
+
+            _authenticator.Verify(c => 
+                c.CreateAuthenticatedRequestPath(
+                    It.Is<string>(url => url.ContainsIgnoreCase("-FtlH4svqx4")), 
+                    It.IsAny<CancellationToken>()), 
+                Times.Once);
+        }
+
+        [TestMethod]
+        public async Task GetUserVideoInteractionsByIdShouldEncodeInput()
+        {
+            await _client.GetUserVideoInteractionsByIdAsync("^foo&bar$");
+
+            _httpClientMock.Verify(c => c.GetAsync(
+                It.Is<string>(url => url.ContainsIgnoreCase("%5Efoo%26bar%24")),
+                It.IsAny<CancellationToken>()));
+        }
+
+        [TestMethod]
+        public async Task GetUserVideoInteractionsByIdShouldTargetCorrectPath()
+        {
+            await _client.GetUserVideoInteractionsByIdAsync("-FtlH4svqx4");
+
+            _httpClientMock.Verify(c => c.GetAsync(
+                It.Is<string>(url => url.ContainsIgnoreCase("/api/v1/user/videos/-FtlH4svqx4")),
+                It.IsAny<CancellationToken>()));
+        }
+
+        [TestMethod]
+        public async Task GetUserVideoInteractionsByIdShouldReturnDeserializedResult()
+        {
+            var expected = UserTestData.SampleUserVideoInteractionsById;
+            _khanResponse.Content = new JsonContent(UserTestData.SampleUserVideoInteractionsByIdJson);
+
+            var actual = await _client.GetUserVideoInteractionsByIdAsync("-FtlH4svqx4");
+
+            expected.AssertDeepEqual(actual);
+        }
+
+        [TestMethod]
+        public async Task GetUserVideoInteractionsByIdShouldPassThroughTokenToHttpClient()
+        {
+            var expectedToken = new CancellationToken(true);
+
+            await _client.GetUserVideoInteractionsByIdAsync("-FtlH4svqx4", expectedToken);
+
+            _httpClientMock.Verify(c => c.GetAsync(
+                    It.IsAny<string>(),
+                    It.Is<CancellationToken>(actualToken => actualToken.Equals(expectedToken))));
+        }
+
+        [TestMethod]
+        public async Task GetUserVideoInteractionsByIdShouldPassEmptyTokenToHttpClient()
+        {
+            var expectedToken = CancellationToken.None;
+
+            await _client.GetUserVideoInteractionsByIdAsync("-FtlH4svqx4");
+
+            _httpClientMock.Verify(c => c.GetAsync(
+                    It.IsAny<string>(),
+                    It.Is<CancellationToken>(actualToken => actualToken.Equals(expectedToken))));
+        }
+
+
+        #endregion
     }
 }

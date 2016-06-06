@@ -19,7 +19,10 @@ namespace KhanDotNet.Library.Contracts
         public bool Completed { get; set; }
 
         [JsonProperty("backup_timestamp")]
-        public DateTime BackupTimestamp { get; set; }
+        public DateTime? BackupTimestamp { get; set; }
+
+        [JsonProperty("ka_locale")]
+        public string KaLocale { get; set; }
 
         [JsonProperty("last_second_watched")]
         public int LastSecondWatched { get; set; }
@@ -38,6 +41,9 @@ namespace KhanDotNet.Library.Contracts
 
         [JsonProperty("progress")]
         public double Progress { get; set; }
+
+        [JsonProperty("action_results")]
+        public ActionResults ActionResults { get; set; }
 
         [JsonProperty("kaid")]
         public string KaId { get; set; }

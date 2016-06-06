@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using KhanDotNet.Library.Utilities;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -98,7 +99,7 @@ namespace KhanDotNet.Library.Contracts
         public string LicenseName { get; set; }
 
         [JsonProperty("backup_timestamp")]
-        public DateTime BackupTimestamp { get; set; }
+        public DateTime? BackupTimestamp { get; set; }
 
         [JsonProperty("concept_tags_info")]
         public List<ConceptTag> ConceptTagsInfo { get; set; }
@@ -157,7 +158,7 @@ namespace KhanDotNet.Library.Contracts
 
         public override string ToString()
         {
-            return JsonConvert.SerializeObject(this);
+            return SensitiveSerializer.Serialize(this);
         }
     }
 }

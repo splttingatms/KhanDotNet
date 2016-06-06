@@ -109,5 +109,22 @@ namespace KhanDotNet.Library
                 return await response.Content.ReadAsAsync<List<UserVideo>>(cancellationToken);
             }
         }
+
+        public async Task<UserVideo> GetUserVideoInteractionsByIdAsync(string youTubeId)
+        {
+            return await GetUserVideoInteractionsByIdAsync(youTubeId, CancellationToken.None);
+        }
+
+        public async Task<UserVideo> GetUserVideoInteractionsByIdAsync(string youTubeId, CancellationToken cancellationToken)
+        {
+            Ensure.That(youTubeId, nameof(youTubeId)).IsNotNullOrEmpty();
+
+            // TODO 1: rename method to reduce length
+            var path = await Authenticator.CreateAuthenticatedRequestPath("https://www.khanacademy.org/api/v1/user/videos/{0}".FUrlEncoded(youTubeId), cancellationToken);
+            using (var response = await _httpClient.GetAsync(path, cancellationToken))
+            {
+                return await response.Content.ReadAsAsync<UserVideo>(cancellationToken);
+            }
+        }
     }
 }
